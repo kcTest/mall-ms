@@ -4,11 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.zkc.mall</groupId>
+    <groupId>com.zkc.mall</groupId>
     <artifactId>mall-ms</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
+        <module>mall-common</module>
         <module>mall-admin</module>
         <module>mall-gateway</module>
         <module>mall-auth</module>
@@ -24,6 +26,8 @@
     <properties>
         <spring-cloud.version>2021.0.0</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+        <mall-common.version>1.0-SNAPSHOT</mall-common.version>
+        <mall-mbg.version>1.0-SNAPSHOT</mall-mbg.version>
     </properties>
 
     <dependencies>
@@ -57,6 +61,11 @@
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.zkc.mall</groupId>
+                <artifactId>mall-common</artifactId>
+                <version>${mall-common.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,0 +1,21 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: mall-auth
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+feign:
+  okhttp:
+    enabled: true
+  client:
+    config:
+      default:
+        connect-timeout: 3000
+        read-timeout: 3000
