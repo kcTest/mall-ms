@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 117.50.163.39:1111
+        namespace: 7fd3845d-7b89-4e1a-b579-ce7a8e0ba33d
+      config:
+        server-addr: 117.50.163.39:1111
+        namespace: 7fd3845d-7b89-4e1a-b579-ce7a8e0ba33d
+        file-extension: yaml

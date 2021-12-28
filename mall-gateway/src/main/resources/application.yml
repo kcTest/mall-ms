@@ -1,0 +1,65 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: mall-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: mall-auth
+          uri: lb://mall-auth
+          predicates:
+            - Path=/mall-auth/**
+          filters:
+            - StripPrefix=1
+        - id: mall-admin
+          uri: lb://mall-admin
+          predicates:
+            - Path=/mall-admin/**
+          filters:
+            - StripPrefix=1
+        - id: mall-portal
+          uri: lb://mall-portal
+          predicates:
+            - Path=/mall-portal/**
+          filters:
+            - StripPrefix=1
+        - id: mall-search
+          uri: lb://mall-search
+          predicates:
+            - Path=/mall-search/**
+          filters:
+            - StripPrefix=1
+
+#secure:
+#  ignore:
+#    urls:
+#      - "/mall-admin/admin/login"
+#      - "/mall-admin/admin/registry"
+#      - "/mall-admin/aliyun/oss/callback"
+#      - "/mall-auth/oauth/token"
+#      - "/mall-auth/rsa/publicKey"
+#      - "/mall-portal/sso/login"
+#      - "/mall-portal/sso/registry"
+#      - "/mall-portal/sso/getAuthCode"
+#      - "/mall-portal/home/**"
+#      - "/mall-portal/product/**"
+#      - "/mall-portal/brand/**"
+#      - "/mall-search/**"
+secure.ignore
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+        
+
