@@ -27,7 +27,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		
 		EndpointRequest.EndpointRequestMatcher endpoint = EndpointRequest.toAnyEndpoint();
 		http.authorizeRequests()
 				.requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()

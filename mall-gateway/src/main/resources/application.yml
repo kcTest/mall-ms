@@ -50,7 +50,12 @@ spring:
 #      - "/mall-portal/product/**"
 #      - "/mall-portal/brand/**"
 #      - "/mall-search/**"
-secure.ignore
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 
 
 
 management:
