@@ -1,11 +1,11 @@
-package com.zkc.mall.service.impl;
+package com.zkc.mall.auth.service.impl;
 
 import com.zkc.mall.common.constant.AuthConstant;
 import com.zkc.mall.common.domain.UserDto;
-import com.zkc.mall.constant.MessageConstant;
-import com.zkc.mall.domain.CustomUserDetails;
-import com.zkc.mall.service.UmsAdminService;
-import com.zkc.mall.service.UmsMemberService;
+import com.zkc.mall.auth.constant.MessageConstant;
+import com.zkc.mall.auth.domain.CustomUserDetails;
+import com.zkc.mall.auth.service.UmsAdminService;
+import com.zkc.mall.auth.service.UmsMemberService;
 import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.security.authentication.DisabledException;

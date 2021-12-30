@@ -35,28 +35,24 @@ spring:
           filters:
             - StripPrefix=1
 
-#secure:
-#  ignore:
-#    urls:
-#      - "/mall-admin/admin/login"
-#      - "/mall-admin/admin/registry"
-#      - "/mall-admin/aliyun/oss/callback"
-#      - "/mall-auth/oauth/token"
-#      - "/mall-auth/rsa/publicKey"
-#      - "/mall-portal/sso/login"
-#      - "/mall-portal/sso/registry"
-#      - "/mall-portal/sso/getAuthCode"
-#      - "/mall-portal/home/**"
-#      - "/mall-portal/product/**"
-#      - "/mall-portal/brand/**"
-#      - "/mall-search/**"
-
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: 
-
+secure:
+  ignore:
+    urls:
+      - "/mall-admin/admin/login"
+      - "/mall-admin/admin/registry"
+      - "/mall-admin/aliyun/oss/callback"
+      - "/mall-auth/oauth/token"
+      - "/mall-auth/rsa/publicKey"
+      - "/mall-portal/sso/login"
+      - "/mall-portal/sso/registry"
+      - "/mall-portal/sso/getAuthCode"
+      - "/mall-portal/home/**"
+      - "/mall-portal/product/**"
+      - "/mall-portal/brand/**"
+      - "/mall-search/**"
+      - "/mall-auth/oauth/token"
+      - "/mall-auth/ras/publicKey"
+      - "/actuator/**"
 
 management:
   endpoints:

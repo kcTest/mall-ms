@@ -1,6 +1,6 @@
-package com.zkc.mall.service.impl;
+package com.zkc.mall.common.service.impl;
 
-import com.zkc.mall.service.RedisService;
+import com.zkc.mall.common.service.RedisService;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import javax.annotation.Resource;

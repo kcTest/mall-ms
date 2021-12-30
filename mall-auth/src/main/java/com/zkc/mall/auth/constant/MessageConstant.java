@@ -1,4 +1,4 @@
-package com.zkc.mall.constant;
+package com.zkc.mall.auth.constant;
 
 public final class MessageConstant {
 	

@@ -1,4 +1,4 @@
-package com.zkc.mall.exception;
+package com.zkc.mall.auth.exception;
 
 import com.zkc.mall.common.api.CommonResult;
 import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;

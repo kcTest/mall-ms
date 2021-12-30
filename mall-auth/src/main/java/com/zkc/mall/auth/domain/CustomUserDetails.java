@@ -1,4 +1,4 @@
-package com.zkc.mall.domain;
+package com.zkc.mall.auth.domain;
 
 import com.zkc.mall.common.domain.UserDto;
 import lombok.Data;

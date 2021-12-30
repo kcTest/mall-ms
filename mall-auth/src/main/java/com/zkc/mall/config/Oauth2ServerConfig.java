@@ -1,7 +1,7 @@
 package com.zkc.mall.config;
 
 import com.zkc.mall.component.JwtTokenEnhancer;
-import com.zkc.mall.service.impl.UserDetailServiceImpl;
+import com.zkc.mall.auth.service.impl.UserDetailServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

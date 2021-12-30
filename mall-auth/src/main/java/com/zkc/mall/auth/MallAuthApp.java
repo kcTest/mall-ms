@@ -1,4 +1,4 @@
-package com.zkc.mall;
+package com.zkc.mall.auth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
