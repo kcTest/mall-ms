@@ -34,7 +34,19 @@ spring:
             - Path=/mall-search/**
           filters:
             - StripPrefix=1
-
+ 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://localhost:8082/mall-auth/rsa/publicKey' #配置RSA的公钥访问地址
+  redis:
+    database: 0
+    port: 6379
+    host: localhost
+    password:
+      
+      
 secure:
   ignore:
     urls:
