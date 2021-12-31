@@ -1,4 +1,4 @@
-package com.zkc.mall.config;
+package com.zkc.mall.gateway.config;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

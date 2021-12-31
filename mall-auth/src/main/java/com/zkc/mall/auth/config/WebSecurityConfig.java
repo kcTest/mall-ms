@@ -1,4 +1,4 @@
-package com.zkc.mall.config;
+package com.zkc.mall.auth.config;
 
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;

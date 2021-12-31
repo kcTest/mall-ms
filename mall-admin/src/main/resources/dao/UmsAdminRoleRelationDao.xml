@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkc.mall.admin.dao.UmsAdminRoleRelationDao">
+
+    <select id="getRoleList" resultMap="com.zkc.mall.mbg.mapper.UmsRoleMapper.BaseResultMap">
+        select ur.*
+        from ums_admin_role_relation uarr
+                 join ums_role ur on ur.id= uarr.role_id
+        where uarr.admin_id = 3
+    </select>
+</mapper>

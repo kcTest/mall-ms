@@ -1,4 +1,4 @@
-package com.zkc.mall.component;
+package com.zkc.mall.auth.component;
 
 import com.zkc.mall.auth.domain.CustomUserDetails;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;

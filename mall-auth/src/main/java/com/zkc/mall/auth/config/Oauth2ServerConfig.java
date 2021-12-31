@@ -1,6 +1,6 @@
-package com.zkc.mall.config;
+package com.zkc.mall.auth.config;
 
-import com.zkc.mall.component.JwtTokenEnhancer;
+import com.zkc.mall.auth.component.JwtTokenEnhancer;
 import com.zkc.mall.auth.service.impl.UserDetailServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -54,7 +54,6 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
 				.accessTokenValiditySeconds(3600 * 24)
 				.refreshTokenValiditySeconds(3600 * 24 * 7);
 	}
-	
 	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {

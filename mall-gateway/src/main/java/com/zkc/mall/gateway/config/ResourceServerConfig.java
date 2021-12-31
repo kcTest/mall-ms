@@ -1,10 +1,10 @@
-package com.zkc.mall.config;
+package com.zkc.mall.gateway.config;
 
 import cn.hutool.core.util.ArrayUtil;
 import com.zkc.mall.common.constant.AuthConstant;
-import com.zkc.mall.component.CustomAccessDeniedHandler;
-import com.zkc.mall.component.CustomAuthorizationManager;
-import com.zkc.mall.component.CustomServerAuthenticationEntryPoint;
+import com.zkc.mall.gateway.component.CustomAccessDeniedHandler;
+import com.zkc.mall.gateway.component.CustomAuthorizationManager;
+import com.zkc.mall.gateway.component.CustomServerAuthenticationEntryPoint;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

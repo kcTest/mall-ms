@@ -1,4 +1,4 @@
-package com.zkc.mall.config;
+package com.zkc.mall.gateway.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

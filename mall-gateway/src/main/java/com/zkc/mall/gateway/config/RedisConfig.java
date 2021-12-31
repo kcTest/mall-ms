@@ -1,4 +1,4 @@
-package com.zkc.mall.config;
+package com.zkc.mall.gateway.config;
 
 import com.zkc.mall.common.config.BaseRedisConfig;
 import org.springframework.context.annotation.Configuration;

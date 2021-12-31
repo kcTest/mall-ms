@@ -1,4 +1,4 @@
-package com.zkc.mall.component;
+package com.zkc.mall.gateway.component;
 
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.StrUtil;
@@ -6,7 +6,7 @@ import cn.hutool.json.JSONUtil;
 import com.nimbusds.jose.JWSObject;
 import com.zkc.mall.common.constant.AuthConstant;
 import com.zkc.mall.common.domain.UserDto;
-import com.zkc.mall.config.IgnoreUrlConfig;
+import com.zkc.mall.gateway.config.IgnoreUrlConfig;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.server.reactive.ServerHttpRequest;

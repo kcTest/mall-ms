@@ -1,8 +1,10 @@
 server:
   port: 8081
+
 spring:
   application:
     name: mall-auth
+
 management:
   endpoints:
     web:
@@ -11,6 +13,7 @@ management:
   endpoint:
     health:
       show-details: always
+
 feign:
   okhttp:
     enabled: true

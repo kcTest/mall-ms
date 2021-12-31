@@ -14,6 +14,7 @@
         <module>mall-admin</module>
         <module>mall-gateway</module>
         <module>mall-auth</module>
+        <module>mall-mbg</module>
     </modules>
 
     <parent>
@@ -30,6 +31,9 @@
         <mall-mbg.version>1.0-SNAPSHOT</mall-mbg.version>
         <hutool.version>5.7.13</hutool.version>
         <nimbus-jose-jwt.version>9.15.2</nimbus-jose-jwt.version>
+        <knife4j.version>3.0.3</knife4j.version>
+        <pagehelper-starter.version>1.4.1</pagehelper-starter.version>
+        <druid.version>1.2.8</druid.version>
     </properties>
 
     <dependencies>
@@ -74,6 +78,11 @@
                 <version>${mall-common.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.zkc.mall</groupId>
+                <artifactId>mall-mbg</artifactId>
+                <version>${mall-mbg.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
@@ -82,6 +91,26 @@
                 <groupId>com.nimbusds</groupId>
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>${nimbus-jose-jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-micro-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
