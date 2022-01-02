@@ -29,7 +29,7 @@ spring:
       max-file-size: 10MB
 
 mybatis:
-  mapper-locations: 
+  mapper-locations:
     - classpath:dao/*.xml
     - classpath*:com/**/mapper/*.xml
 
@@ -41,3 +41,10 @@ management:
   endpoint:
     health:
       show-details: always
+
+redis:
+  database: mall
+  key:
+    admin: 'ums:admin'
+  expire:
+    common: 86400

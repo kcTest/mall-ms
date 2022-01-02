@@ -2,6 +2,7 @@ package com.zkc.mall.auth.config;
 
 import com.zkc.mall.auth.component.JwtTokenEnhancer;
 import com.zkc.mall.auth.service.impl.UserDetailServiceImpl;
+import com.zkc.mall.common.constant.AuthConstant;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,13 +45,13 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		
 		clients.inMemory()
-				.withClient("admin-app").secret(passwordEncoder.encode("123456"))
-				.scopes("all").authorizedGrantTypes("password", "refresh_token")
+				.withClient(AuthConstant.ADMIN_CLIENT_ID).secret(passwordEncoder.encode(AuthConstant.AUTH_CLIENT_SECRETE_DEFAULT))
+				.scopes("all").authorizedGrantTypes(AuthConstant.AUTH_GRANT_TYPE_DEFAULT, AuthConstant.AUTH_REFRESH_TOKEN)
 				.accessTokenValiditySeconds(3600 * 24)
 				.refreshTokenValiditySeconds(3600 * 24 * 7)
 				.and()
-				.withClient("portal-app").secret(passwordEncoder.encode("123456"))
-				.scopes("all").authorizedGrantTypes("password", "refresh_token")
+				.withClient(AuthConstant.PORTAL_CLIENT_ID).secret(passwordEncoder.encode(AuthConstant.AUTH_CLIENT_SECRETE_DEFAULT))
+				.scopes("all").authorizedGrantTypes(AuthConstant.AUTH_GRANT_TYPE_DEFAULT, AuthConstant.AUTH_REFRESH_TOKEN)
 				.accessTokenValiditySeconds(3600 * 24)
 				.refreshTokenValiditySeconds(3600 * 24 * 7);
 	}

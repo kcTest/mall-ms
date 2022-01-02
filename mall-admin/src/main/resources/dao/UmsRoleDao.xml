@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkc.mall.admin.dao.UmsRoleDao">
+    <select id="getMenuList" resultType="com.zkc.mall.mbg.model.UmsMenu">
+        select um.id,
+               um.parent_id   parentId,
+               um.create_time createTime,
+               um.title,
+               um.level,
+               um.sort,
+               um.name,
+               um.icon,
+               um.hidden
+        from ums_admin_role_relation uarr
+        join ums_role_menu_relation  urmr on urmr.role_id = uarr.role_id
+        join ums_menu                um on um.id = urmr.menu_id
+        where uarr.admin_id = #{adminId};
+    </select>
+</mapper>

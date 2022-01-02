@@ -5,7 +5,7 @@
     <select id="getRoleList" resultMap="com.zkc.mall.mbg.mapper.UmsRoleMapper.BaseResultMap">
         select ur.*
         from ums_admin_role_relation uarr
-                 join ums_role ur on ur.id= uarr.role_id
-        where uarr.admin_id = 3
+        join ums_role                ur on ur.id = uarr.role_id
+        where uarr.admin_id = #{adminId}
     </select>
 </mapper>
