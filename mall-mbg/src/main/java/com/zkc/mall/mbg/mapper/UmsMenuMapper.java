@@ -2,10 +2,11 @@ package com.zkc.mall.mbg.mapper;
 
 import com.zkc.mall.mbg.model.UmsMenu;
 import com.zkc.mall.mbg.model.UmsMenuExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface UmsMenuDao {
+import java.util.List;
+
+public interface UmsMenuMapper {
     long countByExample(UmsMenuExample example);
 
     int deleteByExample(UmsMenuExample example);

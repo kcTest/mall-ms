@@ -34,9 +34,9 @@ public interface RedisService {
 	
 	Map<Object, Object> hGetAll(String key);
 	
-	void hSetAll(String key, Map<Object, ?> map);
+	void hSetAll(String key, Map<String, ?> map);
 	
-	Boolean hSetAll(String key, Map<Object, Object> map, long time);
+	Boolean hSetAll(String key, Map<String, Object> map, long time);
 	
 	void hDelete(String key, Object... hashKey);
 	

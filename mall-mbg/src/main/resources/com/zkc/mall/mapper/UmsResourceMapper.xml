@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zkc.mall.mbg.mapper.UmsMenuDao">
-  <resultMap id="BaseResultMap" type="com.zkc.mall.mbg.model.UmsMenu">
+<mapper namespace="com.zkc.mall.mbg.mapper.UmsResourceMapper">
+  <resultMap id="BaseResultMap" type="com.zkc.mall.mbg.model.UmsResource">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="level" jdbcType="INTEGER" property="level" />
-    <result column="sort" jdbcType="INTEGER" property="sort" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="icon" jdbcType="VARCHAR" property="icon" />
-    <result column="hidden" jdbcType="INTEGER" property="hidden" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="category_id" jdbcType="BIGINT" property="categoryId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, parent_id, create_time, title, `level`, sort, `name`, icon, hidden
+    id, create_time, `name`, url, description, category_id
   </sql>
-  <select id="selectByExample" parameterType="com.zkc.mall.mbg.model.UmsMenuExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.zkc.mall.mbg.model.UmsResourceExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from ums_menu
+    from ums_resource
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -98,117 +95,88 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from ums_menu
+    from ums_resource
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from ums_menu
+    delete from ums_resource
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.zkc.mall.mbg.model.UmsMenuExample">
-    delete from ums_menu
+  <delete id="deleteByExample" parameterType="com.zkc.mall.mbg.model.UmsResourceExample">
+    delete from ums_resource
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zkc.mall.mbg.model.UmsMenu" useGeneratedKeys="true">
-    insert into ums_menu (parent_id, create_time, title, 
-      `level`, sort, `name`, 
-      icon, hidden)
-    values (#{parentId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{title,jdbcType=VARCHAR}, 
-      #{level,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{icon,jdbcType=VARCHAR}, #{hidden,jdbcType=INTEGER})
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zkc.mall.mbg.model.UmsResource" useGeneratedKeys="true">
+    insert into ums_resource (create_time, `name`, url, 
+      description, category_id)
+    values (#{createTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{categoryId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zkc.mall.mbg.model.UmsMenu" useGeneratedKeys="true">
-    insert into ums_menu
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zkc.mall.mbg.model.UmsResource" useGeneratedKeys="true">
+    insert into ums_resource
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="parentId != null">
-        parent_id,
-      </if>
       <if test="createTime != null">
         create_time,
-      </if>
-      <if test="title != null">
-        title,
-      </if>
-      <if test="level != null">
-        `level`,
-      </if>
-      <if test="sort != null">
-        sort,
       </if>
       <if test="name != null">
         `name`,
       </if>
-      <if test="icon != null">
-        icon,
+      <if test="url != null">
+        url,
       </if>
-      <if test="hidden != null">
-        hidden,
+      <if test="description != null">
+        description,
+      </if>
+      <if test="categoryId != null">
+        category_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="parentId != null">
-        #{parentId,jdbcType=BIGINT},
-      </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="title != null">
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="level != null">
-        #{level,jdbcType=INTEGER},
-      </if>
-      <if test="sort != null">
-        #{sort,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="icon != null">
-        #{icon,jdbcType=VARCHAR},
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
       </if>
-      <if test="hidden != null">
-        #{hidden,jdbcType=INTEGER},
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.zkc.mall.mbg.model.UmsMenuExample" resultType="java.lang.Long">
-    select count(*) from ums_menu
+  <select id="countByExample" parameterType="com.zkc.mall.mbg.model.UmsResourceExample" resultType="java.lang.Long">
+    select count(*) from ums_resource
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update ums_menu
+    update ums_resource
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.parentId != null">
-        parent_id = #{record.parentId,jdbcType=BIGINT},
-      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.title != null">
-        title = #{record.title,jdbcType=VARCHAR},
-      </if>
-      <if test="record.level != null">
-        `level` = #{record.level,jdbcType=INTEGER},
-      </if>
-      <if test="record.sort != null">
-        sort = #{record.sort,jdbcType=INTEGER},
       </if>
       <if test="record.name != null">
         `name` = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.icon != null">
-        icon = #{record.icon,jdbcType=VARCHAR},
+      <if test="record.url != null">
+        url = #{record.url,jdbcType=VARCHAR},
       </if>
-      <if test="record.hidden != null">
-        hidden = #{record.hidden,jdbcType=INTEGER},
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.categoryId != null">
+        category_id = #{record.categoryId,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -216,60 +184,45 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update ums_menu
+    update ums_resource
     set id = #{record.id,jdbcType=BIGINT},
-      parent_id = #{record.parentId,jdbcType=BIGINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      title = #{record.title,jdbcType=VARCHAR},
-      `level` = #{record.level,jdbcType=INTEGER},
-      sort = #{record.sort,jdbcType=INTEGER},
       `name` = #{record.name,jdbcType=VARCHAR},
-      icon = #{record.icon,jdbcType=VARCHAR},
-      hidden = #{record.hidden,jdbcType=INTEGER}
+      url = #{record.url,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      category_id = #{record.categoryId,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zkc.mall.mbg.model.UmsMenu">
-    update ums_menu
+  <update id="updateByPrimaryKeySelective" parameterType="com.zkc.mall.mbg.model.UmsResource">
+    update ums_resource
     <set>
-      <if test="parentId != null">
-        parent_id = #{parentId,jdbcType=BIGINT},
-      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="level != null">
-        `level` = #{level,jdbcType=INTEGER},
-      </if>
-      <if test="sort != null">
-        sort = #{sort,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="icon != null">
-        icon = #{icon,jdbcType=VARCHAR},
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
       </if>
-      <if test="hidden != null">
-        hidden = #{hidden,jdbcType=INTEGER},
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=BIGINT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zkc.mall.mbg.model.UmsMenu">
-    update ums_menu
-    set parent_id = #{parentId,jdbcType=BIGINT},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      title = #{title,jdbcType=VARCHAR},
-      `level` = #{level,jdbcType=INTEGER},
-      sort = #{sort,jdbcType=INTEGER},
+  <update id="updateByPrimaryKey" parameterType="com.zkc.mall.mbg.model.UmsResource">
+    update ums_resource
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
       `name` = #{name,jdbcType=VARCHAR},
-      icon = #{icon,jdbcType=VARCHAR},
-      hidden = #{hidden,jdbcType=INTEGER}
+      url = #{url,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      category_id = #{categoryId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

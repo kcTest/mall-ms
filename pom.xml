@@ -33,6 +33,7 @@
         <nimbus-jose-jwt.version>9.15.2</nimbus-jose-jwt.version>
         <knife4j.version>3.0.3</knife4j.version>
         <pagehelper-starter.version>1.4.1</pagehelper-starter.version>
+        <pagehelper.version>5.2.0</pagehelper.version>
         <druid.version>1.2.8</druid.version>
     </properties>
 
@@ -102,15 +103,16 @@
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper-spring-boot-starter</artifactId>
-                <version>${pagehelper-starter.version}</version>
-            </dependency>
+
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

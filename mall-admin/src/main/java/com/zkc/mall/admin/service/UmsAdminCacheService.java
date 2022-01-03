@@ -14,4 +14,5 @@ public interface UmsAdminCacheService {
 	 */
 	void setAdmin(UmsAdmin admin);
 	
+	void delAdmin(Long adminId);
 }

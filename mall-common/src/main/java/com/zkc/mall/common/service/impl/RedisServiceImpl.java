@@ -86,12 +86,12 @@ public class RedisServiceImpl implements RedisService {
 	}
 	
 	@Override
-	public void hSetAll(String key, Map<Object, ?> map) {
+	public void hSetAll(String key, Map<String, ?> map) {
 		redisTemplate.opsForHash().putAll(key, map);
 	}
 	
 	@Override
-	public Boolean hSetAll(String key, Map<Object, Object> map, long time) {
+	public Boolean hSetAll(String key, Map<String, Object> map, long time) {
 		redisTemplate.opsForHash().putAll(key, map);
 		return expire(key, time);
 	}

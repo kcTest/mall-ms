@@ -5,7 +5,9 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.BCrypt;
 import cn.hutool.json.JSONUtil;
+import com.github.pagehelper.PageHelper;
 import com.zkc.mall.admin.dao.UmsAdminRoleRelationDao;
+import com.zkc.mall.admin.dto.UpdatePasswordParam;
 import com.zkc.mall.admin.service.AuthService;
 import com.zkc.mall.admin.service.UmsAdminCacheService;
 import com.zkc.mall.admin.service.UmsAdminService;
@@ -16,22 +18,19 @@ import com.zkc.mall.common.domain.UserDto;
 import com.zkc.mall.common.exception.Asserts;
 import com.zkc.mall.mbg.mapper.UmsAdminLoginLogMapper;
 import com.zkc.mall.mbg.mapper.UmsAdminMapper;
-import com.zkc.mall.mbg.model.UmsAdmin;
-import com.zkc.mall.mbg.model.UmsAdminExample;
-import com.zkc.mall.mbg.model.UmsAdminLoginLog;
-import com.zkc.mall.mbg.model.UmsRole;
+import com.zkc.mall.mbg.mapper.UmsAdminRoleRelationMapper;
+import com.zkc.mall.mbg.model.*;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
+@Service
 public class UmsAdminServiceImpl implements UmsAdminService {
 	
 	@Resource
@@ -46,6 +45,8 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 	private HttpServletRequest request;
 	@Resource
 	private UmsAdminCacheService adminCacheService;
+	@Resource
+	private UmsAdminRoleRelationMapper adminRoleRelationMapper;
 	
 	@Override
 	public CommonResult login(String username, String password) {
@@ -154,6 +155,89 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 			adminCacheService.setAdmin(admin);
 			return admin;
 		}
+	}
+	
+	@Override
+	public List<UmsAdmin> list(String keyword, Integer pageSize, Integer pageNum) {
+		PageHelper.startPage(pageNum, pageSize);
+		UmsAdminExample example = new UmsAdminExample();
+		if (!StrUtil.isEmpty(keyword)) {
+			example.createCriteria().andUsernameLike("%" + keyword + "%");
+			example.or(example.createCriteria().andNickNameLike("%" + keyword + "%"));
+		}
+		
+		return adminMapper.selectByExample(example);
+	}
+	
+	@Override
+	public UmsAdmin getItem(Long id) {
+		return adminMapper.selectByPrimaryKey(id);
+	}
+	
+	@Override
+	public int update(Long id, UmsAdmin admin) {
+		admin.setId(id);
+		UmsAdmin rawAdmin = adminMapper.selectByPrimaryKey(id);
+		if (rawAdmin.getPassword().equals(admin.getPassword())) {
+			admin.setPassword(null);
+		} else {
+			if (StrUtil.isEmpty(admin.getPassword())) {
+				admin.setPassword(null);
+			} else {
+				admin.setPassword(BCrypt.hashpw(admin.getPassword()));
+			}
+		}
+		int count = adminMapper.updateByPrimaryKeySelective(admin);
+		adminCacheService.delAdmin(id);
+		return count;
+	}
+	
+	@Override
+	public int updatePassword(UpdatePasswordParam param) {
+		Long id = param.getId();
+		if (id == null || id < 0) {
+			return -1;
+		}
+		UmsAdmin umsAdmin = adminMapper.selectByPrimaryKey(id);
+		if (umsAdmin == null) {
+			return -2;
+		}
+		if (!BCrypt.checkpw(param.getOldPassword(), umsAdmin.getPassword())) {
+			return -3;
+		}
+		umsAdmin.setPassword(BCrypt.hashpw(param.getNewPassword()));
+		adminMapper.updateByPrimaryKeySelective(umsAdmin);
+		adminCacheService.delAdmin(id);
+		return 1;
+	}
+	
+	@Override
+	public int delete(Long id) {
+		int count = adminMapper.deleteByPrimaryKey(id);
+		adminCacheService.delAdmin(id);
+		return count;
+	}
+	
+	@Override
+	public int updateRole(Long adminId, List<Long> roleIds) {
+		UmsAdmin admin = adminMapper.selectByPrimaryKey(adminId);
+		int count = admin == null || roleIds == null ? 0 : roleIds.size();
+		
+		UmsAdminRoleRelationExample example = new UmsAdminRoleRelationExample();
+		example.createCriteria().andAdminIdEqualTo(adminId);
+		adminRoleRelationMapper.deleteByExample(example);
+		
+		if (!CollUtil.isEmpty(roleIds)) {
+			List<UmsAdminRoleRelation> relationList = new ArrayList<>();
+			for (Long roleId : roleIds) {
+				UmsAdminRoleRelation relation = new UmsAdminRoleRelation();
+				relation.setAdminId(adminId);
+				relation.setRoleId(roleId);
+				relationList.add(relation);
+			}
+			adminRoleRelationDao.insertList(relationList);
+		}
+		return count;
 	}
 	
 }
