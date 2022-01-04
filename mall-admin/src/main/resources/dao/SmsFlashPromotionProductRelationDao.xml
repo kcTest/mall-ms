@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkc.mall.admin.dao.SmsFlashPromotionProductRelationDao">
+
+    <resultMap id="flashProductMap" type="com.zkc.mall.admin.dto.SmsFlashPromotionProduct"
+               extends="com.zkc.mall.mbg.mapper.SmsFlashPromotionProductRelationMapper.BaseResultMap">
+        <association property="product" resultMap="com.zkc.mall.mbg.mapper.PmsProductMapper.BaseResultMap"
+                     columnPrefix="p_"/>
+    </resultMap>
+
+    <select id="getList" resultMap="flashProductMap">
+        select sfppr.id,
+               sfppr.flash_promotion_price,
+               sfppr.flash_promotion_count,
+               sfppr.flash_promotion_limit,
+               sfppr.flash_promotion_id,
+               sfppr.flash_promotion_session_id,
+               sfppr.product_id,
+               sfppr.sort,
+               pp.id         p_id,
+               pp.name       p_name,
+               pp.product_sn p_product_sn,
+               pp.price      pp_price,
+               pp.stock      p_stock
+        from sms_flash_promotion_product_relation sfppr
+        left join pms_product                     pp on pp.id = sfppr.product_id
+        where sfppr.flash_promotion_id = #{flashPromotionId}
+          and sfppr.flash_promotion_session_id = #{flashPromotionSessionId}
+        order by sfppr.sort desc
+    </select>
+</mapper>
