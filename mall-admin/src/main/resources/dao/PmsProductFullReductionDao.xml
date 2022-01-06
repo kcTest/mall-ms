@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkc.mall.admin.dao.PmsProductFullReductionDao">
+    <insert id="insertList">
+        insert into pms_product_full_reduction(product_id, full_price, reduce_price)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.product_id,jdbcType=BIGINT},
+            #{item.full_price,jdbcType=DECIMAL},
+            #{item.reduce_price,jdbcType=DECIMAL})
+        </foreach>
+    </insert>
+</mapper>
