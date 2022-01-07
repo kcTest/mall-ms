@@ -2,15 +2,16 @@ package com.zkc.mall.admin.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollectionUtil;
+import com.github.pagehelper.PageHelper;
 import com.zkc.mall.admin.dao.PmsProductCategoryAttributeRelationDao;
+import com.zkc.mall.admin.dao.PmsProductCategoryDao;
 import com.zkc.mall.admin.dto.PmsProductCategoryParam;
-import com.zkc.mall.admin.dto.PmsProductParam;
+import com.zkc.mall.admin.dto.PmsProductCategoryWithChildrenItem;
 import com.zkc.mall.admin.service.PmsProductCategoryService;
 import com.zkc.mall.mbg.mapper.PmsProductCategoryAttributeRelationMapper;
 import com.zkc.mall.mbg.mapper.PmsProductCategoryMapper;
-import com.zkc.mall.mbg.model.PmsProductAttributeCategory;
-import com.zkc.mall.mbg.model.PmsProductCategory;
-import com.zkc.mall.mbg.model.PmsProductCategoryAttributeRelation;
+import com.zkc.mall.mbg.mapper.PmsProductMapper;
+import com.zkc.mall.mbg.model.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,7 +24,13 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
 	@Resource
 	private PmsProductCategoryMapper productCategoryMapper;
 	@Resource
+	private PmsProductCategoryDao productCategoryDao;
+	@Resource
+	private PmsProductMapper productMapper;
+	@Resource
 	private PmsProductCategoryAttributeRelationDao productCategoryAttributeRelationDao;
+	@Resource
+	private PmsProductCategoryAttributeRelationMapper productCategoryAttributeRelationMapper;
 	
 	@Override
 	public int create(PmsProductCategoryParam productCategoryParam) {
@@ -45,9 +52,69 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
 	
 	@Override
 	public int update(Long id, PmsProductCategoryParam productCategoryParam) {
+		PmsProductCategory productCategory = new PmsProductCategory();
+		productCategory.setId(id);
+		BeanUtil.copyProperties(productCategoryParam, productCategory);
+		setCategory(productCategory);
 		
+		//更新商品的分类名称
+		PmsProduct product = new PmsProduct();
+		product.setProductCategoryName(productCategory.getName());
+		PmsProductExample productExample = new PmsProductExample();
+		productExample.createCriteria().andProductCategoryIdEqualTo(id);
+		productMapper.updateByExampleSelective(product, productExample);
 		
-		return 0;
+		//更新属性关系
+		PmsProductCategoryAttributeRelationExample attributeRelationExample = new PmsProductCategoryAttributeRelationExample();
+		attributeRelationExample.createCriteria().andProductCategoryIdEqualTo(id);
+		productCategoryAttributeRelationMapper.deleteByExample(attributeRelationExample);
+		if (!CollectionUtil.isEmpty(productCategoryParam.getProductAttributeIdList())) {
+			insertRelationList(id, productCategoryParam.getProductAttributeIdList());
+		}
+		
+		return productCategoryMapper.updateByPrimaryKeySelective(productCategory);
+	}
+	
+	@Override
+	public List<PmsProductCategory> getList(Long parentId, Integer pageSize, Integer pageNum) {
+		PageHelper.startPage(pageNum, pageSize);
+		PmsProductCategoryExample example = new PmsProductCategoryExample();
+		example.setOrderByClause("sort desc");
+		example.createCriteria().andParentIdEqualTo(parentId);
+		return productCategoryMapper.selectByExample(example);
+	}
+	
+	@Override
+	public PmsProductCategory getItem(Long id) {
+		return productCategoryMapper.selectByPrimaryKey(id);
+	}
+	
+	@Override
+	public int delete(Long id) {
+		return productCategoryMapper.deleteByPrimaryKey(id);
+	}
+	
+	@Override
+	public int updateNavStatus(List<Long> ids, Integer navStatus) {
+		PmsProductCategoryExample example = new PmsProductCategoryExample();
+		example.createCriteria().andIdIn(ids);
+		PmsProductCategory productCategory = new PmsProductCategory();
+		productCategory.setNavStatus(navStatus);
+		return productCategoryMapper.updateByExampleSelective(productCategory, example);
+	}
+	
+	@Override
+	public int updateShowStatus(List<Long> ids, Integer showStatus) {
+		PmsProductCategoryExample example = new PmsProductCategoryExample();
+		example.createCriteria().andIdIn(ids);
+		PmsProductCategory productCategory = new PmsProductCategory();
+		productCategory.setShowStatus(showStatus);
+		return productCategoryMapper.updateByExampleSelective(productCategory, example);
+	}
+	
+	@Override
+	public List<PmsProductCategoryWithChildrenItem> listWithChildren() {
+		return productCategoryDao.listWithChildren();
 	}
 	
 	private void setCategory(PmsProductCategory productCategory) {

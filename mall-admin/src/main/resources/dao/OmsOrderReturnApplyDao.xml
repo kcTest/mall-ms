@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkc.mall.admin.dao.OmsOrderReturnApplyDao">
+
+    <select id="getList" resultMap="com.zkc.mall.mbg.mapper.OmsOrderReturnApplyMapper.BaseResultMap">
+        select id,
+        create_time,
+        member_username,
+        product_real_price,
+        product_count,
+        return_name,
+        status,
+        handle_time
+        from oms_order_return_apply
+        where 1 = 1
+        <if test="returnApplyParam.id!=null">
+            and id=#{returnApplyParam.id}
+        </if>
+        <if test="returnApplyParam.status!=null">
+            and status=#{returnApplyParam.status}
+        </if>
+        <if test="returnApplyParam.handleMan!=null and returnApplyParam.handleMan!=''">
+            and handle_man=#{returnApplyParam.handleMan}
+        </if>
+        <if test="returnApplyParam.createTime!=null and returnApplyParam.createTime!=''">
+            and create_time like CONCAT(#{returnApplyParam.createTime},'%')
+        </if>
+        <if test="returnApplyParam.handleTime!=null and returnApplyParam.handleTime!=''">
+            and handle_time like CONCAT(#{returnApplyParam.handleTime},'%')
+        </if>
+        <if test="returnApplyParam.receiveKeyword!=null and returnApplyParam.receiveKeyword!=''">
+            and (return_name like CONCAT("%",#{returnApplyParam.receiveKeyword},'%') or
+            return_phone like CONCAT("%",#{returnApplyParam.receiveKeyword},'%'))
+        </if>
+    </select>
+</mapper>

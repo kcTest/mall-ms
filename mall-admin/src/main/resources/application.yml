@@ -48,3 +48,17 @@ redis:
     admin: 'ums:admin'
   expire:
     common: 86400
+
+aliyun:
+  oss:
+    endpoint: xxx
+    accesskeyId: xxx
+    accessSecrete: xxx
+    bucketName: xxx
+    policy:
+      expire: xxx
+
+    maxSize: xxx
+    callback: xxx
+    dir:
+      prefix: xxx

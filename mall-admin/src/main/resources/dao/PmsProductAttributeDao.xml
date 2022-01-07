@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkc.mall.admin.dao.PmsProductAttributeDao">
+
+
+    <select id="getAttrInfo" resultType="com.zkc.mall.admin.dto.ProductAttrInfo">
+        select ppa.id  attributeId,
+               ppac.id attributeCategoryId
+        from pms_product_category_attribute_relation ppcar
+        join pms_product_attribute                   ppa on ppa.id = ppcar.product_attribute_id
+        join pms_product_attribute_category          ppac on ppac.id = ppa.product_attribute_category_id
+        where ppcar.product_category_id = #{productCategoryId};
+    </select>
+</mapper>

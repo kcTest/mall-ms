@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkc.mall.admin.dao.PmsProductCategoryDao">
+
+    <resultMap id="listWithChildren" type="com.zkc.mall.admin.dto.PmsProductCategoryWithChildrenItem"
+               extends="com.zkc.mall.mbg.mapper.PmsProductCategoryMapper.BaseResultMap">
+        <collection property="children" columnPrefix="children_"
+                    resultMap="com.zkc.mall.mbg.mapper.PmsProductCategoryMapper.BaseResultMap">
+        </collection>
+    </resultMap>
+    <select id="listWithChildren" resultMap="listWithChildren">
+        select ppc.id    id,
+               ppc.name  name,
+               ppc2.id   children_id,
+               ppc2.name children_name
+        from pms_product_category      ppc
+        left join pms_product_category ppc2 on ppc2.parent_id = ppc.id
+        where ppc.parent_id = 0
+    </select>
+</mapper>
