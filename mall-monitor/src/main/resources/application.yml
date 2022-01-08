@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: mall-monitor
+  security:
+    user:
+      name: xxx
+      password: xxx
+  boot:
+    admin:
+      discovery:
+        ignored-services: ${spring.application.name}}
+server:
+  port: 8083
