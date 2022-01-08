@@ -16,6 +16,7 @@
         <module>mall-auth</module>
         <module>mall-mbg</module>
         <module>mall-monitor</module>
+        <module>mall-portal</module>
     </modules>
 
     <parent>

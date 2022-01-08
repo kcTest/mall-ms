@@ -1,0 +1,75 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: mall-portal
+  datasource:
+    url: jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: xxx
+    password: xxx
+    druid:
+      initial-size: 5
+      min-idle: 10
+      max-active: 20
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+      stat-view-servlet:
+        login-username: xxx
+        login-password: xxx
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: mall-port
+  redis:
+    host: localhost
+    database: 0
+    port: 6379
+    password: xxx
+    connect-timeout: 3000ms
+    timeout: 3000ms
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtual-host: /mall
+    username: xxx
+    password: xxx
+
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:/com/**/mapper/*.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+redis:
+  database: mall
+  key:
+    authCode: 'ums:authCode'
+    orderId: 'oms:orderId'
+    member: 'ums:member'
+  expire:
+    authCode: 90
+    common:86400
+
+rabbitmq:
+  queue:
+    name:
+      cancelOrder: cancelOrderQueue
+
+feign:
+  okhttp:
+    enabled: true
+  client:
+    config:
+      default:
+        connect-timeout: 3000
+        read-timeout: 3000
+    
