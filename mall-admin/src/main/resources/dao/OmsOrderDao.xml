@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkc.mall.admin.dao.OmsOrderDao">
+    <update id="delivery">
+        update oms_order
+        set delivery_sn= CASE id
+        <foreach collection="list" item="item">
+            when #{item.orderId} then #{item.deliverySn}
+        </foreach>
+        end,
+        delivery_company=case id
+        <foreach collection="list" item="item">
+            when #{item.orderId} then #{item.deliveryCompany}
+        </foreach>
+        end,
+        delivery_time=case id
+        <foreach collection="list" item="item">
+            when #{item.orderId} then now()
+        </foreach>
+        end,
+        status =case id
+        <foreach collection="list" item="item">
+            when #{item.orderId} then 2
+        </foreach>
+        end
+        where id in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item.orderId}
+        </foreach>
+        and status =1
+    </update>
+
+    <select id="getList" resultMap="com.zkc.mall.mbg.mapper.OmsOrderMapper.BaseResultMap">
+        select *
+        from oms_order
+        where delete_status = 0
+        <if test="orderQueryParam.orderSn!=null and orderQueryParam.orderSn!=''">
+            and order_sn=#{orderQueryParam.orderSn}
+        </if>
+        <if test="orderQueryParam.status!=null">
+            and status=#{orderQueryParam.status}
+        </if>
+        <if test="orderQueryParam.sourceType!=null">
+            and source_type=#{orderQueryParam.sourceType}
+        </if>
+        <if test="orderQueryParam.orderType!=null">
+            and order_type=#{orderQueryParam.orderType}
+        </if>
+        <if test="orderQueryParam.createTime!=null and orderQueryParam.createTime!=''">
+            and create_time like concat(#{orderQueryParam.createTime},"%")
+        </if>
+        <if test="orderQueryParam.receiveKeyword!=null">
+            and(
+            (receiver_name like concat("%",#{orderQueryParam.createTime},"%")
+            or
+            (receiver_phone like concat("%",#{orderQueryParam.createTime},"%")
+            )
+        </if>
+    </select>
+    <resultMap id="orderDetailResultMap" type="com.zkc.mall.admin.dto.OmsOrderDetail"
+               extends="com.zkc.mall.mbg.mapper.OmsOrderMapper.BaseResultMap">
+        <collection property="orderItemList" columnPrefix="item_"
+                    resultMap="com.zkc.mall.mbg.mapper.OmsOrderItemMapper.BaseResultMap">
+        </collection>
+        <collection property="historyList" columnPrefix="history_"
+                    resultMap="com.zkc.mall.mbg.mapper.OmsOrderOperateHistoryMapper.BaseResultMap">
+        </collection>
+    </resultMap>
+    <select id="detail" resultMap="orderDetailResultMap">
+        select oo.*,
+               ooi.id               item_id,
+               ooi.product_id       item_product_id,
+               ooi.product_sn       item_product_sn,
+               ooi.product_pic      item_product_pic,
+               ooi.product_name     item_id,
+               ooi.product_brand    item_id,
+               ooi.product_price    item_id,
+               ooi.product_quantity item_id,
+               ooi.product_attr     item_id,
+               oooh.id              history_id,
+               oooh.operate_man     history_operate_man,
+               oooh.create_time     history_create_time,
+               oooh.order_status    history_order_status,
+               oooh.note            history_note
+        from oms_order                      oo
+        left join oms_order_item            ooi on ooi.order_id = oo.id
+        left join oms_order_operate_history oooh on oooh.order_id = oo.id
+        where id = #{id}
+        order by ooi.id asc, oooh.create_time desc
+    </select>
+</mapper>

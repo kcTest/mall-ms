@@ -30,7 +30,7 @@ spring:
 
 mybatis:
   mapper-locations:
-    - classpath:dao/*.xml
+    - classpath:dao/*.xml #?config 
     - classpath*:com/**/mapper/*.xml
 
 management:
@@ -62,3 +62,18 @@ aliyun:
     callback: xxx
     dir:
       prefix: xxx
+
+minio:
+  endpoint: http://xxx.xxx.xxx.xxx:xxxx
+  bucketName: mall
+  accessKey: xxx
+  secretKey: xxx
+
+feign:
+  okhttp:
+    enabled: true
+  client:
+    config:
+      default:
+        connect-timeout: 3000
+        read-timeout: 3000

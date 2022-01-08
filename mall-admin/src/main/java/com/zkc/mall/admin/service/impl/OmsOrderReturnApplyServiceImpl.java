@@ -11,6 +11,7 @@ import com.zkc.mall.mbg.model.OmsOrderReturnApplyExample;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -42,6 +43,40 @@ public class OmsOrderReturnApplyServiceImpl implements OmsOrderReturnApplyServic
 	
 	@Override
 	public int updateStatus(Long id, OmsUpdateStatusParam statusParam) {
-		return 0;
+		Integer status = statusParam.getStatus();
+		OmsOrderReturnApply returnApply = new OmsOrderReturnApply();
+		switch (status) {
+			case 1:
+				//确认退货
+				returnApply.setId(id);
+				returnApply.setStatus(1);
+				returnApply.setReturnAmount(statusParam.getReturnAmount());
+				returnApply.setCompanyAddressId(statusParam.getCompanyAddressId());
+				returnApply.setHandleTime(new Date());
+				returnApply.setHandleMan(statusParam.getHandleMan());
+				returnApply.setHandleNote(statusParam.getHandleNote());
+				break;
+			case 2:
+				//完成退货
+				returnApply.setId(id);
+				returnApply.setStatus(2);
+				returnApply.setReceiveTime(new Date());
+				returnApply.setReceiveMan(statusParam.getReceiveMan());
+				returnApply.setReceiveNote(statusParam.getReceiveNode());
+				break;
+			case 3:
+				//拒绝退货
+				returnApply.setId(id);
+				returnApply.setStatus(3);
+				returnApply.setHandleTime(new Date());
+				returnApply.setHandleMan(statusParam.getHandleMan());
+				returnApply.setHandleNote(statusParam.getHandleNote());
+				break;
+			default:
+				return 0;
+			
+		}
+		
+		return returnApplyMapper.updateByPrimaryKeySelective(returnApply);
 	}
 }
