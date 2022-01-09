@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkc.mall.portal.dao.PortalProductDao">
+
+    <resultMap id="promotionProductMap" type="com.zkc.mall.portal.domain.PromotionProduct"
+               extends="com.zkc.mall.mbg.mapper.PmsProductMapper.BaseResultMap">
+
+        <collection property="skuStockList" columnPrefix="pss_"
+                    resultMap="com.zkc.mall.mbg.mapper.PmsSkuStockMapper.BaseResultMap">
+        </collection>
+
+        <collection property="productLadderList" columnPrefix="ppl_"
+                    resultMap="com.zkc.mall.mbg.mapper.PmsProductLadderMapper.BaseResultMap">
+        </collection>
+
+        <collection property="productFullReductionList" columnPrefix="ppfr_"
+                    resultMap="com.zkc.mall.mbg.mapper.PmsProductFullReductionMapper.BaseResultMap">
+        </collection>
+    </resultMap>
+
+    <select id="getPromotionProductList" resultMap="promotionProductMap">
+        select pp.id,
+        pp.name,
+        pp.promotion_type,
+        pp.gift_growth,
+        pp.gift_point,
+        pss.id pss_id,
+        pss.price pss_price,
+        pss.sku_code pss_sku_code,
+        pss.promotion_price pss_promotion_price,
+        pss.stock pss_stock,
+        pss.lock_stock pss_lock_stock,
+        ppl.id ppl_id,
+        ppl.count ppl_count,
+        ppl.discount ppl_discount,
+        ppfr.id ppfr_id,
+        ppfr.full_price ppfr_full_price,
+        ppfr.reduce_price ppfr_reduce_price
+        from pms_product pp
+        left join pms_sku_stock pss on pss.product_id = pp.id
+        left join pms_product_ladder ppl on ppl.product_id = pp.id
+        left join pms_product_full_reduction ppfr on ppfr.product_id = pp.id
+        where pp.id in
+        <foreach collection="ids" separator="," open="(" close=")" item="id">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

@@ -6,12 +6,10 @@ import com.zkc.mall.portal.service.UmsMemberReceiveAddressService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Api("会员收货地址管理")
 @RestController
@@ -29,5 +27,35 @@ public class UmsMemberReceiveAddressController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
+	@ApiOperation("删除收货地址")
+	@PostMapping("/delete/{id}")
+	@ResponseBody
+	public CommonResult<?> delete(@PathVariable Long id) {
+		int count = receiverAddressService.delete(id);
+		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
+	}
 	
+	@ApiOperation("修改收货地址")
+	@PostMapping("/update/{id}")
+	@ResponseBody
+	public CommonResult<?> update(@PathVariable Long id, @RequestBody UmsMemberReceiveAddress receiveAddress) {
+		int count = receiverAddressService.update(id, receiveAddress);
+		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
+	}
+	
+	@ApiOperation("显示所有收货地址")
+	@GetMapping("/list")
+	@ResponseBody
+	public CommonResult<List<UmsMemberReceiveAddress>> list() {
+		List<UmsMemberReceiveAddress> memberReceiveAddressList = receiverAddressService.list();
+		return CommonResult.success(memberReceiveAddressList);
+	}
+	
+	@ApiOperation("获取收货地址详情")
+	@GetMapping("/{id}}")
+	@ResponseBody
+	public CommonResult<UmsMemberReceiveAddress> getItem(@PathVariable Long id) {
+		UmsMemberReceiveAddress address = receiverAddressService.getItem(id);
+		return CommonResult.success(address);
+	}
 }

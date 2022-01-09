@@ -28,13 +28,12 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 	
 	@Override
 	public UmsMember getCurrentMember() {
-		
 		String userStr = request.getHeader(AuthConstant.USER_TOKEN_HEADER);
 		if (StrUtil.isEmpty(userStr)) {
 			Asserts.fail(ResultCode.UNAUTHORIZED);
 		}
-		UserDto userDto = JSONUtil.toBean(userStr, UserDto.class);
 		
+		UserDto userDto = JSONUtil.toBean(userStr, UserDto.class);
 		UmsMember member = memberCacheService.getMember(userDto.getId());
 		if (member == null) {
 			member = getById(userDto.getId());
@@ -42,6 +41,12 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 		}
 		
 		return member;
+	}
+	
+	@Override
+	public void register(String username, String password, String telephone, String authCode) {
+		
+		
 	}
 	
 	private UmsMember getById(Long id) {
