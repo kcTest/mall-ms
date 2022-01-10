@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkc.mall.portal.dao.PmsPortalProductDao">
+
+    <select id="getAvailableCouponList" resultMap="com.zkc.mall.mbg.mapper.SmsCouponMapper.BaseResultMap">
+        select sc.*
+        from sms_coupon                                sc
+        left join sms_coupon_product_relation          scpr on scpr.coupon_id = sc.id
+        left join sms_coupon_product_category_relation scpcr on scpcr.coupon_id = sc.id
+        where now() > start_time
+          and end_time > now()
+          and (sc.use_type = 0
+            or (sc.use_type = 1 and scpr.product_id = #{productId})
+            or (sc.use_type = 2 and scpcr.product_category_id = #{productCategoryId}))
+    </select>
+</mapper>

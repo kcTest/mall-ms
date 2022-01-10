@@ -40,4 +40,23 @@ public class UmsMemberCacheServiceImpl implements UmsMemberCacheService {
 		String key = REDIS_DATABASE + ":" + REDIS_KEY_MEMBER + ":" + member.getId();
 		redisService.set(key, member, REDIS_EXPIRE);
 	}
+	
+	@Override
+	public String getAuthCode(String telephone) {
+		String key = REDIS_DATABASE + ":" + REDIS_KEY_AUTH_CODE + ":" + telephone;
+		return (String) redisService.get(key);
+		
+	}
+	
+	@Override
+	public void setAuthCode(String telephone, String authCode) {
+		String key = REDIS_DATABASE + ":" + REDIS_KEY_AUTH_CODE + ":" + telephone;
+		redisService.set(key, authCode, REDIS_EXPIRE_AUTH_CODE);
+	}
+	
+	@Override
+	public void delMember(Long id) {
+		String key = REDIS_DATABASE + ":" + REDIS_KEY_MEMBER + ":" + id;
+		redisService.del(key);
+	}
 }
