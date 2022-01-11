@@ -20,4 +20,8 @@ public interface UmsMemberService {
 	void updatePassword(String telephone, String password, String authCode);
 	
 	UserDto loadByUsername(String username);
+	
+	void updateIntegration(Long id, int integration);
+	
+	UmsMember getById(Long memberId);
 }

@@ -38,10 +38,20 @@ public class OmsCartItemServiceImpl implements OmsCartItemService {
 		
 		List<CartPromotionItem> cartPromotionItemList = new ArrayList<>();
 		if (!CollectionUtil.isEmpty(cartItemList)) {
-			promotionService.calcCartPromotion(cartItemList);
+			cartPromotionItemList = promotionService.calcCartPromotion(cartItemList);
 		}
 		
 		return cartPromotionItemList;
+	}
+	
+	@Override
+	public int delete(Long memberId, List<Long> cartIdList) {
+		OmsCartItemExample example = new OmsCartItemExample();
+		example.createCriteria().andIdIn(cartIdList).andMemberIdEqualTo(memberId);
+		OmsCartItem cartItem = new OmsCartItem();
+		cartItem.setDeleteStatus(1);
+		return cartItemMapper.updateByExampleSelective(cartItem, example);
+		
 	}
 	
 	private List<OmsCartItem> list(Long memberId) {

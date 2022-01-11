@@ -11,4 +11,5 @@ public interface OmsCartItemService {
 	 */
 	List<CartPromotionItem> listPromotion(List<Long> cartId);
 	
+	int delete(Long memberId, List<Long> cartIdList);
 }

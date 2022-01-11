@@ -77,7 +77,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
 		history.setGetType(1);
 		//未使用
 		history.setUseStatus(0);
-		couponHistoryMapper.insertSelective(history);
+		couponHistoryMapper.insert(history);
 		
 		//修改优惠券表的数量
 		coupon.setCount(coupon.getCount() - 1);

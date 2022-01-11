@@ -22,6 +22,6 @@ public class OmsPortalOrderReturnApplyServiceImpl implements OmsPortalOrderRetur
 		BeanUtil.copyProperties(returnApplyParam, returnApply);
 		returnApply.setCreateTime(new Date());
 		returnApply.setStatus(0);
-		return returnApplyMapper.insertSelective(returnApply);
+		return returnApplyMapper.insert(returnApply);
 	}
 }

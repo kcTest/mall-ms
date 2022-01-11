@@ -89,7 +89,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 		if (CollUtil.isNotEmpty(memberLevels)) {
 			member.setMemberLevelId(memberLevels.get(0).getId());
 		}
-		memberMapper.insertSelective(member);
+		memberMapper.insert(member);
 		
 		member.setPassword(null);
 	}
@@ -149,6 +149,15 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 		return null;
 	}
 	
+	@Override
+	public void updateIntegration(Long id, int integration) {
+		UmsMember member = new UmsMember();
+		member.setId(id);
+		member.setIntegration(integration);
+		memberMapper.updateByPrimaryKeySelective(member);
+		memberCacheService.delMember(id);
+	}
+	
 	private UmsMember getByUsername(String username) {
 		UmsMemberExample example = new UmsMemberExample();
 		example.createCriteria().andUsernameEqualTo(username);
@@ -167,7 +176,8 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 		return authCode.equals(realAuthCode);
 	}
 	
-	private UmsMember getById(Long id) {
-		return memberMapper.selectByPrimaryKey(id);
+	@Override
+	public UmsMember getById(Long memberId) {
+		return memberMapper.selectByPrimaryKey(memberId);
 	}
 }
