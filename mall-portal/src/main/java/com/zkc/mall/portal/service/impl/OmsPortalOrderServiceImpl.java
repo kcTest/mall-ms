@@ -372,6 +372,73 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
 		return orderDetail;
 	}
 	
+	
+	@Override
+	public void cancelOrder(Long orderId) {
+		
+		//查询未付款的订单
+		OmsOrderExample orderExample = new OmsOrderExample();
+		orderExample.createCriteria().andIdEqualTo(orderId).andDeleteStatusEqualTo(0).andStatusEqualTo(0);
+		List<OmsOrder> orderList = orderMapper.selectByExample(orderExample);
+		if (CollUtil.isEmpty(orderList)) {
+			return;
+		}
+		OmsOrder order = orderList.get(0);
+		if (order != null) {
+			//修改订单状态为取消
+			order.setStatus(4);
+			orderMapper.updateByPrimaryKeySelective(order);
+			
+			OmsOrderItemExample itemExample = new OmsOrderItemExample();
+			itemExample.createCriteria().andOrderIdEqualTo(orderId);
+			List<OmsOrderItem> orderItemList = orderItemMapper.selectByExample(itemExample);
+			//解除商品库存锁定
+			if (CollUtil.isNotEmpty(orderItemList)) {
+				portalOrderDao.releaseSkuStockLock(orderItemList);
+			}
+			//修改优惠券使用状态
+			updateCouponStatus(order.getId(), order.getMemberId(), 0);
+			//返回使用积分
+			if (order.getUseIntegration() != null) {
+				UmsMember member = memberService.getById(order.getMemberId());
+				memberService.updateIntegration(member.getId(), member.getIntegration() + order.getUseIntegration());
+			}
+		}
+		
+	}
+	
+	@Override
+	public void confirmReceiveOrder(Long orderId) {
+		UmsMember member = memberService.getCurrentMember();
+		OmsOrder order = orderMapper.selectByPrimaryKey(orderId);
+		if (!order.getMemberId().equals(member.getId())) {
+			Asserts.fail("不能确认他人订单");
+		}
+		if (order.getStatus() != 2) {
+			Asserts.fail("订单还未发货");
+		}
+		order.setStatus(3);
+		order.setConfirmStatus(1);
+		order.setReceiveTime(new Date());
+		orderMapper.updateByPrimaryKeySelective(order);
+	}
+	
+	@Override
+	public void deleteOrder(Long orderId) {
+		UmsMember currentMember = memberService.getCurrentMember();
+		OmsOrder order = orderMapper.selectByPrimaryKey(orderId);
+		if (!currentMember.getId().equals(order.getMemberId())) {
+			Asserts.fail("不能删除他人订单");
+		}
+		if (order.getStatus() == 3 || order.getStatus() == 3) {
+			order.setDeleteStatus(1);
+			orderMapper.updateByPrimaryKeySelective(order);
+		} else {
+			Asserts.fail("只能删除或关闭已完成的订单");
+		}
+		
+	}
+	
 	private void deleteCartItemList(List<CartPromotionItem> cartPromotionItemList, UmsMember member) {
 		List<Long> cartIdList = cartPromotionItemList.stream().map(c -> c.getId()).collect(Collectors.toList());
 		cartItemService.delete(member.getId(), cartIdList);

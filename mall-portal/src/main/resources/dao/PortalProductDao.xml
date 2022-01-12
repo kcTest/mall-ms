@@ -45,4 +45,35 @@
             #{id}
         </foreach>
     </select>
+    <resultMap id="CartProductMap" type="com.zkc.mall.portal.domain.CartProduct"
+               extends="com.zkc.mall.mbg.mapper.PmsProductMapper.BaseResultMap">
+        <collection property="productAttributeList" columnPrefix="ppa_"
+                    resultMap="com.zkc.mall.mbg.mapper.PmsProductAttributeMapper.BaseResultMap">
+        </collection>
+        <collection property="skuStockList" columnPrefix="pss_"
+                    resultMap="com.zkc.mall.mbg.mapper.PmsSkuStockMapper.BaseResultMap">
+        </collection>
+    </resultMap>
+    <select id="getCartProduct" resultMap="CartProductMap">
+        select pp.id,
+               pp.name,
+               pp.sub_title,
+               pp.price,
+               pp.pic,
+               pp.product_attribute_category_id,
+               pp.stock,
+               ppa.id       ppa_id,
+               ppa.name     ppa_name,
+               pss.id       pss_id,
+               pss.sku_code pss_sku_code,
+               pss.price    pss_price,
+               pss.stock    pss_stock,
+               pss.pic      pss_pic
+        from pms_product                pp
+        left join pms_product_attribute ppa on ppa.product_attribute_category_id = pp.product_attribute_category_id
+        left join pms_sku_stock         pss on pss.product_id = pp.id
+        where pp.id = #{productId}
+          and delete_status = 0
+          and ppa.type = 0
+    </select>
 </mapper>

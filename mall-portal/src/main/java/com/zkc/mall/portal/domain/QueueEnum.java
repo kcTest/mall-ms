@@ -25,7 +25,7 @@ public enum QueueEnum {
 	/**
 	 * 队列名称
 	 */
-	private String name;
+	private String queueName;
 	/**
 	 * 绑定键
 	 */
@@ -33,7 +33,7 @@ public enum QueueEnum {
 	
 	QueueEnum(String exchange, String name, String routingKey) {
 		this.exchange = exchange;
-		this.name = name;
+		this.queueName = name;
 		this.routingKey = routingKey;
 	}
 }

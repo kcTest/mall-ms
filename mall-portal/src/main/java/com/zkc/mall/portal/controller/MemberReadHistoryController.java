@@ -1,0 +1,56 @@
+package com.zkc.mall.portal.controller;
+
+import com.zkc.mall.common.api.CommonPage;
+import com.zkc.mall.common.api.CommonResult;
+import com.zkc.mall.portal.domain.MemberReadHistory;
+import com.zkc.mall.portal.service.MemberReadHistoryService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+@Api("会员商品浏览记录管理")
+@RestController
+@RequestMapping("/member/readHistory")
+public class MemberReadHistoryController {
+	
+	@Resource
+	private MemberReadHistoryService readHistoryService;
+	
+	@ApiOperation("创建浏览记录")
+	@PostMapping("/create")
+	@ResponseBody
+	public CommonResult<?> create(@RequestBody MemberReadHistory memberReadHistory) {
+		int count = readHistoryService.create(memberReadHistory);
+		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
+	}
+	
+	@ApiOperation("删除浏览记录")
+	@PostMapping("/delete")
+	@ResponseBody
+	public CommonResult<?> delete(@RequestParam("ids") List<String> ids) {
+		int count = readHistoryService.delete(ids);
+		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
+	}
+	
+	@ApiOperation("清空浏览记录")
+	@PostMapping("/clear")
+	@ResponseBody
+	public CommonResult<?> clear() {
+		readHistoryService.clear();
+		return CommonResult.success(null);
+	}
+	
+	@ApiOperation("分页获取用户浏览记录")
+	@GetMapping("/list")
+	@ResponseBody
+	public CommonResult<CommonPage<MemberReadHistory>> list(
+			@RequestParam(value = "pageSize", defaultValue = "5", required = false) Integer pageSize,
+			@RequestParam(value = "pageNum", defaultValue = "1", required = false) Integer pageNum) {
+		List<MemberReadHistory> readHistoryList = readHistoryService.list(pageSize, pageNum);
+		return CommonResult.success(CommonPage.restPage(readHistoryList));
+	}
+	
+}

@@ -26,4 +26,14 @@ public interface OmsPortalOrderService {
 	List<OmsOrderDetail> list(Integer status, Integer pageSize, Integer pageNum);
 	
 	OmsOrderDetail detail(Long orderId);
+	
+	/**
+	 * 取消单个超时订单
+	 */
+	@Transactional
+	void cancelOrder(Long orderId);
+	
+	void confirmReceiveOrder(Long orderId);
+	
+	void deleteOrder(Long orderId);
 }

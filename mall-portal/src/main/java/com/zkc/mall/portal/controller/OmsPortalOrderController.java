@@ -84,5 +84,27 @@ public class OmsPortalOrderController {
 		return CommonResult.success(orderDetail);
 	}
 	
+	@ApiOperation("用户取消订单")
+	@PostMapping("/cancelUserOrder")
+	@ResponseBody
+	public CommonResult<?> cancelUserOrder(@RequestParam("orderId") Long orderId) {
+		orderService.cancelOrder(orderId);
+		return CommonResult.success(null);
+	}
 	
+	@ApiOperation("用户确认收货")
+	@PostMapping("/confirmReceiveOrder")
+	@ResponseBody
+	public CommonResult<?> confirmReceiveOrder(@RequestParam("orderId") Long orderId) {
+		orderService.confirmReceiveOrder(orderId);
+		return CommonResult.success(null);
+	}
+	
+	@ApiOperation("用户删除订单")
+	@PostMapping("/deleteOrder")
+	@ResponseBody
+	public CommonResult<?> deleteOrder(@RequestParam("orderId") Long orderId) {
+		orderService.deleteOrder(orderId);
+		return CommonResult.success(null);
+	}
 }
