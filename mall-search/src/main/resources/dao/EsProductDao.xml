@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkc.mall.search.dao.EsProductDao">
+
+    <select id="getAllEsProductList" resultType="com.zkc.mall.search.domain.EsProduct">
+        select pp.id,
+        pp.product_sn productSn,
+        pp.brand_id brandId,
+        pp.brand_name brandName,
+        pp.product_category_id productCategoryId,
+        pp.product_category_name productCategoryName,
+        pp.pic pic,
+        pp.name name,
+        pp.sub_title subTitle,
+        pp.price price,
+        pp.sale sale,
+        pp.new_status newStatus,
+        pp.recommand_status recommandStatus,
+        pp.stock stock,
+        pp.promotion_type promotionType,
+        pp.keywords keywords,
+        pp.sort sort,
+        ppav.id attr_id,
+        ppav.value attr_value,
+        ppav.product_attribute_id attr_product_attribute_id,
+        ppa.type attr_type,
+        ppa.name attr_name
+        from pms_product pp
+        left join pms_product_attribute_value ppav on ppav.product_id = pp.id
+        left join pms_product_attribute ppa on ppa.id = ppav.product_attribute_id
+        where pp.delete_status = 0
+        and pp.publish_status = 1
+        <if test="id!=null">
+            and pp.id = #{id}
+        </if>
+    </select>
+</mapper>

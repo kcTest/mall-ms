@@ -17,6 +17,7 @@
         <module>mall-mbg</module>
         <module>mall-monitor</module>
         <module>mall-portal</module>
+        <module>mall-search</module>
     </modules>
 
     <parent>
