@@ -1,5 +1,6 @@
 package com.zkc.mall.portal.service.impl;
 
+import com.zkc.mall.common.annotation.CacheException;
 import com.zkc.mall.common.service.RedisService;
 import com.zkc.mall.mbg.model.UmsMember;
 import com.zkc.mall.portal.service.UmsMemberCacheService;
@@ -41,6 +42,7 @@ public class UmsMemberCacheServiceImpl implements UmsMemberCacheService {
 		redisService.set(key, member, REDIS_EXPIRE);
 	}
 	
+	@CacheException
 	@Override
 	public String getAuthCode(String telephone) {
 		String key = REDIS_DATABASE + ":" + REDIS_KEY_AUTH_CODE + ":" + telephone;
@@ -48,6 +50,7 @@ public class UmsMemberCacheServiceImpl implements UmsMemberCacheService {
 		
 	}
 	
+	@CacheException
 	@Override
 	public void setAuthCode(String telephone, String authCode) {
 		String key = REDIS_DATABASE + ":" + REDIS_KEY_AUTH_CODE + ":" + telephone;
