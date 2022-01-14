@@ -1,5 +1,6 @@
 package com.zkc.mall.portal.service;
 
+import com.zkc.mall.common.annotation.CacheException;
 import com.zkc.mall.mbg.model.UmsMember;
 
 public interface UmsMemberCacheService {
@@ -8,8 +9,10 @@ public interface UmsMemberCacheService {
 	
 	void setMember(UmsMember member);
 	
+	@CacheException
 	String getAuthCode(String telephone);
 	
+	@CacheException
 	void setAuthCode(String telephone, String authCode);
 	
 	/**
