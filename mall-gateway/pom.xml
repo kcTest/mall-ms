@@ -25,6 +25,7 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
+        <!--        提示-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
@@ -36,6 +37,14 @@
         <dependency>
             <groupId>com.zkc.mall</groupId>
             <artifactId>mall-common</artifactId>
+            <!--            The bean 'conversionServicePostProcessor', defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class], 
+            could not be registered. A bean with that name has already been defined in class path resource [org/springframework/security/config/annotation/web/reactive/WebFluxSecurityConfiguration.class] and overriding is disabled.-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.nimbusds</groupId>

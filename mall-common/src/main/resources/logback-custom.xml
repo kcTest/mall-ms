@@ -71,8 +71,8 @@
                     <pattern>
                         {
                         "project": "mall-ms",
-                        "level": "%level"
-                        "service": "${APP_NAME:-}"
+                        "level": "%level",
+                        "service": "${APP_NAME:-}",
                         "pid": "${PID:-}",
                         "thread": "%thread",
                         "class": "%logger",
@@ -82,9 +82,6 @@
                     </pattern>
                 </pattern>
             </providers>
-            <!--            设置为默认的文件日志格式-->
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-            <charset>UTF-8</charset>
         </encoder>
         <!--        当有多个LogStash服务时，设置访问为轮询-->
         <connectionStrategy>
@@ -112,8 +109,8 @@
                     <pattern>
                         {
                         "project": "mall-ms",
-                        "level": "%level"
-                        "service": "${APP_NAME:-}"
+                        "level": "%level",
+                        "service": "${APP_NAME:-}",
                         "pid": "${PID:-}",
                         "thread": "%thread",
                         "class": "%logger",
@@ -123,9 +120,6 @@
                     </pattern>
                 </pattern>
             </providers>
-            <!--            设置为默认的文件日志格式-->
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-            <charset>UTF-8</charset>
         </encoder>
         <!--        当有多个LogStash服务时，设置访问为轮询-->
         <connectionStrategy>
@@ -148,8 +142,8 @@
                     <pattern>
                         {
                         "project": "mall-ms",
-                        "level": "%level"
-                        "service": "${APP_NAME:-}"
+                        "level": "%level",
+                        "service": "${APP_NAME:-}",
                         "pid": "${PID:-}",
                         "thread": "%thread",
                         "class": "%logger",
@@ -159,9 +153,6 @@
                     </pattern>
                 </pattern>
             </providers>
-            <!--            设置为默认的文件日志格式-->
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-            <charset>UTF-8</charset>
         </encoder>
         <!--        当有多个LogStash服务时，设置访问为轮询-->
         <connectionStrategy>
@@ -184,17 +175,14 @@
                     <pattern>
                         {
                         "project": "mall-ms",
-                        "level": "%level"
-                        "service": "${APP_NAME:-}"
+                        "level": "%level",
+                        "service": "${APP_NAME:-}",
                         "class": "%logger",
-                        "message": "%message",
+                        "message": "%message"
                         }
                     </pattern>
                 </pattern>
             </providers>
-            <!--            设置为默认的文件日志格式-->
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-            <charset>UTF-8</charset>
         </encoder>
         <!--        当有多个LogStash服务时，设置访问为轮询-->
         <connectionStrategy>

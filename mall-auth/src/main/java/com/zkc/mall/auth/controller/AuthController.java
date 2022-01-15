@@ -38,7 +38,7 @@ public class AuthController {
 			@ApiImplicitParam(name = AuthConstant.AUTH_PASSWORD, value = AuthConstant.AUTH_PASSWORD_DESC)
 	})
 	@PostMapping("/token")
-	public CommonResult<Oauth2TokenDto> postAccessToken(@ApiIgnore Principal principal, @RequestParam Map<String, String> params) throws HttpRequestMethodNotSupportedException {
+	public CommonResult<Oauth2TokenDto> postAccessToken(@ApiIgnore Principal principal, @ApiIgnore @RequestParam Map<String, String> params) throws HttpRequestMethodNotSupportedException {
 		
 		OAuth2AccessToken oAuth2AccessToken = tokenEndpoint.postAccessToken(principal, params).getBody();
 		Oauth2TokenDto oauth2TokenDto = Oauth2TokenDto.builder()

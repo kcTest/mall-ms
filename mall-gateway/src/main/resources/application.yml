@@ -34,7 +34,7 @@ spring:
             - Path=/mall-search/**
           filters:
             - StripPrefix=1
- 
+
   security:
     oauth2:
       resourceserver:
@@ -45,8 +45,8 @@ spring:
     port: 6379
     host: localhost
     password:
-      
-      
+
+
 secure:
   ignore:
     urls:
@@ -62,9 +62,17 @@ secure:
       - "/mall-portal/product/**"
       - "/mall-portal/brand/**"
       - "/mall-search/**"
-      - "/mall-auth/oauth/token"
-      - "/mall-auth/ras/publicKey"
+      - "/doc.html"
+      - "/swagger-resources/**"
+      - "/swagger/**"
+      - "/*/v2/api-docs"
+      - "/*/*.js"
+      - "/*/*.css"
+      - "/*/*.png"
+      - "/*/*.ico"
+      - "/webjars/springfox-swagger-ui/**"
       - "/actuator/**"
+      - "/webjars/**"
 
 management:
   endpoints:
