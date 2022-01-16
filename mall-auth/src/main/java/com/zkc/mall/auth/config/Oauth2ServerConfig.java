@@ -45,12 +45,12 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		
 		clients.inMemory()
-				.withClient(AuthConstant.ADMIN_CLIENT_ID).secret(passwordEncoder.encode(AuthConstant.AUTH_CLIENT_SECRETE_DEFAULT))
+				.withClient(AuthConstant.ADMIN_CLIENT_ID).secret(passwordEncoder.encode(AuthConstant.AUTH_CLIENT_SECRET_DEFAULT))
 				.scopes("all").authorizedGrantTypes(AuthConstant.AUTH_GRANT_TYPE_DEFAULT, AuthConstant.AUTH_REFRESH_TOKEN)
 				.accessTokenValiditySeconds(3600 * 24)
 				.refreshTokenValiditySeconds(3600 * 24 * 7)
 				.and()
-				.withClient(AuthConstant.PORTAL_CLIENT_ID).secret(passwordEncoder.encode(AuthConstant.AUTH_CLIENT_SECRETE_DEFAULT))
+				.withClient(AuthConstant.PORTAL_CLIENT_ID).secret(passwordEncoder.encode(AuthConstant.AUTH_CLIENT_SECRET_DEFAULT))
 				.scopes("all").authorizedGrantTypes(AuthConstant.AUTH_GRANT_TYPE_DEFAULT, AuthConstant.AUTH_REFRESH_TOKEN)
 				.accessTokenValiditySeconds(3600 * 24)
 				.refreshTokenValiditySeconds(3600 * 24 * 7);

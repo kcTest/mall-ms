@@ -12,9 +12,9 @@ public final class AuthConstant {
 	
 	public static final String AUTH_CLIENT_ID = "client_id";
 	public static final String AUTH_CLIENT_ID_DESC = "Oauth2客户端ID";
-	public static final String AUTH_CLIENT_SECRETE = "client_secrete";
-	public static final String AUTH_CLIENT_SECRETE_DESC = "Oauth2客户端秘钥";
-	public static final String AUTH_CLIENT_SECRETE_DEFAULT = "123456";
+	public static final String AUTH_CLIENT_SECRET = "client_secret";
+	public static final String AUTH_CLIENT_SECRET_DESC = "Oauth2客户端秘钥";
+	public static final String AUTH_CLIENT_SECRET_DEFAULT = "123456";
 	public static final String AUTH_GRANT_TYPE = "grant_type";
 	public static final String AUTH_GRANT_TYPE_DESC = "授权模式";
 	public static final String AUTH_GRANT_TYPE_DEFAULT = "password";

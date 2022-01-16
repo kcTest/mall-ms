@@ -20,9 +20,9 @@
         <collection property="productAttributeValueList" columnPrefix="attribute_"
                     resultMap="com.zkc.mall.mbg.mapper.PmsProductAttributeValueMapper.BaseResultMap">
         </collection>
-        <collection property="subjectProductRelationList" columnPrefix="{productId=id}"
+        <collection property="subjectProductRelationList" column="{productId=id}"
                     select="selectSubjectProductRelationByProductId"/>
-        <collection property="prefrenceAreaProductRelationList" columnPrefix="{productId=id}"
+        <collection property="prefrenceAreaProductRelationList" column="{productId=id}"
                     select="selectPrefrenceAreaProductRelationByProductId"/>
     </resultMap>
 

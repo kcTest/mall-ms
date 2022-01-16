@@ -42,7 +42,8 @@
         <minio.version>8.3.4</minio.version>
         <admin-starter-server.version>2.6.0</admin-starter-server.version>
         <logstash-logback.version>7.0.1</logstash-logback.version>
-        <knife4j.version>3.0.3</knife4j.version>
+        <knife4j.version>2.0.4</knife4j.version>
+        <mysql-connector.version>8.0.26</mysql-connector.version>
     </properties>
 
     <dependencies>
@@ -149,6 +150,11 @@
                 <groupId>net.logstash.logback</groupId>
                 <artifactId>logstash-logback-encoder</artifactId>
                 <version>${logstash-logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

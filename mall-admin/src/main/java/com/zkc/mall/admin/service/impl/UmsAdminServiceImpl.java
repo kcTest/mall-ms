@@ -55,7 +55,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 		}
 		Map<String, String> params = new HashMap<>(5);
 		params.put(AuthConstant.AUTH_CLIENT_ID, AuthConstant.ADMIN_CLIENT_ID);
-		params.put(AuthConstant.AUTH_CLIENT_SECRETE, AuthConstant.AUTH_CLIENT_SECRETE_DEFAULT);
+		params.put(AuthConstant.AUTH_CLIENT_SECRET, AuthConstant.AUTH_CLIENT_SECRET_DEFAULT);
 		params.put(AuthConstant.AUTH_GRANT_TYPE, AuthConstant.AUTH_GRANT_TYPE_DEFAULT);
 		params.put(AuthConstant.AUTH_USERNAME, username);
 		params.put(AuthConstant.AUTH_PASSWORD, password);

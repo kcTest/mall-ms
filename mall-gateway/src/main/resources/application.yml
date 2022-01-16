@@ -51,12 +51,12 @@ secure:
   ignore:
     urls:
       - "/mall-admin/admin/login"
-      - "/mall-admin/admin/registry"
+      - "/mall-admin/admin/register"
       - "/mall-admin/aliyun/oss/callback"
       - "/mall-auth/oauth/token"
       - "/mall-auth/rsa/publicKey"
       - "/mall-portal/sso/login"
-      - "/mall-portal/sso/registry"
+      - "/mall-portal/sso/register"
       - "/mall-portal/sso/getAuthCode"
       - "/mall-portal/home/**"
       - "/mall-portal/product/**"

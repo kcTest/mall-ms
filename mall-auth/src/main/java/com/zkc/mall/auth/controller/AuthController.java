@@ -31,7 +31,7 @@ public class AuthController {
 	@ApiOperation("Oauth2获取token")
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = AuthConstant.AUTH_CLIENT_ID, value = AuthConstant.AUTH_CLIENT_ID_DESC, required = true),
-			@ApiImplicitParam(name = AuthConstant.AUTH_CLIENT_SECRETE, value = AuthConstant.AUTH_CLIENT_SECRETE_DESC, required = true),
+			@ApiImplicitParam(name = AuthConstant.AUTH_CLIENT_SECRET, value = AuthConstant.AUTH_CLIENT_SECRET_DESC, required = true),
 			@ApiImplicitParam(name = AuthConstant.AUTH_GRANT_TYPE, value = AuthConstant.AUTH_GRANT_TYPE_DESC, required = true),
 			@ApiImplicitParam(name = AuthConstant.AUTH_REFRESH_TOKEN, value = AuthConstant.AUTH_REFRESH_TOKEN_DESC),
 			@ApiImplicitParam(name = AuthConstant.AUTH_USERNAME, value = AuthConstant.AUTH_USERNAME_DESC),

@@ -45,7 +45,7 @@ public class UmsResourceController {
 	}
 	
 	@ApiOperation("根据ID删除资源")
-	@GetMapping("/{id}")
+	@GetMapping("/delete/{id}")
 	@ResponseBody
 	public CommonResult<?> delete(@PathVariable Long id) {
 		int count = resourceService.delete(id);
