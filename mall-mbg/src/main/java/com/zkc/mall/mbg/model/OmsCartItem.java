@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -10,7 +10,7 @@ import java.util.Date;
  * oms_cart_item
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.OmsCartItem购物车表")
+@Schema(description="com.zkc.mall.mbg.model.OmsCartItem购物车表")
 public class OmsCartItem implements Serializable {
     private Long id;
 
@@ -23,67 +23,67 @@ public class OmsCartItem implements Serializable {
     /**
      * 购买数量
      */
-    @ApiModelProperty(value="购买数量")
+    @Schema(description="购买数量")
     private Integer quantity;
 
     /**
      * 添加到购物车的价格
      */
-    @ApiModelProperty(value="添加到购物车的价格")
+    @Schema(description="添加到购物车的价格")
     private BigDecimal price;
 
     /**
      * 商品主图
      */
-    @ApiModelProperty(value="商品主图")
+    @Schema(description="商品主图")
     private String productPic;
 
     /**
      * 商品名称
      */
-    @ApiModelProperty(value="商品名称")
+    @Schema(description="商品名称")
     private String productName;
 
     /**
      * 商品副标题（卖点）
      */
-    @ApiModelProperty(value="商品副标题（卖点）")
+    @Schema(description="商品副标题（卖点）")
     private String productSubTitle;
 
     /**
      * 商品sku条码
      */
-    @ApiModelProperty(value="商品sku条码")
+    @Schema(description="商品sku条码")
     private String productSkuCode;
 
     /**
      * 会员昵称
      */
-    @ApiModelProperty(value="会员昵称")
+    @Schema(description="会员昵称")
     private String memberNickname;
 
     /**
      * 创建时间
      */
-    @ApiModelProperty(value="创建时间")
+    @Schema(description="创建时间")
     private Date createDate;
 
     /**
      * 修改时间
      */
-    @ApiModelProperty(value="修改时间")
+    @Schema(description="修改时间")
     private Date modifyDate;
 
     /**
      * 是否删除
      */
-    @ApiModelProperty(value="是否删除")
+    @Schema(description="是否删除")
     private Integer deleteStatus;
 
     /**
      * 商品分类
      */
-    @ApiModelProperty(value="商品分类")
+    @Schema(description="商品分类")
     private Long productCategoryId;
 
     private String productBrand;
@@ -93,7 +93,7 @@ public class OmsCartItem implements Serializable {
     /**
      * 商品销售属性:[{"key":"颜色","value":"颜色"},{"key":"容量","value":"4G"}]
      */
-    @ApiModelProperty(value="商品销售属性:[{'key':'颜色','value':'颜色'},{'key':'容量','value':'4G'}]")
+    @Schema(description="商品销售属性:[{'key':'颜色','value':'颜色'},{'key':'容量','value':'4G'}]")
     private String productAttr;
 
     private static final long serialVersionUID = 1L;

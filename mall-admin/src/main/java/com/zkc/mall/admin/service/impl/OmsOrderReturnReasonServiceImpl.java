@@ -7,14 +7,14 @@ import com.zkc.mall.mbg.model.OmsOrderReturnReason;
 import com.zkc.mall.mbg.model.OmsOrderReturnReasonExample;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class OmsOrderReturnReasonServiceImpl implements OmsOrderReturnReasonService {
 	
-	@Resource
+	@Autowired
 	private OmsOrderReturnReasonMapper returnReasonMapper;
 	
 	@Override

@@ -11,7 +11,7 @@ import com.zkc.mall.portal.domain.PromotionProduct;
 import com.zkc.mall.portal.service.OmsPromotionService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @Service
 public class OmsPromotionServiceImpl implements OmsPromotionService {
 	
-	@Resource
+	@Autowired
 	private PortalProductDao portalProductDao;
 	
 	@Override

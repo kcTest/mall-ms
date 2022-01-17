@@ -5,22 +5,24 @@ import com.zkc.mall.admin.service.SmsFlashPromotionProductRelationService;
 import com.zkc.mall.common.api.CommonPage;
 import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.mbg.model.SmsFlashPromotionProductRelation;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
-@Api(tags = "限时购（秒杀）活动与场次（时间段）关系管理")
+@Tag(name = "SmsFlashPromotionProductRelationController", description = "限时购（秒杀）活动与场次（时间段）关系管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/flashProductRelation")
 public class SmsFlashPromotionProductRelationController {
 	
-	@Resource
+	@Autowired
 	private SmsFlashPromotionProductRelationService relationService;
 	
-	@ApiOperation("批量选择商品添加关联")
+	@Operation(summary = "批量选择商品添加关联")
 	@PostMapping("/create")
 	@ResponseBody
 	public CommonResult<?> create(@RequestBody List<SmsFlashPromotionProductRelation> flashPromotionProductRelationList) {
@@ -28,7 +30,7 @@ public class SmsFlashPromotionProductRelationController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("修改关联相关信息")
+	@Operation(summary = "修改关联相关信息")
 	@PostMapping("/update/{id}")
 	@ResponseBody
 	public CommonResult<?> update(@PathVariable Long id, @RequestBody SmsFlashPromotionProductRelation relation) {
@@ -36,7 +38,7 @@ public class SmsFlashPromotionProductRelationController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("删除关联")
+	@Operation(summary = "删除关联")
 	@PostMapping("/delete/{id}")
 	@ResponseBody
 	public CommonResult<?> delete(@RequestParam("id") Long id) {
@@ -44,7 +46,7 @@ public class SmsFlashPromotionProductRelationController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("获取关联详情")
+	@Operation(summary = "获取关联详情")
 	@GetMapping("/{id}")
 	@ResponseBody
 	public CommonResult<SmsFlashPromotionProductRelation> getItem(@PathVariable Long id) {
@@ -52,7 +54,7 @@ public class SmsFlashPromotionProductRelationController {
 		return CommonResult.success(promotionProductRelation);
 	}
 	
-	@ApiOperation("分页查询指定场次及时间段的关联商品信息")
+	@Operation(summary = "分页查询指定场次及时间段的关联商品信息")
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<CommonPage<SmsFlashPromotionProduct>> list(

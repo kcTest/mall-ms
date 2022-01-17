@@ -8,13 +8,13 @@ import com.zkc.mall.mbg.model.SmsHomeBrand;
 import com.zkc.mall.mbg.model.SmsHomeBrandExample;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class SmsHomeBrandServiceImpl implements SmsHomeBrandService {
 	
-	@Resource
+	@Autowired
 	private SmsHomeBrandMapper homeBrandMapper;
 	
 	@Override

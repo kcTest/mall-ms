@@ -4,27 +4,26 @@ import com.zkc.mall.admin.dto.PmsProductParam;
 import com.zkc.mall.admin.dto.PmsProductQueryParam;
 import com.zkc.mall.admin.dto.PmsProductResult;
 import com.zkc.mall.admin.service.PmsProductService;
-import com.zkc.mall.admin.service.PmsSkuStockService;
 import com.zkc.mall.common.api.CommonPage;
 import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.mbg.model.PmsProduct;
-import com.zkc.mall.mbg.model.PmsSkuStock;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
-@Api("商品管理")
+@Tag(name = "PmsProductController", description = "商品管理")
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/product")
 public class PmsProductController {
 	
-	@Resource
+	@Autowired
 	private PmsProductService productService;
 	
-	@ApiOperation("创建商品")
+	@Operation(summary ="创建商品")
 	@PostMapping("/create")
 	@ResponseBody
 	public CommonResult<?> create(@RequestBody PmsProductParam product) {
@@ -32,7 +31,7 @@ public class PmsProductController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("根据商品ID获取商品编辑信息")
+	@Operation(summary ="根据商品ID获取商品编辑信息")
 	@GetMapping("/updateInfo/{id}")
 	@ResponseBody
 	public CommonResult<PmsProductResult> getUpdateInfo(@PathVariable Long pid) {
@@ -40,7 +39,7 @@ public class PmsProductController {
 		return CommonResult.success(productResult);
 	}
 	
-	@ApiOperation("更新商品")
+	@Operation(summary ="更新商品")
 	@PostMapping("/update/{id}")
 	@ResponseBody
 	public CommonResult<?> update(@PathVariable Long id, @RequestBody PmsProductParam productParam) {
@@ -48,7 +47,7 @@ public class PmsProductController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("分页查询商品")
+	@Operation(summary ="分页查询商品")
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<CommonPage<PmsProduct>> list(@RequestBody PmsProductQueryParam productQueryParam,
@@ -58,7 +57,7 @@ public class PmsProductController {
 		return CommonResult.success(CommonPage.restPage(productList));
 	}
 	
-	@ApiOperation("根据商品名称或货号模糊查询")
+	@Operation(summary ="根据商品名称或货号模糊查询")
 	@GetMapping("/simpleList")
 	@ResponseBody
 	public CommonResult<List<PmsProduct>> getList(@RequestParam("keyword") String keyword) {
@@ -66,7 +65,7 @@ public class PmsProductController {
 		return CommonResult.success(productList);
 	}
 	
-	@ApiOperation("批量修改审核状态")
+	@Operation(summary ="批量修改审核状态")
 	@GetMapping("/update/verifyStatus")
 	@ResponseBody
 	public CommonResult<?> updateVerifyStatus(@RequestParam("ids") List<Long> ids,
@@ -76,7 +75,7 @@ public class PmsProductController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("批量修改上下架状态")
+	@Operation(summary ="批量修改上下架状态")
 	@GetMapping("/update/publishStatus")
 	@ResponseBody
 	public CommonResult<?> updatePublishStatus(@RequestParam("ids") List<Long> ids,
@@ -85,7 +84,7 @@ public class PmsProductController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("批量推荐商品")
+	@Operation(summary ="批量推荐商品")
 	@GetMapping("/update/recommendStatus")
 	@ResponseBody
 	public CommonResult<?> updateRecommendStatus(@RequestParam("ids") List<Long> ids,
@@ -94,7 +93,7 @@ public class PmsProductController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("批量设为新品")
+	@Operation(summary ="批量设为新品")
 	@GetMapping("/update/newStatus")
 	@ResponseBody
 	public CommonResult<?> updateNewStatus(@RequestParam("ids") List<Long> ids,
@@ -103,7 +102,7 @@ public class PmsProductController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("批量修改删除状态")
+	@Operation(summary ="批量修改删除状态")
 	@GetMapping("/update/deleteStatus")
 	@ResponseBody
 	public CommonResult<?> updateDeleteStatus(@RequestParam("ids") List<Long> ids,

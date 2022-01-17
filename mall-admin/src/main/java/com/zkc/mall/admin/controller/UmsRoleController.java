@@ -6,22 +6,22 @@ import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.mbg.model.UmsMenu;
 import com.zkc.mall.mbg.model.UmsResource;
 import com.zkc.mall.mbg.model.UmsRole;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
-
-@Api("用户后台角色管理")
+@Tag(name = "UmsRoleController", description = "用户后台角色管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/role")
 public class UmsRoleController {
 	
-	@Resource
+	@Autowired
 	private UmsRoleService roleService;
 	
-	@ApiOperation("添加角色")
+	@Operation(summary ="添加角色")
 	@PostMapping("/create")
 	@ResponseBody
 	public CommonResult create(@RequestBody UmsRole role) {
@@ -29,7 +29,7 @@ public class UmsRoleController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("修改角色")
+	@Operation(summary ="修改角色")
 	@PostMapping("/update/{id}")
 	@ResponseBody
 	public CommonResult update(@PathVariable Long id, @RequestBody UmsRole role) {
@@ -37,7 +37,7 @@ public class UmsRoleController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("批量删除角色")
+	@Operation(summary ="批量删除角色")
 	@PostMapping("/delete")
 	@ResponseBody
 	public CommonResult<?> delete(@RequestParam("ids") List<Long> ids) {
@@ -45,7 +45,7 @@ public class UmsRoleController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("获取所有角色")
+	@Operation(summary ="获取所有角色")
 	@GetMapping("/listAll")
 	@ResponseBody
 	public CommonResult<List<UmsRole>> getRoleList() {
@@ -53,7 +53,7 @@ public class UmsRoleController {
 		return CommonResult.success(roleList);
 	}
 	
-	@ApiOperation("根据角色名称分页获取角色列表")
+	@Operation(summary ="根据角色名称分页获取角色列表")
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<CommonPage<UmsRole>> list(@RequestParam(value = "keyword", required = false) String keyword,
@@ -63,7 +63,7 @@ public class UmsRoleController {
 		return CommonResult.success(CommonPage.restPage(roleList));
 	}
 	
-	@ApiOperation("修改角色状态")
+	@Operation(summary ="修改角色状态")
 	@PostMapping("updateStatus/{id}")
 	@ResponseBody
 	public CommonResult<?> updateStatus(@PathVariable Long id, @RequestParam(value = "status") Integer status) {
@@ -73,7 +73,7 @@ public class UmsRoleController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("获取角色相关菜单")
+	@Operation(summary ="获取角色相关菜单")
 	@GetMapping("/listMenu/{roleId}")
 	@ResponseBody
 	public CommonResult<List<UmsMenu>> listMenu(@PathVariable Long roleId) {
@@ -81,7 +81,7 @@ public class UmsRoleController {
 		return CommonResult.success(roleList);
 	}
 	
-	@ApiOperation("获取角色相关资源")
+	@Operation(summary ="获取角色相关资源")
 	@GetMapping("/listResource/{roleId}")
 	@ResponseBody
 	public CommonResult<List<UmsResource>> listResource(@PathVariable Long roleId) {
@@ -89,7 +89,7 @@ public class UmsRoleController {
 		return CommonResult.success(resourceList);
 	}
 	
-	@ApiOperation("给角色分配菜单")
+	@Operation(summary ="给角色分配菜单")
 	@PostMapping("/allocMenu")
 	@ResponseBody
 	public CommonResult<?> allocMenu(@RequestParam Long roleId, @RequestParam List<Long> menuIds) {
@@ -97,7 +97,7 @@ public class UmsRoleController {
 		return CommonResult.success(count);
 	}
 	
-	@ApiOperation("给角色分配资源")
+	@Operation(summary ="给角色分配资源")
 	@PostMapping("/allocResource")
 	@ResponseBody
 	public CommonResult<?> allocResource(@RequestParam Long roleId, @RequestParam List<Long> resourceIds) {

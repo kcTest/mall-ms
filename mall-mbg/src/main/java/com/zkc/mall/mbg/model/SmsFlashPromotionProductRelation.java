@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -9,12 +9,12 @@ import java.math.BigDecimal;
  * sms_flash_promotion_product_relation
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.SmsFlashPromotionProductRelation商品限时购与商品关系表")
+@Schema(description="com.zkc.mall.mbg.model.SmsFlashPromotionProductRelation商品限时购与商品关系表")
 public class SmsFlashPromotionProductRelation implements Serializable {
     /**
      * 编号
      */
-    @ApiModelProperty(value="编号")
+   @Schema(description="编号")
     private Long id;
 
     private Long flashPromotionId;
@@ -22,7 +22,7 @@ public class SmsFlashPromotionProductRelation implements Serializable {
     /**
      * 编号
      */
-    @ApiModelProperty(value="编号")
+   @Schema(description="编号")
     private Long flashPromotionSessionId;
 
     private Long productId;
@@ -30,25 +30,25 @@ public class SmsFlashPromotionProductRelation implements Serializable {
     /**
      * 限时购价格
      */
-    @ApiModelProperty(value="限时购价格")
+   @Schema(description="限时购价格")
     private BigDecimal flashPromotionPrice;
 
     /**
      * 限时购数量
      */
-    @ApiModelProperty(value="限时购数量")
+   @Schema(description="限时购数量")
     private Integer flashPromotionCount;
 
     /**
      * 每人限购数量
      */
-    @ApiModelProperty(value="每人限购数量")
+   @Schema(description="每人限购数量")
     private Integer flashPromotionLimit;
 
     /**
      * 排序
      */
-    @ApiModelProperty(value="排序")
+   @Schema(description="排序")
     private Integer sort;
 
     private static final long serialVersionUID = 1L;

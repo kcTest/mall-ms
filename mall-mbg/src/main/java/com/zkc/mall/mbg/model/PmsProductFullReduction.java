@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * pms_product_full_reduction
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.PmsProductFullReduction产品满减表(只针对同商品)")
+@Schema(description="com.zkc.mall.mbg.model.PmsProductFullReduction产品满减表(只针对同商品)")
 public class PmsProductFullReduction implements Serializable {
     private Long id;
 

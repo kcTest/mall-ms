@@ -12,7 +12,7 @@ import com.zkc.mall.mbg.model.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -22,15 +22,15 @@ import java.util.stream.Collectors;
 @Service
 public class UmsResourceServiceImpl implements UmsResourceService {
 	
-	@Resource
+	@Autowired
 	private UmsRoleMapper roleMapper;
-	@Resource
+	@Autowired
 	private UmsResourceMapper resourceMapper;
-	@Resource
+	@Autowired
 	private UmsRoleResourceRelationMapper roleResourceRelationMapper;
 	@Value("${spring.application.name}")
 	private String applicationName;
-	@Resource
+	@Autowired
 	private RedisService redisService;
 	
 	@Override

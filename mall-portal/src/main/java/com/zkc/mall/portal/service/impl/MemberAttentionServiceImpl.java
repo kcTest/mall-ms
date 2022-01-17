@@ -7,17 +7,17 @@ import com.zkc.mall.portal.service.MemberAttentionService;
 import com.zkc.mall.portal.service.UmsMemberService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class MemberAttentionServiceImpl implements MemberAttentionService {
 	
-	@Resource
+	@Autowired
 	private UmsMemberService memberService;
 	
-	@Resource
+	@Autowired
 	private MemberBrandAttentionRepository memberBrandAttentionRepository;
 	
 	@Override

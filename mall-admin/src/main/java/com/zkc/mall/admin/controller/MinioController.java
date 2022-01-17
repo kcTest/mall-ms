@@ -6,8 +6,8 @@ import com.zkc.mall.admin.dto.BucketPolicyConfigDto;
 import com.zkc.mall.admin.dto.MinioUploadDto;
 import com.zkc.mall.common.api.CommonResult;
 import io.minio.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Api("minio对象存储管理")
+@Tag(name = "MinioController", description = "minio对象存储管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/minio")
 public class MinioController {
@@ -33,7 +34,7 @@ public class MinioController {
 	@Value("${minio.bucketName}")
 	private String BUCKET_NAME;
 	
-	@ApiOperation("文件上传")
+	@Operation(summary ="文件上传")
 	@PostMapping("/upload")
 	@ResponseBody
 	public CommonResult<?> upload(@RequestParam("file") MultipartFile file) {
@@ -103,7 +104,7 @@ public class MinioController {
 	}
 	
 	
-	@ApiOperation("文件删除")
+	@Operation(summary ="文件删除")
 	@PostMapping("/delete")
 	@ResponseBody
 	public CommonResult<?> delete(@RequestParam("objectName") String objectName) {

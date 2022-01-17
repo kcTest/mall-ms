@@ -8,13 +8,13 @@ import com.zkc.mall.mbg.model.SmsHomeRecommendProduct;
 import com.zkc.mall.mbg.model.SmsHomeRecommendProductExample;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class SmsHomeRecommendProductServiceImpl implements SmsHomeRecommendProductService {
 	
-	@Resource
+	@Autowired
 	private SmsHomeRecommendProductMapper homeRecommendProductMapper;
 	
 	@Override

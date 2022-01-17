@@ -22,7 +22,3 @@ feign:
       default:
         connect-timeout: 3000
         read-timeout: 3000
-
-#springfox:
-#  documentation:
-#    auto-startup: false

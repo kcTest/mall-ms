@@ -7,7 +7,8 @@ import com.nimbusds.jose.JWSObject;
 import com.zkc.mall.common.constant.AuthConstant;
 import com.zkc.mall.common.domain.UserDto;
 import com.zkc.mall.gateway.config.IgnoreUrlConfig;
-import org.springframework.data.redis.core.HashOperations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.authorization.AuthorizationDecision;
@@ -19,7 +20,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import reactor.core.publisher.Mono;
 
-import javax.annotation.Resource;
 import java.text.ParseException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -27,10 +27,11 @@ import java.util.stream.Collectors;
 @Component
 public class CustomAuthorizationManager implements ReactiveAuthorizationManager<AuthorizationContext> {
 	
-	@Resource
+	@Autowired
 	private IgnoreUrlConfig ignoreUrlConfig;
-	@Resource
-	private HashOperations<String, Object, Object> redisTemplate;
+	
+	@Autowired
+	private RedisTemplate<String, Object> redisTemplate;
 	
 	@Override
 	public Mono<AuthorizationDecision> check(Mono<Authentication> authentication, AuthorizationContext authorizationContext) {
@@ -76,7 +77,7 @@ public class CustomAuthorizationManager implements ReactiveAuthorizationManager<
 		}
 		
 		//根据访问路径 获取必须拥有的角色 
-		Map<Object, Object> resourceRolesMap = redisTemplate.entries(AuthConstant.RESOURCE_ROLES_MAP_KEY);
+		Map<Object, Object> resourceRolesMap = redisTemplate.opsForHash().entries(AuthConstant.RESOURCE_ROLES_MAP_KEY);
 		Iterator<Object> iterator = resourceRolesMap.keySet().iterator();
 		List<String> authorities = new ArrayList<>();
 		while (iterator.hasNext()) {

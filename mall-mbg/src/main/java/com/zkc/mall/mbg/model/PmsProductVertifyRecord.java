@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import java.util.Date;
  * pms_product_vertify_record
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.PmsProductVertifyRecord商品审核记录")
+@Schema(description="com.zkc.mall.mbg.model.PmsProductVertifyRecord商品审核记录")
 public class PmsProductVertifyRecord implements Serializable {
     private Long id;
 
@@ -20,7 +20,7 @@ public class PmsProductVertifyRecord implements Serializable {
     /**
      * 审核人
      */
-    @ApiModelProperty(value="审核人")
+   @Schema(description="审核人")
     private String vertifyMan;
 
     private Integer status;
@@ -28,7 +28,7 @@ public class PmsProductVertifyRecord implements Serializable {
     /**
      * 反馈详情
      */
-    @ApiModelProperty(value="反馈详情")
+   @Schema(description="反馈详情")
     private String detail;
 
     private static final long serialVersionUID = 1L;

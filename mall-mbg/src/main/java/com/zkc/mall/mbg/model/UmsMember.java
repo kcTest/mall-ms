@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import java.util.Date;
  * ums_member
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.UmsMember会员表")
+@Schema(description="com.zkc.mall.mbg.model.UmsMember会员表")
 public class UmsMember implements Serializable {
     private Long id;
 
@@ -18,103 +18,103 @@ public class UmsMember implements Serializable {
     /**
      * 用户名
      */
-    @ApiModelProperty(value="用户名")
+   @Schema(description="用户名")
     private String username;
 
     /**
      * 密码
      */
-    @ApiModelProperty(value="密码")
+   @Schema(description="密码")
     private String password;
 
     /**
      * 昵称
      */
-    @ApiModelProperty(value="昵称")
+   @Schema(description="昵称")
     private String nickname;
 
     /**
      * 手机号码
      */
-    @ApiModelProperty(value="手机号码")
+   @Schema(description="手机号码")
     private String phone;
 
     /**
      * 帐号启用状态:0->禁用；1->启用
      */
-    @ApiModelProperty(value="帐号启用状态:0->禁用；1->启用")
+   @Schema(description="帐号启用状态:0->禁用；1->启用")
     private Integer status;
 
     /**
      * 注册时间
      */
-    @ApiModelProperty(value="注册时间")
+   @Schema(description="注册时间")
     private Date createTime;
 
     /**
      * 头像
      */
-    @ApiModelProperty(value="头像")
+   @Schema(description="头像")
     private String icon;
 
     /**
      * 性别：0->未知；1->男；2->女
      */
-    @ApiModelProperty(value="性别：0->未知；1->男；2->女")
+   @Schema(description="性别：0->未知；1->男；2->女")
     private Integer gender;
 
     /**
      * 生日
      */
-    @ApiModelProperty(value="生日")
+   @Schema(description="生日")
     private Date birthday;
 
     /**
      * 所做城市
      */
-    @ApiModelProperty(value="所做城市")
+   @Schema(description="所做城市")
     private String city;
 
     /**
      * 职业
      */
-    @ApiModelProperty(value="职业")
+   @Schema(description="职业")
     private String job;
 
     /**
      * 个性签名
      */
-    @ApiModelProperty(value="个性签名")
+   @Schema(description="个性签名")
     private String personalizedSignature;
 
     /**
      * 用户来源
      */
-    @ApiModelProperty(value="用户来源")
+   @Schema(description="用户来源")
     private Integer sourceType;
 
     /**
      * 积分
      */
-    @ApiModelProperty(value="积分")
+   @Schema(description="积分")
     private Integer integration;
 
     /**
      * 成长值
      */
-    @ApiModelProperty(value="成长值")
+   @Schema(description="成长值")
     private Integer growth;
 
     /**
      * 剩余抽奖次数
      */
-    @ApiModelProperty(value="剩余抽奖次数")
+   @Schema(description="剩余抽奖次数")
     private Integer luckeyCount;
 
     /**
      * 历史积分数量
      */
-    @ApiModelProperty(value="历史积分数量")
+   @Schema(description="历史积分数量")
     private Integer historyIntegration;
 
     private static final long serialVersionUID = 1L;

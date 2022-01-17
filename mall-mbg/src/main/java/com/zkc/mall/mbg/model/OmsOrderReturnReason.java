@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,14 +9,14 @@ import java.util.Date;
  * oms_order_return_reason
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.OmsOrderReturnReason退货原因表")
+@Schema(description="com.zkc.mall.mbg.model.OmsOrderReturnReason退货原因表")
 public class OmsOrderReturnReason implements Serializable {
     private Long id;
 
     /**
      * 退货类型
      */
-    @ApiModelProperty(value="退货类型")
+   @Schema(description="退货类型")
     private String name;
 
     private Integer sort;
@@ -24,13 +24,13 @@ public class OmsOrderReturnReason implements Serializable {
     /**
      * 状态：0->不启用；1->启用
      */
-    @ApiModelProperty(value="状态：0->不启用；1->启用")
+   @Schema(description="状态：0->不启用；1->启用")
     private Integer status;
 
     /**
      * 添加时间
      */
-    @ApiModelProperty(value="添加时间")
+   @Schema(description="添加时间")
     private Date createTime;
 
     private static final long serialVersionUID = 1L;

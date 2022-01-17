@@ -9,15 +9,15 @@ import com.zkc.mall.mbg.model.PmsProductAttributeCategory;
 import com.zkc.mall.mbg.model.PmsProductAttributeCategoryExample;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class PmsProductAttributeCategoryServiceImpl implements PmsProductAttributeCategoryService {
 	
-	@Resource
+	@Autowired
 	private PmsProductAttributeCategoryMapper productAttributeCategoryMapper;
-	@Resource
+	@Autowired
 	private PmsProductAttributeCategoryDao productAttributeCategoryDao;
 	
 	@Override

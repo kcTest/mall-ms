@@ -3,22 +3,22 @@ package com.zkc.mall.admin.controller;
 import com.zkc.mall.admin.service.UmsResourceCategoryService;
 import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.mbg.model.UmsResourceCategory;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
-
-@Api("后台资源分类管理")
+@Tag(name = "UmsResourceCategoryController", description = "后台资源分类管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/resourceCategory")
 public class UmsResourceCategoryController {
 	
-	@Resource
+	@Autowired
 	private UmsResourceCategoryService resourceCategoryService;
 	
-	@ApiOperation("查询后台所有资源分类")
+	@Operation(summary ="查询后台所有资源分类")
 	@GetMapping("/listAll")
 	@ResponseBody
 	public CommonResult<List<UmsResourceCategory>> listAll() {
@@ -26,7 +26,7 @@ public class UmsResourceCategoryController {
 		return CommonResult.success(umsResourceCategoryList);
 	}
 	
-	@ApiOperation("添加后台资源分类")
+	@Operation(summary ="添加后台资源分类")
 	@PostMapping("/create")
 	@ResponseBody
 	public CommonResult<?> create(@RequestBody UmsResourceCategory umsResourceCategory) {
@@ -34,7 +34,7 @@ public class UmsResourceCategoryController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("修改后台资源分类")
+	@Operation(summary ="修改后台资源分类")
 	@PostMapping("/update/{id}")
 	@ResponseBody
 	public CommonResult<?> update(@RequestParam Long id, @RequestBody UmsResourceCategory umsResourceCategory) {
@@ -42,7 +42,7 @@ public class UmsResourceCategoryController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("删除后台资源分类")
+	@Operation(summary ="删除后台资源分类")
 	@PostMapping("/delete/{id}")
 	@ResponseBody
 	public CommonResult<?> update(@RequestParam Long id) {

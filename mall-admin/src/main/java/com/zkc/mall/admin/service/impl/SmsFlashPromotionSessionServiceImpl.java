@@ -9,7 +9,7 @@ import com.zkc.mall.mbg.model.SmsFlashPromotionSessionExample;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,9 +17,9 @@ import java.util.List;
 @Service
 public class SmsFlashPromotionSessionServiceImpl implements SmsFlashPromotionSessionService {
 	
-	@Resource
+	@Autowired
 	private SmsFlashPromotionSessionMapper flashPromotionSessionMapper;
-	@Resource
+	@Autowired
 	private SmsFlashPromotionProductRelationService flashPromotionProductRelationService;
 	
 	@Override

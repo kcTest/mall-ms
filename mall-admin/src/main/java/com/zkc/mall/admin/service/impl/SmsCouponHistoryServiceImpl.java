@@ -7,13 +7,13 @@ import com.zkc.mall.mbg.mapper.SmsCouponHistoryMapper;
 import com.zkc.mall.mbg.model.*;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class SmsCouponHistoryServiceImpl implements SmsCouponHistoryService {
 	
-	@Resource
+	@Autowired
 	private SmsCouponHistoryMapper couponHistoryMapper;
 	
 	@Override

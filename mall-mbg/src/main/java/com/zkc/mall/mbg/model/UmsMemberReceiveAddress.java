@@ -1,14 +1,14 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 
 /**
  * ums_member_receive_address
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.UmsMemberReceiveAddress会员收货地址表")
+@Schema(description="com.zkc.mall.mbg.model.UmsMemberReceiveAddress会员收货地址表")
 public class UmsMemberReceiveAddress implements Serializable {
     private Long id;
 
@@ -17,7 +17,7 @@ public class UmsMemberReceiveAddress implements Serializable {
     /**
      * 收货人名称
      */
-    @ApiModelProperty(value="收货人名称")
+   @Schema(description="收货人名称")
     private String name;
 
     private String phoneNumber;
@@ -25,37 +25,37 @@ public class UmsMemberReceiveAddress implements Serializable {
     /**
      * 是否为默认
      */
-    @ApiModelProperty(value="是否为默认")
+   @Schema(description="是否为默认")
     private Integer defaultStatus;
 
     /**
      * 邮政编码
      */
-    @ApiModelProperty(value="邮政编码")
+   @Schema(description="邮政编码")
     private String postCode;
 
     /**
      * 省份/直辖市
      */
-    @ApiModelProperty(value="省份/直辖市")
+   @Schema(description="省份/直辖市")
     private String province;
 
     /**
      * 城市
      */
-    @ApiModelProperty(value="城市")
+   @Schema(description="城市")
     private String city;
 
     /**
      * 区
      */
-    @ApiModelProperty(value="区")
+   @Schema(description="区")
     private String region;
 
     /**
      * 详细地址(街道)
      */
-    @ApiModelProperty(value="详细地址(街道)")
+   @Schema(description="详细地址(街道)")
     private String detailAddress;
 
     private static final long serialVersionUID = 1L;

@@ -15,7 +15,7 @@ import com.zkc.mall.portal.service.OmsPromotionService;
 import com.zkc.mall.portal.service.UmsMemberService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,13 +24,13 @@ import java.util.stream.Collectors;
 @Service
 public class OmsCartItemServiceImpl implements OmsCartItemService {
 	
-	@Resource
+	@Autowired
 	private OmsCartItemMapper cartItemMapper;
-	@Resource
+	@Autowired
 	private UmsMemberService memberService;
-	@Resource
+	@Autowired
 	private OmsPromotionService promotionService;
-	@Resource
+	@Autowired
 	private PortalProductDao portalProductDao;
 	
 	@Override

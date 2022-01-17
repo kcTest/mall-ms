@@ -13,17 +13,17 @@ import com.zkc.mall.mbg.model.PmsProductAttributeExample;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class PmsProductAttributeServiceImpl implements PmsProductAttributeService {
 	
-	@Resource
+	@Autowired
 	private PmsProductAttributeMapper productAttributeMapper;
-	@Resource
+	@Autowired
 	private PmsProductAttributeDao productAttributeDao;
-	@Resource
+	@Autowired
 	private PmsProductAttributeCategoryMapper productAttributeCategoryMapper;
 	
 	@Override

@@ -5,22 +5,23 @@ import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.mbg.model.PmsBrand;
 import com.zkc.mall.mbg.model.PmsProduct;
 import com.zkc.mall.portal.service.PortalBrandService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
-@Api("前台品牌管理")
+@Tag(name = "SmsFlashPromotionSessionController", description = "限时购（秒杀）活动场次（时间段）管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/brand")
 public class PortalBrandController {
 	
-	@Resource
+	@Autowired
 	private PortalBrandService portalBrandService;
 	
-	@ApiOperation("分页获取推荐品牌")
+	@Operation(summary ="分页获取推荐品牌")
 	@GetMapping("/recommendList")
 	@ResponseBody
 	public CommonResult<List<PmsBrand>> add(@RequestParam(value = "pageSize", defaultValue = "6") Integer pageSize,
@@ -29,7 +30,7 @@ public class PortalBrandController {
 		return CommonResult.success(brandList);
 	}
 	
-	@ApiOperation("获取品牌详情")
+	@Operation(summary ="获取品牌详情")
 	@GetMapping("/detail/{brandId}")
 	@ResponseBody
 	public CommonResult<PmsBrand> detail(@PathVariable Long brandId) {
@@ -37,7 +38,7 @@ public class PortalBrandController {
 		return CommonResult.success(brand);
 	}
 	
-	@ApiOperation("分页获取品牌相关商品")
+	@Operation(summary ="分页获取品牌相关商品")
 	@GetMapping("/productList")
 	@ResponseBody
 	public CommonResult<CommonPage<PmsProduct>> productList(

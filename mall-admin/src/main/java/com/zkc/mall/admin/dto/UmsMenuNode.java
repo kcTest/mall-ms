@@ -1,7 +1,7 @@
 package com.zkc.mall.admin.dto;
 
 import com.zkc.mall.mbg.model.UmsMenu;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +11,6 @@ import java.util.List;
 @Setter
 public class UmsMenuNode extends UmsMenu {
 	
-	@ApiModelProperty(value = "子级菜单")
+	@Schema(description = "子级菜单")
 	private List<UmsMenuNode> children;
 }

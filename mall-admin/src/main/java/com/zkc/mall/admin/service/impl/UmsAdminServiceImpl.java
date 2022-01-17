@@ -25,7 +25,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -33,19 +33,19 @@ import java.util.stream.Collectors;
 @Service
 public class UmsAdminServiceImpl implements UmsAdminService {
 	
-	@Resource
+	@Autowired
 	private UmsAdminMapper adminMapper;
-	@Resource
+	@Autowired
 	private UmsAdminRoleRelationDao adminRoleRelationDao;
-	@Resource
+	@Autowired
 	private AuthService authService;
-	@Resource
+	@Autowired
 	private UmsAdminLoginLogMapper adminLoginLogMapper;
-	@Resource
+	@Autowired
 	private HttpServletRequest request;
-	@Resource
+	@Autowired
 	private UmsAdminCacheService adminCacheService;
-	@Resource
+	@Autowired
 	private UmsAdminRoleRelationMapper adminRoleRelationMapper;
 	
 	@Override

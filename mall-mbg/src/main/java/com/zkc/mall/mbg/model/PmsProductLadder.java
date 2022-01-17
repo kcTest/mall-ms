@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * pms_product_ladder
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.PmsProductLadder产品阶梯价格表(只针对同商品)")
+@Schema(description="com.zkc.mall.mbg.model.PmsProductLadder产品阶梯价格表(只针对同商品)")
 public class PmsProductLadder implements Serializable {
     private Long id;
 
@@ -18,19 +18,19 @@ public class PmsProductLadder implements Serializable {
     /**
      * 满足的商品数量
      */
-    @ApiModelProperty(value="满足的商品数量")
+   @Schema(description="满足的商品数量")
     private Integer count;
 
     /**
      * 折扣
      */
-    @ApiModelProperty(value="折扣")
+   @Schema(description="折扣")
     private BigDecimal discount;
 
     /**
      * 折后价格
      */
-    @ApiModelProperty(value="折后价格")
+   @Schema(description="折后价格")
     private BigDecimal price;
 
     private static final long serialVersionUID = 1L;

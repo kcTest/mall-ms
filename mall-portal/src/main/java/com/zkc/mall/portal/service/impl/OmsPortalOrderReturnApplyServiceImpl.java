@@ -7,13 +7,13 @@ import com.zkc.mall.portal.domain.OmsOrderReturnApplyParam;
 import com.zkc.mall.portal.service.OmsPortalOrderReturnApplyService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 
 @Service
 public class OmsPortalOrderReturnApplyServiceImpl implements OmsPortalOrderReturnApplyService {
 	
-	@Resource
+	@Autowired
 	private OmsOrderReturnApplyMapper returnApplyMapper;
 	
 	@Override

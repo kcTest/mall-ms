@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,39 +28,39 @@ public class PmsProductServiceImpl implements PmsProductService {
 	
 	private static final Logger Logger = LoggerFactory.getLogger(PmsProductServiceImpl.class);
 	
-	@Resource
+	@Autowired
 	private PmsProductMapper productMapper;
-	@Resource
+	@Autowired
 	private PmsProductVertifyRecordDao productVertifyRecordDao;
-	@Resource
+	@Autowired
 	private PmsMemberPriceDao memberPriceDao;
-	@Resource
+	@Autowired
 	private PmsMemberPriceMapper memberPriceMapper;
-	@Resource
+	@Autowired
 	private PmsProductLadderDao productLadderDao;
-	@Resource
+	@Autowired
 	private PmsProductLadderMapper productLadderMapper;
-	@Resource
+	@Autowired
 	private PmsProductFullReductionDao productFullReductionDao;
-	@Resource
+	@Autowired
 	private PmsProductFullReductionMapper productFullReductionMapper;
-	@Resource
+	@Autowired
 	private PmsSkuStockDao skuStockDao;
-	@Resource
+	@Autowired
 	private PmsSkuStockMapper skuStockMapper;
-	@Resource
+	@Autowired
 	private PmsProductAttributeValueDao productAttributeValueDao;
-	@Resource
+	@Autowired
 	private PmsProductAttributeValueMapper productAttributeValueMapper;
-	@Resource
+	@Autowired
 	private CmsSubjectProductRelationDao subjectProductRelationDao;
-	@Resource
+	@Autowired
 	private CmsSubjectProductRelationMapper subjectProductRelationMapper;
-	@Resource
+	@Autowired
 	private CmsPrefrenceAreaProductRelationDao prefrenceAreaProductRelationDao;
-	@Resource
+	@Autowired
 	private CmsPrefrenceAreaProductRelationMapper prefrenceAreaProductRelationMapper;
-	@Resource
+	@Autowired
 	private PmsProductDao productDao;
 	
 	@Override

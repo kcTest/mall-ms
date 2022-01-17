@@ -1,14 +1,14 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 
 /**
  * pms_product_attribute_value
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.PmsProductAttributeValue存储产品参数信息的表")
+@Schema(description="com.zkc.mall.mbg.model.PmsProductAttributeValue存储产品参数信息的表")
 public class PmsProductAttributeValue implements Serializable {
     private Long id;
 
@@ -19,7 +19,7 @@ public class PmsProductAttributeValue implements Serializable {
     /**
      * 手动添加规格或参数的值，参数单值，规格有多个时以逗号隔开
      */
-    @ApiModelProperty(value="手动添加规格或参数的值，参数单值，规格有多个时以逗号隔开")
+   @Schema(description="手动添加规格或参数的值，参数单值，规格有多个时以逗号隔开")
     private String value;
 
     private static final long serialVersionUID = 1L;

@@ -1,7 +1,6 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -11,20 +10,20 @@ import java.math.BigDecimal;
  *
  * @author
  */
-@ApiModel(value = "com.zkc.mall.mbg.model.OmsOrderItem订单中所包含的商品")
+@Schema(description = "com.zkc.mall.mbg.model.OmsOrderItem订单中所包含的商品")
 public class OmsOrderItem implements Serializable {
 	private Long id;
 	
 	/**
 	 * 订单id
 	 */
-	@ApiModelProperty(value = "订单id")
+	@Schema(description = "订单id")
 	private Long orderId;
 	
 	/**
 	 * 订单编号
 	 */
-	@ApiModelProperty(value = "订单编号")
+	@Schema(description = "订单编号")
 	private String orderSn;
 	
 	private Long productId;
@@ -40,61 +39,61 @@ public class OmsOrderItem implements Serializable {
 	/**
 	 * 销售价格
 	 */
-	@ApiModelProperty(value = "销售价格")
+	@Schema(description = "销售价格")
 	private BigDecimal productPrice;
 	
 	/**
 	 * 购买数量
 	 */
-	@ApiModelProperty(value = "购买数量")
+	@Schema(description = "购买数量")
 	private Integer productQuantity;
 	
 	/**
 	 * 商品sku编号
 	 */
-	@ApiModelProperty(value = "商品sku编号")
+	@Schema(description = "商品sku编号")
 	private Long productSkuId;
 	
 	/**
 	 * 商品sku条码
 	 */
-	@ApiModelProperty(value = "商品sku条码")
+	@Schema(description = "商品sku条码")
 	private String productSkuCode;
 	
 	/**
 	 * 商品分类id
 	 */
-	@ApiModelProperty(value = "商品分类id")
+	@Schema(description = "商品分类id")
 	private Long productCategoryId;
 	
 	/**
 	 * 商品促销名称
 	 */
-	@ApiModelProperty(value = "商品促销名称")
+	@Schema(description = "商品促销名称")
 	private String promotionName;
 	
 	/**
 	 * 商品促销分解金额
 	 */
-	@ApiModelProperty(value = "商品促销分解金额")
+	@Schema(description = "商品促销分解金额")
 	private BigDecimal promotionAmount;
 	
 	/**
 	 * 优惠券优惠分解金额
 	 */
-	@ApiModelProperty(value = "优惠券优惠分解金额")
+	@Schema(description = "优惠券优惠分解金额")
 	private BigDecimal couponAmount;
 	
 	/**
 	 * 积分优惠分解金额
 	 */
-	@ApiModelProperty(value = "积分优惠分解金额")
+	@Schema(description = "积分优惠分解金额")
 	private BigDecimal integrationAmount;
 	
 	/**
 	 * 该商品经过优惠后的分解金额
 	 */
-	@ApiModelProperty(value = "该商品经过优惠后的分解金额")
+	@Schema(description = "该商品经过优惠后的分解金额")
 	private BigDecimal realAmount;
 	
 	private Integer giftIntegration;
@@ -104,7 +103,7 @@ public class OmsOrderItem implements Serializable {
 	/**
 	 * 商品销售属性:[{"key":"颜色","value":"颜色"},{"key":"容量","value":"4G"}]
 	 */
-	@ApiModelProperty(value = "商品销售属性:[{''key':'颜色','value':'颜色'},{'key':'容量','value':'4G'}]")
+	@Schema(description = "商品销售属性:[{''key':'颜色','value':'颜色'},{'key':'容量','value':'4G'}]")
 	private String productAttr;
 	
 	private static final long serialVersionUID = 1L;

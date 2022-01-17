@@ -15,7 +15,7 @@ import com.zkc.mall.portal.service.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
@@ -25,43 +25,43 @@ import java.util.stream.Collectors;
 @Service
 public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
 	
-	@Resource
+	@Autowired
 	private UmsMemberService memberService;
-	@Resource
+	@Autowired
 	private UmsMemberCouponService memberCouponService;
-	@Resource
+	@Autowired
 	private OmsCartItemService cartItemService;
-	@Resource
+	@Autowired
 	private UmsMemberReceiveAddressService addressService;
-	@Resource
+	@Autowired
 	private UmsMemberCouponService couponService;
-	@Resource
+	@Autowired
 	private UmsIntegrationConsumeSettingMapper integrationConsumeSettingMapper;
-	@Resource
+	@Autowired
 	private PmsSkuStockMapper skuStockMapper;
-	@Resource
+	@Autowired
 	private OmsOrderSettingMapper orderSettingMapper;
-	@Resource
+	@Autowired
 	private OmsOrderMapper orderMapper;
-	@Resource
+	@Autowired
 	private OrderItemDao orderItemDao;
-	@Resource
+	@Autowired
 	private OmsOrderItemMapper orderItemMapper;
 	
 	@Value("${redis.database}")
 	private String REDIS_DATABASE;
 	@Value("${redis.key.orderId}")
 	private String REDIS_KEY_ORDER_ID;
-	@Resource
+	@Autowired
 	private RedisService redisService;
 	
-	@Resource
+	@Autowired
 	private CancelOrderSender cancelOrderSender;
 	
-	@Resource
+	@Autowired
 	private PortalOrderDao portalOrderDao;
 	
-	@Resource
+	@Autowired
 	private SmsCouponHistoryMapper couponHistoryMapper;
 	
 	@Override

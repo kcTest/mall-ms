@@ -6,22 +6,22 @@ import com.zkc.mall.mbg.model.PmsProduct;
 import com.zkc.mall.mbg.model.PmsProductCategory;
 import com.zkc.mall.portal.domain.HomeContentResult;
 import com.zkc.mall.portal.service.HomeService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
-
-@Api("首页内容管理")
+@Tag(name = "HomeController", description = "首页内容管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/order")
 public class HomeController {
 	
-	@Resource
+	@Autowired
 	private HomeService homeService;
 	
-	@ApiOperation("首页内容信息展示")
+	@Operation(summary ="首页内容信息展示")
 	@GetMapping("/content")
 	@ResponseBody
 	public CommonResult<HomeContentResult> content() {
@@ -29,7 +29,7 @@ public class HomeController {
 		return CommonResult.success(homeContentResult);
 	}
 	
-	@ApiOperation("分页获取推荐商品")
+	@Operation(summary ="分页获取推荐商品")
 	@GetMapping("/recommendProductList")
 	@ResponseBody
 	public CommonResult<List<PmsProduct>> recommendProductList(
@@ -39,7 +39,7 @@ public class HomeController {
 		return CommonResult.success(productList);
 	}
 	
-	@ApiOperation("获取首页商品分类")
+	@Operation(summary ="获取首页商品分类")
 	@GetMapping("/productCateList/{parentId}")
 	@ResponseBody
 	public CommonResult<List<PmsProductCategory>> getSubjectList(@PathVariable Long parentId) {
@@ -47,7 +47,7 @@ public class HomeController {
 		return CommonResult.success(productCategoryList);
 	}
 	
-	@ApiOperation("根据分类获取专题")
+	@Operation(summary ="根据分类获取专题")
 	@GetMapping("/subjectList")
 	@ResponseBody
 	public CommonResult<List<CmsSubject>> getSubjectList(
@@ -58,7 +58,7 @@ public class HomeController {
 		return CommonResult.success(subjectList);
 	}
 	
-	@ApiOperation("分页获取人气专题")
+	@Operation(summary ="分页获取人气专题")
 	@GetMapping("/hotProductList")
 	@ResponseBody
 	public CommonResult<List<PmsProduct>> hotProductList(
@@ -69,7 +69,7 @@ public class HomeController {
 	}
 	
 	
-	@ApiOperation("分页获取新品推荐商品")
+	@Operation(summary ="分页获取新品推荐商品")
 	@GetMapping("/newProductList")
 	@ResponseBody
 	public CommonResult<List<PmsProduct>> newProductList(

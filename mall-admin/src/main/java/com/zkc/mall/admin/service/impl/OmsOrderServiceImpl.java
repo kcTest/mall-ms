@@ -12,7 +12,7 @@ import com.zkc.mall.mbg.model.OmsOrderExample;
 import com.zkc.mall.mbg.model.OmsOrderOperateHistory;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,13 +20,13 @@ import java.util.stream.Collectors;
 @Service
 public class OmsOrderServiceImpl implements OmsOrderService {
 	
-	@Resource
+	@Autowired
 	private OmsOrderMapper orderMapper;
-	@Resource
+	@Autowired
 	private OmsOrderDao orderDao;
-	@Resource
+	@Autowired
 	private OmsOrderOperateHistoryDao orderOperateHistoryDao;
-	@Resource
+	@Autowired
 	private OmsOrderOperateHistoryMapper orderOperateHistoryMapper;
 	
 	@Override

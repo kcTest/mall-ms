@@ -1,14 +1,14 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 
 /**
  * sms_home_recommend_subject
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.SmsHomeRecommendSubject首页推荐专题表")
+@Schema(description="com.zkc.mall.mbg.model.SmsHomeRecommendSubject首页推荐专题表")
 public class SmsHomeRecommendSubject implements Serializable {
     private Long id;
 

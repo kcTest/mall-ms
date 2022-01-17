@@ -12,27 +12,27 @@ import com.zkc.mall.portal.service.HomeService;
 import com.zkc.mall.portal.util.MyDateUtil;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class HomeServiceImpl implements HomeService {
 	
-	@Resource
+	@Autowired
 	private SmsHomeAdvertiseMapper homeAdvertiseMapper;
-	@Resource
+	@Autowired
 	private SmsFlashPromotionMapper flashPromotionMapper;
-	@Resource
+	@Autowired
 	private PmsProductMapper productMapper;
-	@Resource
+	@Autowired
 	private PmsProductCategoryMapper productCategoryMapper;
-	@Resource
+	@Autowired
 	private CmsSubjectMapper subjectMapper;
-	@Resource
+	@Autowired
 	private SmsFlashPromotionSessionMapper flashPromotionSessionMapper;
 	
-	@Resource
+	@Autowired
 	private HomeDao homeDao;
 	
 	@Override

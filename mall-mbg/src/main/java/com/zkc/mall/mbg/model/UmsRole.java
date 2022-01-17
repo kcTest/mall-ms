@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,38 +9,38 @@ import java.util.Date;
  * ums_role
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.UmsRole后台用户角色表")
+@Schema(description="com.zkc.mall.mbg.model.UmsRole后台用户角色表")
 public class UmsRole implements Serializable {
     private Long id;
 
     /**
      * 名称
      */
-    @ApiModelProperty(value="名称")
+   @Schema(description="名称")
     private String name;
 
     /**
      * 描述
      */
-    @ApiModelProperty(value="描述")
+   @Schema(description="描述")
     private String description;
 
     /**
      * 后台用户数量
      */
-    @ApiModelProperty(value="后台用户数量")
+   @Schema(description="后台用户数量")
     private Integer adminCount;
 
     /**
      * 创建时间
      */
-    @ApiModelProperty(value="创建时间")
+   @Schema(description="创建时间")
     private Date createTime;
 
     /**
      * 启用状态：0->禁用；1->启用
      */
-    @ApiModelProperty(value="启用状态：0->禁用；1->启用")
+   @Schema(description="启用状态：0->禁用；1->启用")
     private Integer status;
 
     private Integer sort;

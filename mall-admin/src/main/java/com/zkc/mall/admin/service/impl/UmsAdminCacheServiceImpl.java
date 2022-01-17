@@ -6,12 +6,12 @@ import com.zkc.mall.mbg.model.UmsAdmin;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class UmsAdminCacheServiceImpl implements UmsAdminCacheService {
 	
-	@Resource
+	@Autowired
 	private RedisService redisService;
 	
 	@Value("${redis.database}")

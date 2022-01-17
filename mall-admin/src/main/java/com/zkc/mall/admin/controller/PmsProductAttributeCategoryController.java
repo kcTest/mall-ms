@@ -5,22 +5,23 @@ import com.zkc.mall.admin.service.PmsProductAttributeCategoryService;
 import com.zkc.mall.common.api.CommonPage;
 import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.mbg.model.PmsProductAttributeCategory;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
-@Api("商品属性分类管理")
+@Tag(name = "PmsProductAttributeCategoryController", description = "商品属性分类管理")
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/productAttribute/category")
 public class PmsProductAttributeCategoryController {
 	
-	@Resource
+	@Autowired
 	private PmsProductAttributeCategoryService attributeCategoryService;
 	
-	@ApiOperation("添加商品属性分类信息")
+	@Operation(summary ="添加商品属性分类信息")
 	@PostMapping("/create")
 	@ResponseBody
 	public CommonResult<?> create(@RequestParam String name) {
@@ -29,7 +30,7 @@ public class PmsProductAttributeCategoryController {
 	}
 	
 	
-	@ApiOperation("修改商品属性分类")
+	@Operation(summary ="修改商品属性分类")
 	@PostMapping("/update/{id}")
 	@ResponseBody
 	public CommonResult<?> update(@PathVariable Long id, @RequestParam String name) {
@@ -37,7 +38,7 @@ public class PmsProductAttributeCategoryController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("删除商品属性分类")
+	@Operation(summary ="删除商品属性分类")
 	@PostMapping("/delete/{id}")
 	@ResponseBody
 	public CommonResult<?> delete(@PathVariable Long id) {
@@ -45,7 +46,7 @@ public class PmsProductAttributeCategoryController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("查询单个商品属性分类")
+	@Operation(summary ="查询单个商品属性分类")
 	@GetMapping("/{id}")
 	@ResponseBody
 	public CommonResult<PmsProductAttributeCategory> getItem(@PathVariable Long id) {
@@ -53,7 +54,7 @@ public class PmsProductAttributeCategoryController {
 		return CommonResult.success(productAttribute);
 	}
 	
-	@ApiOperation("根据分类查询属性或参数列表")
+	@Operation(summary ="根据分类查询属性或参数列表")
 	@GetMapping("/list/{cid}")
 	@ResponseBody
 	public CommonResult<CommonPage<PmsProductAttributeCategory>> getList(@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
@@ -62,7 +63,7 @@ public class PmsProductAttributeCategoryController {
 		return CommonResult.success(CommonPage.restPage(productAttributeCategoryList));
 	}
 	
-	@ApiOperation("查询所有商品属性分类及其下属性")
+	@Operation(summary ="查询所有商品属性分类及其下属性")
 	@GetMapping("/list/withAttr")
 	@ResponseBody
 	public CommonResult<List<PmsProductAttributeCategoryItem>> getListWithAttr() {

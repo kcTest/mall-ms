@@ -7,7 +7,7 @@ import com.zkc.mall.portal.service.UmsMemberCacheService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class UmsMemberCacheServiceImpl implements UmsMemberCacheService {
@@ -27,7 +27,7 @@ public class UmsMemberCacheServiceImpl implements UmsMemberCacheService {
 	@Value("${redis.key.authCode}")
 	private String REDIS_KEY_AUTH_CODE;
 	
-	@Resource
+	@Autowired
 	private RedisService redisService;
 	
 	@Override

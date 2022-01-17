@@ -15,17 +15,17 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.http.HttpServletRequest;
 
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
 	
-	@Resource
+	@Autowired
 	private HttpServletRequest request;
-	@Resource
+	@Autowired
 	private UmsAdminService adminService;
-	@Resource
+	@Autowired
 	private UmsMemberService memberService;
 	
 	@Override

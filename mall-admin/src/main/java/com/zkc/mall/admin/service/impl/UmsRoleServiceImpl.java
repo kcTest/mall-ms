@@ -11,22 +11,22 @@ import com.zkc.mall.mbg.mapper.UmsRoleResourceRelationMapper;
 import com.zkc.mall.mbg.model.*;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class UmsRoleServiceImpl implements UmsRoleService {
 	
-	@Resource
+	@Autowired
 	private UmsRoleDao umsRoleDao;
-	@Resource
+	@Autowired
 	private UmsRoleMapper roleMapper;
-	@Resource
+	@Autowired
 	private UmsResourceService resourceService;
-	@Resource
+	@Autowired
 	private UmsRoleMenuRelationMapper roleMenuRelationMapper;
-	@Resource
+	@Autowired
 	private UmsRoleResourceRelationMapper roleResourceRelationMapper;
 	
 	@Override

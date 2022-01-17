@@ -1,27 +1,27 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 
 /**
  * ums_role_menu_relation
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.UmsRoleMenuRelation后台角色菜单关系表")
+@Schema(description="com.zkc.mall.mbg.model.UmsRoleMenuRelation后台角色菜单关系表")
 public class UmsRoleMenuRelation implements Serializable {
     private Long id;
 
     /**
      * 角色ID
      */
-    @ApiModelProperty(value="角色ID")
+   @Schema(description="角色ID")
     private Long roleId;
 
     /**
      * 菜单ID
      */
-    @ApiModelProperty(value="菜单ID")
+   @Schema(description="菜单ID")
     private Long menuId;
 
     private static final long serialVersionUID = 1L;

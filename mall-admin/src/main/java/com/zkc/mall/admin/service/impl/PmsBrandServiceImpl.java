@@ -13,15 +13,15 @@ import com.zkc.mall.mbg.model.PmsProductExample;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class PmsBrandServiceImpl implements PmsBrandService {
 	
-	@Resource
+	@Autowired
 	private PmsBrandMapper brandMapper;
-	@Resource
+	@Autowired
 	private PmsProductMapper productMapper;
 	
 	@Override

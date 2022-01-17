@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,26 +9,26 @@ import java.util.Date;
  * ums_resource_category
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.UmsResourceCategory资源分类表")
+@Schema(description="com.zkc.mall.mbg.model.UmsResourceCategory资源分类表")
 public class UmsResourceCategory implements Serializable {
     private Long id;
 
     /**
      * 创建时间
      */
-    @ApiModelProperty(value="创建时间")
+   @Schema(description="创建时间")
     private Date createTime;
 
     /**
      * 分类名称
      */
-    @ApiModelProperty(value="分类名称")
+   @Schema(description="分类名称")
     private String name;
 
     /**
      * 排序
      */
-    @ApiModelProperty(value="排序")
+   @Schema(description="排序")
     private Integer sort;
 
     private static final long serialVersionUID = 1L;

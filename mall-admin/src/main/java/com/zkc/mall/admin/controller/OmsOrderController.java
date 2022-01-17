@@ -5,22 +5,24 @@ import com.zkc.mall.admin.service.OmsOrderService;
 import com.zkc.mall.common.api.CommonPage;
 import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.mbg.model.OmsOrder;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
-@Api("订单管理")
+@Tag(name = "OmsOrderController", description = "订单管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/order")
 public class OmsOrderController {
 	
-	@Resource
+	@Autowired
 	private OmsOrderService orderService;
 	
-	@ApiOperation("分页查询订单")
+	@Operation(summary = "分页查询订单")
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<CommonPage<OmsOrder>> list(
@@ -31,7 +33,7 @@ public class OmsOrderController {
 		return CommonResult.success(CommonPage.restPage(orderList));
 	}
 	
-	@ApiOperation("批量发货")
+	@Operation(summary = "批量发货")
 	@PostMapping("/update/delivery")
 	@ResponseBody
 	public CommonResult<?> delivery(@RequestBody List<OmsOrderDeliveryParam> deliveryParamList) {
@@ -39,7 +41,7 @@ public class OmsOrderController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("批量关闭订单")
+	@Operation(summary = "批量关闭订单")
 	@PostMapping("/update/close")
 	@ResponseBody
 	public CommonResult<?> close(@RequestParam("ids") List<Long> ids, @RequestParam("note") String note) {
@@ -47,7 +49,7 @@ public class OmsOrderController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("批量删除订单")
+	@Operation(summary = "批量删除订单")
 	@PostMapping("/update/delete")
 	@ResponseBody
 	public CommonResult<?> delete(@RequestParam("ids") List<Long> ids) {
@@ -55,7 +57,7 @@ public class OmsOrderController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("获取单个订单详情：订单信息 商品信息 操作记录")
+	@Operation(summary = "获取单个订单详情：订单信息 商品信息 操作记录")
 	@GetMapping("/{id}")
 	@ResponseBody
 	public CommonResult<OmsOrderDetail> detail(@PathVariable Long id) {
@@ -63,7 +65,7 @@ public class OmsOrderController {
 		return CommonResult.success(orderDetail);
 	}
 	
-	@ApiOperation("修改收货人信息")
+	@Operation(summary = "修改收货人信息")
 	@PostMapping("/update/receiverInfo")
 	@ResponseBody
 	public CommonResult<?> updateReceiverInfo(@RequestBody OmsReceiverInfoParam receiverInfoParam) {
@@ -71,7 +73,7 @@ public class OmsOrderController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("修改订单费用信息")
+	@Operation(summary = "修改订单费用信息")
 	@PostMapping("/update/moneyInfo")
 	@ResponseBody
 	public CommonResult<?> updateMoneyInfo(@RequestBody OmsMoneyInfoParam moneyInfoParam) {
@@ -79,7 +81,7 @@ public class OmsOrderController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("备注订单")
+	@Operation(summary = "备注订单")
 	@PostMapping("/update/note")
 	@ResponseBody
 	public CommonResult<?> updateNode(@RequestParam("id") Long id,

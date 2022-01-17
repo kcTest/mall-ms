@@ -6,13 +6,13 @@ import com.zkc.mall.mbg.model.OmsCompanyAddress;
 import com.zkc.mall.mbg.model.OmsCompanyAddressExample;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class OmsCompanyAddressServiceImpl implements OmsCompanyAddressService {
 	
-	@Resource
+	@Autowired
 	private OmsCompanyAddressMapper companyAddressMapper;
 	
 	@Override

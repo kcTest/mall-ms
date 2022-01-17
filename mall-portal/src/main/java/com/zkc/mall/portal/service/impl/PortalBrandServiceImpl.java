@@ -10,17 +10,17 @@ import com.zkc.mall.portal.dao.HomeDao;
 import com.zkc.mall.portal.service.PortalBrandService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class PortalBrandServiceImpl implements PortalBrandService {
 	
-	@Resource
+	@Autowired
 	private PmsBrandMapper brandMapper;
-	@Resource
+	@Autowired
 	private PmsProductMapper productMapper;
-	@Resource
+	@Autowired
 	private HomeDao homeDao;
 	
 	

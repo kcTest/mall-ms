@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
@@ -41,7 +41,7 @@ public class OssServiceImpl implements OssService {
 	@Value("${aliyun.oss.endpoint}")
 	private String ALIYUN_OSS_ENDPOINT;
 	
-	@Resource
+	@Autowired
 	private OSSClient ossClient;
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(OssServiceImpl.class);

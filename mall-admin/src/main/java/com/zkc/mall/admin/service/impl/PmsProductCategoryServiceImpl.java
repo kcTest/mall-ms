@@ -14,22 +14,22 @@ import com.zkc.mall.mbg.mapper.PmsProductMapper;
 import com.zkc.mall.mbg.model.*;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class PmsProductCategoryServiceImpl implements PmsProductCategoryService {
 	
-	@Resource
+	@Autowired
 	private PmsProductCategoryMapper productCategoryMapper;
-	@Resource
+	@Autowired
 	private PmsProductCategoryDao productCategoryDao;
-	@Resource
+	@Autowired
 	private PmsProductMapper productMapper;
-	@Resource
+	@Autowired
 	private PmsProductCategoryAttributeRelationDao productCategoryAttributeRelationDao;
-	@Resource
+	@Autowired
 	private PmsProductCategoryAttributeRelationMapper productCategoryAttributeRelationMapper;
 	
 	@Override

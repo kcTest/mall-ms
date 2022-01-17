@@ -4,23 +4,23 @@ import com.zkc.mall.admin.service.SmsHomeRecommendProductService;
 import com.zkc.mall.common.api.CommonPage;
 import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.mbg.model.SmsHomeRecommendProduct;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
-
-@Api(tags = "首页人气推荐管理")
+@Tag(name = "SmsHomeRecommendProductController", description = "首页人气推荐管理")
 @RequestMapping(value = "/home/recommendProduct")
+@CrossOrigin
 @RestController
 public class SmsHomeRecommendProductController {
 	
-	@Resource
+	@Autowired
 	private SmsHomeRecommendProductService homeRecommendProductService;
 	
-	@ApiOperation("添加首页人气推荐")
+	@Operation(summary ="添加首页人气推荐")
 	@PostMapping("/create")
 	@ResponseBody
 	public CommonResult<?> create(@RequestBody List<SmsHomeRecommendProduct> homeRecommendProducts) {
@@ -28,7 +28,7 @@ public class SmsHomeRecommendProductController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("修改人气推荐排序")
+	@Operation(summary ="修改人气推荐排序")
 	@PostMapping("/update/sort/{id}")
 	@ResponseBody
 	public CommonResult<?> updateSort(@PathVariable Long id, @RequestParam("sort") Integer sort) {
@@ -36,7 +36,7 @@ public class SmsHomeRecommendProductController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("批量删除人气推荐排序")
+	@Operation(summary ="批量删除人气推荐排序")
 	@PostMapping("/delete")
 	@ResponseBody
 	public CommonResult<?> delete(@RequestParam("ids") List<Long> ids) {
@@ -44,7 +44,7 @@ public class SmsHomeRecommendProductController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("批量修改人气推荐状态")
+	@Operation(summary ="批量修改人气推荐状态")
 	@PostMapping("/update/recommendStatus")
 	@ResponseBody
 	public CommonResult<?> updateRecommendStatus(@RequestParam("ids") List<Long> ids, @RequestParam("status") Integer recommendStatus) {
@@ -52,7 +52,7 @@ public class SmsHomeRecommendProductController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("分页查询人气推荐")
+	@Operation(summary ="分页查询人气推荐")
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<CommonPage<SmsHomeRecommendProduct>> list(

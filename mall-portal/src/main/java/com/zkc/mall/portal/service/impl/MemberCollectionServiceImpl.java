@@ -9,16 +9,16 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class MemberCollectionServiceImpl implements MemberCollectionService {
 	
-	@Resource
+	@Autowired
 	private UmsMemberService memberService;
 	
-	@Resource
+	@Autowired
 	private MemberProductCollectionRepositoty memberProductCollectionRepositoty;
 	
 	@Override

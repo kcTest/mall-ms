@@ -4,22 +4,22 @@ import com.zkc.mall.common.api.CommonPage;
 import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.portal.domain.MemberReadHistory;
 import com.zkc.mall.portal.service.MemberReadHistoryService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
-
-@Api("会员商品浏览记录管理")
+@Tag(name = "MemberReadHistoryController", description = "会员商品浏览记录管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/member/readHistory")
 public class MemberReadHistoryController {
 	
-	@Resource
+	@Autowired
 	private MemberReadHistoryService readHistoryService;
 	
-	@ApiOperation("创建浏览记录")
+	@Operation(summary ="创建浏览记录")
 	@PostMapping("/create")
 	@ResponseBody
 	public CommonResult<?> create(@RequestBody MemberReadHistory memberReadHistory) {
@@ -27,7 +27,7 @@ public class MemberReadHistoryController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("删除浏览记录")
+	@Operation(summary ="删除浏览记录")
 	@PostMapping("/delete")
 	@ResponseBody
 	public CommonResult<?> delete(@RequestParam("ids") List<String> ids) {
@@ -35,7 +35,7 @@ public class MemberReadHistoryController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("清空浏览记录")
+	@Operation(summary ="清空浏览记录")
 	@PostMapping("/clear")
 	@ResponseBody
 	public CommonResult<?> clear() {
@@ -43,7 +43,7 @@ public class MemberReadHistoryController {
 		return CommonResult.success(null);
 	}
 	
-	@ApiOperation("分页获取用户浏览记录")
+	@Operation(summary ="分页获取用户浏览记录")
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<CommonPage<MemberReadHistory>> list(

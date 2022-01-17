@@ -6,13 +6,13 @@ import com.zkc.mall.mbg.model.CmsPrefrenceArea;
 import com.zkc.mall.mbg.model.CmsPrefrenceAreaExample;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class CmsPreferenceAreaServiceImpl implements CmsPreferenceAreaService {
 	
-	@Resource
+	@Autowired
 	private CmsPrefrenceAreaMapper cmsPrefrenceAreaMapper;
 	
 	@Override

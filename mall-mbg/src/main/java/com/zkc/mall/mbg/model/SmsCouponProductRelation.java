@@ -1,14 +1,14 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 
 /**
  * sms_coupon_product_relation
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.SmsCouponProductRelation优惠券和产品的关系表")
+@Schema(description="com.zkc.mall.mbg.model.SmsCouponProductRelation优惠券和产品的关系表")
 public class SmsCouponProductRelation implements Serializable {
     private Long id;
 
@@ -19,13 +19,13 @@ public class SmsCouponProductRelation implements Serializable {
     /**
      * 商品名称
      */
-    @ApiModelProperty(value="商品名称")
+   @Schema(description="商品名称")
     private String productName;
 
     /**
      * 商品编码
      */
-    @ApiModelProperty(value="商品编码")
+   @Schema(description="商品编码")
     private String productSn;
 
     private static final long serialVersionUID = 1L;

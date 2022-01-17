@@ -9,7 +9,7 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 发送订单取消消息
@@ -19,7 +19,7 @@ public class CancelOrderSender {
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(CancelOrderSender.class);
 	
-	@Resource
+	@Autowired
 	private AmqpTemplate amqpTemplate;
 	
 	public void sendMessage(Long orderId, final long delayTimes) {

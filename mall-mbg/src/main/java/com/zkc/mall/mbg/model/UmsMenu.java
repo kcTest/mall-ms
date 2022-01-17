@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,56 +9,56 @@ import java.util.Date;
  * ums_menu
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.UmsMenu后台菜单表")
+@Schema(description="com.zkc.mall.mbg.model.UmsMenu后台菜单表")
 public class UmsMenu implements Serializable {
     private Long id;
 
     /**
      * 父级ID
      */
-    @ApiModelProperty(value="父级ID")
+   @Schema(description="父级ID")
     private Long parentId;
 
     /**
      * 创建时间
      */
-    @ApiModelProperty(value="创建时间")
+   @Schema(description="创建时间")
     private Date createTime;
 
     /**
      * 菜单名称
      */
-    @ApiModelProperty(value="菜单名称")
+   @Schema(description="菜单名称")
     private String title;
 
     /**
      * 菜单级数
      */
-    @ApiModelProperty(value="菜单级数")
+   @Schema(description="菜单级数")
     private Integer level;
 
     /**
      * 菜单排序
      */
-    @ApiModelProperty(value="菜单排序")
+   @Schema(description="菜单排序")
     private Integer sort;
 
     /**
      * 前端名称
      */
-    @ApiModelProperty(value="前端名称")
+   @Schema(description="前端名称")
     private String name;
 
     /**
      * 前端图标
      */
-    @ApiModelProperty(value="前端图标")
+   @Schema(description="前端图标")
     private String icon;
 
     /**
      * 前端隐藏
      */
-    @ApiModelProperty(value="前端隐藏")
+   @Schema(description="前端隐藏")
     private Integer hidden;
 
     private static final long serialVersionUID = 1L;

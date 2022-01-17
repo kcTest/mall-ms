@@ -4,22 +4,22 @@ import com.zkc.mall.common.api.CommonPage;
 import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.portal.domain.MemberProductCollection;
 import com.zkc.mall.portal.service.MemberCollectionService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
-
-@Api("会员收藏管理")
+@Tag(name = "MemberProductCollectionController", description = "会员收藏管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/member/productCollection")
 public class MemberProductCollectionController {
 	
-	@Resource
+	@Autowired
 	private MemberCollectionService memberCollectionService;
 	
-	@ApiOperation("添加商品收藏")
+	@Operation(summary ="添加商品收藏")
 	@PostMapping("/add")
 	@ResponseBody
 	public CommonResult<?> add(@RequestBody MemberProductCollection productCollection) {
@@ -27,7 +27,7 @@ public class MemberProductCollectionController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("删除商品收藏")
+	@Operation(summary ="删除商品收藏")
 	@PostMapping("/delete")
 	@ResponseBody
 	public CommonResult<?> delete(@RequestParam("productId") Long productId) {
@@ -36,7 +36,7 @@ public class MemberProductCollectionController {
 	}
 	
 	
-	@ApiOperation("显示收藏列表")
+	@Operation(summary ="显示收藏列表")
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<CommonPage<MemberProductCollection>> list(
@@ -46,7 +46,7 @@ public class MemberProductCollectionController {
 		return CommonResult.success(CommonPage.restPage(productCollectionList));
 	}
 	
-	@ApiOperation("显示收藏商品详情")
+	@Operation(summary ="显示收藏商品详情")
 	@GetMapping("/detail")
 	@ResponseBody
 	public CommonResult<MemberProductCollection> detail(@RequestParam("productId") Long productId) {

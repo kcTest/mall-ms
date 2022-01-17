@@ -1,15 +1,15 @@
 package com.zkc.mall.admin.component;
 
 import com.zkc.mall.admin.service.UmsResourceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 
 @Component
 public class ResourceRoleRuleHolder {
 	
-	@Resource
+	@Autowired
 	private UmsResourceService resourceService;
 	
 	@PostConstruct

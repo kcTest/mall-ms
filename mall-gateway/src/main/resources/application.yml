@@ -62,15 +62,14 @@ secure:
       - "/mall-portal/product/**"
       - "/mall-portal/brand/**"
       - "/mall-search/**"
-      - "/doc.html"
       - "/swagger-resources/**"
-      - "/swagger/**"
-      - "/*/v2/api-docs"
+      - "/swagger-ui.html"
+      - "/*/v3/api-docs"
+      - "/v3/api-docs/**"
       - "/*/*.js"
       - "/*/*.css"
       - "/*/*.png"
       - "/*/*.ico"
-      - "/webjars/springfox-swagger-ui/**"
       - "/actuator/**"
       - "/webjars/**"
 
@@ -82,5 +81,22 @@ management:
   endpoint:
     health:
       show-details: always
-        
 
+# spring doc
+springdoc:
+  swagger-ui:
+    use-root-path: true
+    urls:
+      - name: mall-admin
+        url: /mall-admin/v3/api-docs
+      - name: mall-auth
+        url: /mall-auth/v3/api-docs
+      - name: mall-portal
+        url: /mall-portal/v3/api-docs
+      - name: mall-search
+        url: /mall-search/v3/api-docs       
+    doc-expansion: none
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    enabled: true

@@ -1,6 +1,6 @@
 package com.zkc.mall.admin.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,15 +10,15 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 public class UpdatePasswordParam {
 	
-	@ApiModelProperty(value = "用户id", required = true)
+	@Schema(description= "用户id", required = true)
 	@NotEmpty
 	private Long id;
 	
-	@ApiModelProperty(value = "旧密码", required = true)
+	@Schema(description= "旧密码", required = true)
 	@NotEmpty
 	private String oldPassword;
 	
-	@ApiModelProperty(value = "新密码", required = true)
+	@Schema(description= "新密码", required = true)
 	@NotEmpty
 	private String newPassword;
 	

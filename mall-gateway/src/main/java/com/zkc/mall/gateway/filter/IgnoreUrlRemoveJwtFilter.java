@@ -13,13 +13,13 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Component
 public class IgnoreUrlRemoveJwtFilter implements WebFilter {
 	
-	@Resource
+	@Autowired
 	private IgnoreUrlConfig ignoreUrlConfig;
 	
 	@Override

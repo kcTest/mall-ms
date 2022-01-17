@@ -1,6 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 
@@ -8,7 +9,7 @@ import java.io.Serializable;
  * ums_admin_role_relation
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.UmsAdminRoleRelation后台用户和角色关系表")
+@Schema(description="com.zkc.mall.mbg.model.UmsAdminRoleRelation后台用户和角色关系表")
 public class UmsAdminRoleRelation implements Serializable {
     private Long id;
 

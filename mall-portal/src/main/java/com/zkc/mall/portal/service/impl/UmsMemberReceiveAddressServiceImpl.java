@@ -9,15 +9,15 @@ import com.zkc.mall.portal.service.UmsMemberReceiveAddressService;
 import com.zkc.mall.portal.service.UmsMemberService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class UmsMemberReceiveAddressServiceImpl implements UmsMemberReceiveAddressService {
 	
-	@Resource
+	@Autowired
 	private UmsMemberService memberService;
-	@Resource
+	@Autowired
 	private UmsMemberReceiveAddressMapper memberReceiveAddressMapper;
 	
 	@Override

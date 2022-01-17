@@ -4,22 +4,23 @@ import com.zkc.mall.admin.dto.OssCallbackResult;
 import com.zkc.mall.admin.dto.OssPolicyResult;
 import com.zkc.mall.admin.service.OssService;
 import com.zkc.mall.common.api.CommonResult;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.http.HttpServletRequest;
 
-@Api("Oss管理")
+@Tag(name = "OssController", description = "Oss管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/aliyun/oss")
 public class OssController {
 	
-	@Resource
+	@Autowired
 	private OssService oSSService;
 	
-	@ApiOperation("oss上传签名生成")
+	@Operation(summary ="oss上传签名生成")
 	@GetMapping("/policy")
 	@ResponseBody
 	public CommonResult<OssPolicyResult> policy() {
@@ -27,7 +28,7 @@ public class OssController {
 		return CommonResult.success(result);
 	}
 	
-	@ApiOperation("oss上传成功回调")
+	@Operation(summary ="oss上传成功回调")
 	@PostMapping("/callback")
 	@ResponseBody
 	public CommonResult<OssCallbackResult> callback(HttpServletRequest request) {

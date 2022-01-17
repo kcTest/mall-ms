@@ -57,7 +57,7 @@ redis:
     member: 'ums:member'
   expire:
     authCode: 90
-    common:86400
+    common: 86400
 
 rabbitmq:
   queue:
@@ -72,4 +72,3 @@ feign:
       default:
         connect-timeout: 3000
         read-timeout: 3000
-    

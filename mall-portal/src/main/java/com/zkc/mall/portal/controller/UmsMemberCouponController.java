@@ -7,26 +7,29 @@ import com.zkc.mall.portal.domain.CartPromotionItem;
 import com.zkc.mall.portal.domain.SmsCouponHistoryDetail;
 import com.zkc.mall.portal.service.OmsCartItemService;
 import com.zkc.mall.portal.service.UmsMemberCouponService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
-
-@Api("用户优惠券管理")
+@Tag(name = "UmsMemberCouponController", description = "用户优惠券管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/member/coupon")
 public class UmsMemberCouponController {
 	
-	@Resource
+	@Autowired
 	private UmsMemberCouponService couponService;
 	
-	@Resource
+	@Autowired
 	private OmsCartItemService cartItemService;
 	
-	@ApiOperation("领取指定优惠券")
+	@Operation(summary = "领取指定优惠券")
 	@PostMapping("/add/{couponId}")
 	@ResponseBody
 	public CommonResult<?> add(@PathVariable Long couponId) {
@@ -34,9 +37,10 @@ public class UmsMemberCouponController {
 		return CommonResult.success("领取成功");
 	}
 	
-	@ApiOperation("获取用户优惠券历史列表")
-	@ApiImplicitParam(name = "useStatus", value = "优惠券筛选类型:0->未使用 1->已使用 2->已过期",
-			allowableValues = "0,1,2", paramType = "query", dataType = "integer")
+	@Operation(summary = "获取用户优惠券历史列表")
+	@Parameter(name = "useStatus", description = "优惠券筛选类型:0->未使用 1->已使用 2->已过期",
+			in = ParameterIn.QUERY,
+			content = @Content(schema = @Schema(allowableValues = "0,1,2", type = "integer")))
 	@GetMapping("/listHistory")
 	@ResponseBody
 	public CommonResult<List<SmsCouponHistory>> listHistory(@RequestParam(value = "useStatus", required = false) Integer useStatus) {
@@ -45,9 +49,10 @@ public class UmsMemberCouponController {
 	}
 	
 	
-	@ApiOperation("获取用户优惠券列表")
-	@ApiImplicitParam(name = "useStatus", value = "优惠券筛选类型:0->未使用 1->已使用 2->已过期",
-			allowableValues = "0,1,2", paramType = "query", dataType = "integer")
+	@Operation(summary = "获取用户优惠券列表")
+	@Parameter(name = "useStatus", description = "优惠券筛选类型:0->未使用 1->已使用 2->已过期",
+			in = ParameterIn.QUERY,
+			content = @Content(schema = @Schema(allowableValues = "0,1,2", type = "integer")))
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<List<SmsCoupon>> list(@RequestParam(value = "useStatus", required = false) Integer useStatus) {
@@ -55,9 +60,10 @@ public class UmsMemberCouponController {
 		return CommonResult.success(couponHistoryList);
 	}
 	
-	@ApiOperation("获取登录会员购物车的相关优惠券")
-	@ApiImplicitParam(name = "type", value = "0->不可用 1->可用",
-			defaultValue = "1", allowableValues = "0,1", paramType = "query", dataType = "integer")
+	@Operation(summary = "获取登录会员购物车的相关优惠券")
+	@Parameter(name = "type", description = "0->不可用 1->可用",
+			in = ParameterIn.QUERY,
+			content = @Content(schema = @Schema(defaultValue = "1", allowableValues = "0,1", type = "integer")))
 	@GetMapping("/list/cart/{type}")
 	@ResponseBody
 	public CommonResult<List<SmsCouponHistoryDetail>> listCart(@PathVariable Integer type) {
@@ -66,7 +72,7 @@ public class UmsMemberCouponController {
 		return CommonResult.success(historyDetailList);
 	}
 	
-	@ApiOperation("获取当前商品相关优惠券")
+	@Operation(summary = "获取当前商品相关优惠券")
 	@GetMapping("/listByProduct/{productId}")
 	@ResponseBody
 	public CommonResult<List<SmsCoupon>> listByProduct(@PathVariable Long productId) {

@@ -11,7 +11,7 @@ import com.zkc.mall.portal.service.UmsMemberCouponService;
 import com.zkc.mall.portal.service.UmsMemberService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,25 +22,25 @@ import java.util.stream.Collectors;
 @Service
 public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
 	
-	@Resource
+	@Autowired
 	private SmsCouponMapper couponMapper;
 	
-	@Resource
+	@Autowired
 	private SmsCouponHistoryMapper couponHistoryMapper;
 	
-	@Resource
+	@Autowired
 	private SmsCouponProductRelationMapper couponProductRelationMapper;
 	
-	@Resource
+	@Autowired
 	private SmsCouponProductCategoryRelationMapper couponProductCategoryRelationMapper;
 	
-	@Resource
+	@Autowired
 	private SmsCouponHistoryDao couponHistoryDao;
 	
-	@Resource
+	@Autowired
 	private PmsProductMapper productMapper;
 	
-	@Resource
+	@Autowired
 	private UmsMemberService memberService;
 	
 	@Override

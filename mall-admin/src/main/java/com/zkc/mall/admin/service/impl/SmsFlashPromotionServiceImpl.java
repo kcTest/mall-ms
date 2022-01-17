@@ -8,14 +8,14 @@ import com.zkc.mall.mbg.model.SmsFlashPromotion;
 import com.zkc.mall.mbg.model.SmsFlashPromotionExample;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class SmsFlashPromotionServiceImpl implements SmsFlashPromotionService {
 	
-	@Resource
+	@Autowired
 	private SmsFlashPromotionMapper flashPromotionMapper;
 	
 	@Override

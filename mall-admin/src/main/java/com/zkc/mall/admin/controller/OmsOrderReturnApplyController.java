@@ -6,22 +6,23 @@ import com.zkc.mall.admin.service.OmsOrderReturnApplyService;
 import com.zkc.mall.common.api.CommonPage;
 import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.mbg.model.OmsOrderReturnApply;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
-@Api("退货申请管理")
+@Tag(name = "OmsOrderReturnApplyController", description = "退货申请管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/returnApply")
 public class OmsOrderReturnApplyController {
 	
-	@Resource
+	@Autowired
 	private OmsOrderReturnApplyService returnApplyService;
 	
-	@ApiOperation("分页查询退货申请")
+	@Operation(summary ="分页查询退货申请")
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<CommonPage<OmsOrderReturnApply>> list(
@@ -32,7 +33,7 @@ public class OmsOrderReturnApplyController {
 		return CommonResult.success(CommonPage.restPage(returnReasonApplyList));
 	}
 	
-	@ApiOperation("批量删除退货申请")
+	@Operation(summary ="批量删除退货申请")
 	@PostMapping("/delete")
 	@ResponseBody
 	public CommonResult<?> delete(@RequestParam("ids") List<Long> ids) {
@@ -41,7 +42,7 @@ public class OmsOrderReturnApplyController {
 	}
 	
 	
-	@ApiOperation("获取单个退货申请详情")
+	@Operation(summary ="获取单个退货申请详情")
 	@GetMapping("/{id}")
 	@ResponseBody
 	public CommonResult<OmsOrderReturnApply> getItem(@PathVariable Long id) {
@@ -50,7 +51,7 @@ public class OmsOrderReturnApplyController {
 	}
 	
 	
-	@ApiOperation("修改退货申请状态")
+	@Operation(summary ="修改退货申请状态")
 	@PostMapping("/update/status/{id}")
 	@ResponseBody
 	public CommonResult<?> updateStatus(@PathVariable Long id, @RequestBody OmsUpdateStatusParam statusParam) {

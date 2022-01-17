@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import java.util.Date;
  * sms_home_advertise
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.SmsHomeAdvertise首页轮播广告表")
+@Schema(description="com.zkc.mall.mbg.model.SmsHomeAdvertise首页轮播广告表")
 public class SmsHomeAdvertise implements Serializable {
     private Long id;
 
@@ -18,7 +18,7 @@ public class SmsHomeAdvertise implements Serializable {
     /**
      * 轮播位置：0->PC首页轮播；1->app首页轮播
      */
-    @ApiModelProperty(value="轮播位置：0->PC首页轮播；1->app首页轮播")
+   @Schema(description="轮播位置：0->PC首页轮播；1->app首页轮播")
     private Integer type;
 
     private String pic;
@@ -30,37 +30,37 @@ public class SmsHomeAdvertise implements Serializable {
     /**
      * 上下线状态：0->下线；1->上线
      */
-    @ApiModelProperty(value="上下线状态：0->下线；1->上线")
+   @Schema(description="上下线状态：0->下线；1->上线")
     private Integer status;
 
     /**
      * 点击数
      */
-    @ApiModelProperty(value="点击数")
+   @Schema(description="点击数")
     private Integer clickCount;
 
     /**
      * 下单数
      */
-    @ApiModelProperty(value="下单数")
+   @Schema(description="下单数")
     private Integer orderCount;
 
     /**
      * 链接地址
      */
-    @ApiModelProperty(value="链接地址")
+   @Schema(description="链接地址")
     private String url;
 
     /**
      * 备注
      */
-    @ApiModelProperty(value="备注")
+   @Schema(description="备注")
     private String note;
 
     /**
      * 排序
      */
-    @ApiModelProperty(value="排序")
+   @Schema(description="排序")
     private Integer sort;
 
     private static final long serialVersionUID = 1L;

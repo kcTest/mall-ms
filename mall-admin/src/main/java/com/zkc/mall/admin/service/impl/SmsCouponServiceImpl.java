@@ -13,23 +13,23 @@ import com.zkc.mall.mbg.mapper.SmsCouponProductRelationMapper;
 import com.zkc.mall.mbg.model.*;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class SmsCouponServiceImpl implements SmsCouponService {
 	
-	@Resource
+	@Autowired
 	private SmsCouponMapper couponMapper;
-	@Resource
+	@Autowired
 	private SmsCouponDao couponDao;
-	@Resource
+	@Autowired
 	private SmsCouponProductRelationMapper couponProductRelationMapper;
-	@Resource
+	@Autowired
 	private SmsCouponProductRelationDao couponProductRelationDao;
-	@Resource
+	@Autowired
 	private SmsCouponProductCategoryRelationMapper couponProductCategoryRelationMapper;
-	@Resource
+	@Autowired
 	private SmsCouponProductCategoryRelationDao couponProductCategoryRelationDao;
 	
 	@Override

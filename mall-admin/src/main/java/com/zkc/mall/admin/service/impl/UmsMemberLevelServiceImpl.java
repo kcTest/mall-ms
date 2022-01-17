@@ -6,13 +6,13 @@ import com.zkc.mall.mbg.model.UmsMemberLevel;
 import com.zkc.mall.mbg.model.UmsMemberLevelExample;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class UmsMemberLevelServiceImpl implements UmsMemberLevelService {
 	
-	@Resource
+	@Autowired
 	private UmsMemberLevelMapper memberLevelMapper;
 	
 	@Override

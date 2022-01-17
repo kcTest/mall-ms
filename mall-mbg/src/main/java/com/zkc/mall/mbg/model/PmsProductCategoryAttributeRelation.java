@@ -1,14 +1,14 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 
 /**
  * pms_product_category_attribute_relation
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.PmsProductCategoryAttributeRelation产品的分类和属性的关系表，用于设置分类筛选条件（只支持一级分类）")
+@Schema(description="com.zkc.mall.mbg.model.PmsProductCategoryAttributeRelation产品的分类和属性的关系表，用于设置分类筛选条件（只支持一级分类）")
 public class PmsProductCategoryAttributeRelation implements Serializable {
     private Long id;
 

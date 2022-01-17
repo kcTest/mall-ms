@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * pms_sku_stock
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.PmsSkuStocksku的库存")
+@Schema(description="com.zkc.mall.mbg.model.PmsSkuStocksku的库存")
 public class PmsSkuStock implements Serializable {
     private Long id;
 
@@ -18,7 +18,7 @@ public class PmsSkuStock implements Serializable {
     /**
      * sku编码
      */
-    @ApiModelProperty(value="sku编码")
+   @Schema(description="sku编码")
     private String skuCode;
 
     private BigDecimal price;
@@ -26,43 +26,43 @@ public class PmsSkuStock implements Serializable {
     /**
      * 库存
      */
-    @ApiModelProperty(value="库存")
+   @Schema(description="库存")
     private Integer stock;
 
     /**
      * 预警库存
      */
-    @ApiModelProperty(value="预警库存")
+   @Schema(description="预警库存")
     private Integer lowStock;
 
     /**
      * 展示图片
      */
-    @ApiModelProperty(value="展示图片")
+   @Schema(description="展示图片")
     private String pic;
 
     /**
      * 销量
      */
-    @ApiModelProperty(value="销量")
+   @Schema(description="销量")
     private Integer sale;
 
     /**
      * 单品促销价格
      */
-    @ApiModelProperty(value="单品促销价格")
+   @Schema(description="单品促销价格")
     private BigDecimal promotionPrice;
 
     /**
      * 锁定库存
      */
-    @ApiModelProperty(value="锁定库存")
+   @Schema(description="锁定库存")
     private Integer lockStock;
 
     /**
      * 商品销售属性，json格式
      */
-    @ApiModelProperty(value="商品销售属性，json格式")
+   @Schema(description="商品销售属性，json格式")
     private String spData;
 
     private static final long serialVersionUID = 1L;

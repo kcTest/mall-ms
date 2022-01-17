@@ -4,22 +4,22 @@ import com.zkc.mall.common.api.CommonPage;
 import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.portal.domain.MemberBrandAttention;
 import com.zkc.mall.portal.service.MemberAttentionService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
-
-@Api("会员关注品牌管理")
+@Tag(name = "MemberAttentionController", description = "会员关注品牌管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/member/attention")
 public class MemberAttentionController {
 	
-	@Resource
+	@Autowired
 	private MemberAttentionService memberAttentionService;
 	
-	@ApiOperation("添加品牌关注")
+	@Operation(summary ="添加品牌关注")
 	@PostMapping("/add")
 	@ResponseBody
 	public CommonResult<?> add(@RequestBody MemberBrandAttention brandAttention) {
@@ -27,7 +27,7 @@ public class MemberAttentionController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("取消品牌关注")
+	@Operation(summary ="取消品牌关注")
 	@PostMapping("/delete")
 	@ResponseBody
 	public CommonResult<?> delete(@RequestParam("brandId") Long brandId) {
@@ -36,7 +36,7 @@ public class MemberAttentionController {
 	}
 	
 	
-	@ApiOperation("显示关注列表")
+	@Operation(summary ="显示关注列表")
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<CommonPage<MemberBrandAttention>> list(
@@ -46,7 +46,7 @@ public class MemberAttentionController {
 		return CommonResult.success(CommonPage.restPage(brandAttentionList));
 	}
 	
-	@ApiOperation("显示品牌关注详情")
+	@Operation(summary ="显示品牌关注详情")
 	@GetMapping("/detail")
 	@ResponseBody
 	public CommonResult<MemberBrandAttention> detail(@RequestParam("brandId") Long brandId) {
@@ -54,7 +54,7 @@ public class MemberAttentionController {
 		return CommonResult.success(brandAttention);
 	}
 	
-	@ApiOperation("清空品牌关注列表")
+	@Operation(summary ="清空品牌关注列表")
 	@PostMapping("/clear")
 	@ResponseBody
 	public CommonResult<MemberBrandAttention> clear() {

@@ -8,13 +8,13 @@ import com.zkc.mall.mbg.model.CmsSubject;
 import com.zkc.mall.mbg.model.CmsSubjectExample;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class CmsSubjectServiceImpl implements CmsSubjectService {
 	
-	@Resource
+	@Autowired
 	private CmsSubjectMapper subjectMapper;
 	
 	@Override

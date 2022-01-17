@@ -10,14 +10,14 @@ import com.zkc.mall.mbg.model.SmsHomeAdvertise;
 import com.zkc.mall.mbg.model.SmsHomeAdvertiseExample;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class SmsHomeAdvertiseServiceImpl implements SmsHomeAdvertiseService {
 	
-	@Resource
+	@Autowired
 	private SmsHomeAdvertiseMapper homeAdvertiseMapper;
 	
 	@Override

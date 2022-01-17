@@ -5,22 +5,22 @@ import com.zkc.mall.admin.service.SmsCouponService;
 import com.zkc.mall.common.api.CommonPage;
 import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.mbg.model.SmsCoupon;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
-
-@Api("优惠券管理")
+@Tag(name = "SmsCouponController", description = "优惠券管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/coupon")
 public class SmsCouponController {
 	
-	@Resource
+	@Autowired
 	private SmsCouponService couponService;
 	
-	@ApiOperation("添加优惠券")
+	@Operation(summary ="添加优惠券")
 	@PostMapping("/create")
 	@ResponseBody
 	public CommonResult<?> create(@RequestBody SmsCouponParam flashPromotion) {
@@ -28,7 +28,7 @@ public class SmsCouponController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("删除优惠券")
+	@Operation(summary ="删除优惠券")
 	@PostMapping("/delete/{id}")
 	@ResponseBody
 	public CommonResult<?> delete(@PathVariable Long id) {
@@ -36,7 +36,7 @@ public class SmsCouponController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@ApiOperation("修改优惠券")
+	@Operation(summary ="修改优惠券")
 	@PostMapping("/update/{id}")
 	@ResponseBody
 	public CommonResult<?> update(@PathVariable Long id, @RequestBody SmsCouponParam couponParam) {
@@ -45,7 +45,7 @@ public class SmsCouponController {
 	}
 	
 	
-	@ApiOperation("获取单个优惠券详情")
+	@Operation(summary ="获取单个优惠券详情")
 	@PostMapping("/{id}")
 	@ResponseBody
 	public CommonResult<SmsCouponParam> getItem(@PathVariable Long id) {
@@ -54,7 +54,7 @@ public class SmsCouponController {
 	}
 	
 	
-	@ApiOperation("根据名称和类型 分页查询优惠券列表")
+	@Operation(summary ="根据名称和类型 分页查询优惠券列表")
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<CommonPage<SmsCoupon>> list(

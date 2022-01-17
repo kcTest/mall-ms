@@ -10,16 +10,16 @@ import com.zkc.mall.mbg.model.PmsSkuStock;
 import com.zkc.mall.mbg.model.PmsSkuStockExample;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class PmsSkuStockServiceImpl implements PmsSkuStockService {
 	
-	@Resource
+	@Autowired
 	private PmsSkuStockMapper skuStockMapper;
 	
-	@Resource
+	@Autowired
 	private PmsSkuStockDao skuStockDao;
 	
 	@Override

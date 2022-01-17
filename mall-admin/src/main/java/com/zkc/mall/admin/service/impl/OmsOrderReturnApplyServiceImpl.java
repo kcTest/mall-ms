@@ -10,17 +10,17 @@ import com.zkc.mall.mbg.model.OmsOrderReturnApply;
 import com.zkc.mall.mbg.model.OmsOrderReturnApplyExample;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class OmsOrderReturnApplyServiceImpl implements OmsOrderReturnApplyService {
 	
-	@Resource
+	@Autowired
 	private OmsOrderReturnApplyDao returnApplyDao;
 	
-	@Resource
+	@Autowired
 	private OmsOrderReturnApplyMapper returnApplyMapper;
 	
 	@Override

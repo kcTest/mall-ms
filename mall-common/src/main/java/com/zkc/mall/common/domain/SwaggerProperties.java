@@ -8,6 +8,11 @@ import lombok.Data;
 public class SwaggerProperties {
 	
 	/**
+	 * 应用名称
+	 */
+	private String name;
+	
+	/**
 	 * API文档生成基础路径
 	 */
 	private String apiBasePackage;

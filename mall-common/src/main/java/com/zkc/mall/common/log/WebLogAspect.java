@@ -1,11 +1,10 @@
 package com.zkc.mall.common.log;
 
-import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.json.JSONUtil;
 import com.zkc.mall.common.domain.WebLog;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import net.logstash.logback.marker.Markers;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -66,9 +65,9 @@ public class WebLogAspect {
 		Signature signature = joinPoint.getSignature();
 		MethodSignature methodSignature = (MethodSignature) signature;
 		Method method = methodSignature.getMethod();
-		if (method.isAnnotationPresent(ApiOperation.class)) {
-			ApiOperation annotation = method.getAnnotation(ApiOperation.class);
-			webLog.setDescription(annotation.value());
+		if (method.isAnnotationPresent(Operation.class)) {
+			Operation annotation = method.getAnnotation(Operation.class);
+			webLog.setDescription(annotation.summary());
 		}
 		
 		long endTime = System.currentTimeMillis();

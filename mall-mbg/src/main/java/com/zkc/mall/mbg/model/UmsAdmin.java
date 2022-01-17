@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import java.util.Date;
  * ums_admin
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.UmsAdmin后台用户表")
+@Schema(description="com.zkc.mall.mbg.model.UmsAdmin后台用户表")
 public class UmsAdmin implements Serializable {
     private Long id;
 
@@ -20,43 +20,43 @@ public class UmsAdmin implements Serializable {
     /**
      * 头像
      */
-    @ApiModelProperty(value="头像")
+   @Schema(description="头像")
     private String icon;
 
     /**
      * 邮箱
      */
-    @ApiModelProperty(value="邮箱")
+   @Schema(description="邮箱")
     private String email;
 
     /**
      * 昵称
      */
-    @ApiModelProperty(value="昵称")
+   @Schema(description="昵称")
     private String nickName;
 
     /**
      * 备注信息
      */
-    @ApiModelProperty(value="备注信息")
+   @Schema(description="备注信息")
     private String note;
 
     /**
      * 创建时间
      */
-    @ApiModelProperty(value="创建时间")
+   @Schema(description="创建时间")
     private Date createTime;
 
     /**
      * 最后登录时间
      */
-    @ApiModelProperty(value="最后登录时间")
+   @Schema(description="最后登录时间")
     private Date loginTime;
 
     /**
      * 帐号启用状态：0->禁用；1->启用
      */
-    @ApiModelProperty(value="帐号启用状态：0->禁用；1->启用")
+   @Schema(description="帐号启用状态：0->禁用；1->启用")
     private Integer status;
 
     private static final long serialVersionUID = 1L;

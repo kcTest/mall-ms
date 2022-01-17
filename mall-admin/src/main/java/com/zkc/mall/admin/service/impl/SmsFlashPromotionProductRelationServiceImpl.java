@@ -9,15 +9,15 @@ import com.zkc.mall.mbg.model.SmsFlashPromotionProductRelation;
 import com.zkc.mall.mbg.model.SmsFlashPromotionProductRelationExample;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Service
 public class SmsFlashPromotionProductRelationServiceImpl implements SmsFlashPromotionProductRelationService {
 	
-	@Resource
+	@Autowired
 	private SmsFlashPromotionProductRelationMapper relationMapper;
-	@Resource
+	@Autowired
 	private SmsFlashPromotionProductRelationDao relationDao;
 	
 	@Override

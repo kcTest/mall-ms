@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import java.util.Date;
  * sms_flash_promotion
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.SmsFlashPromotion限时购表")
+@Schema(description="com.zkc.mall.mbg.model.SmsFlashPromotion限时购表")
 public class SmsFlashPromotion implements Serializable {
     private Long id;
 
@@ -18,25 +18,25 @@ public class SmsFlashPromotion implements Serializable {
     /**
      * 开始日期
      */
-    @ApiModelProperty(value="开始日期")
+   @Schema(description="开始日期")
     private Date startDate;
 
     /**
      * 结束日期
      */
-    @ApiModelProperty(value="结束日期")
+   @Schema(description="结束日期")
     private Date endDate;
 
     /**
      * 上下线状态
      */
-    @ApiModelProperty(value="上下线状态")
+   @Schema(description="上下线状态")
     private Integer status;
 
     /**
      * 秒杀时间段名称
      */
-    @ApiModelProperty(value="秒杀时间段名称")
+   @Schema(description="秒杀时间段名称")
     private Date createTime;
 
     private static final long serialVersionUID = 1L;

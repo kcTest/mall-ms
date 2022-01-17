@@ -9,7 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,9 +17,9 @@ import java.util.List;
 @Service
 public class MemberReadHistoryServiceImpl implements MemberReadHistoryService {
 	
-	@Resource
+	@Autowired
 	private UmsMemberService memberService;
-	@Resource
+	@Autowired
 	private MemberReadHistoryRepository memberReadHistoryRepository;
 	
 	@Override

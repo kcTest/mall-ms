@@ -10,32 +10,32 @@ import com.zkc.mall.portal.dao.PmsPortalProductDao;
 import com.zkc.mall.portal.domain.PmsPortalProductDetail;
 import com.zkc.mall.portal.domain.PmsProductCategoryNode;
 import com.zkc.mall.portal.service.PmsPortalProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class PmsPortalProductServiceImpl implements PmsPortalProductService {
 	
-	@Resource
+	@Autowired
 	private PmsProductMapper productMapper;
-	@Resource
+	@Autowired
 	private PmsBrandMapper brandMapper;
-	@Resource
+	@Autowired
 	private PmsProductCategoryMapper productCategoryMapper;
-	@Resource
+	@Autowired
 	private PmsProductAttributeMapper productAttributeMapper;
-	@Resource
+	@Autowired
 	private PmsProductAttributeValueMapper productAttributeValueMapper;
-	@Resource
+	@Autowired
 	private PmsSkuStockMapper skuStockMapper;
-	@Resource
+	@Autowired
 	private PmsProductLadderMapper productLadderMapper;
-	@Resource
+	@Autowired
 	private PmsProductFullReductionMapper productFullReductionMapper;
-	@Resource
+	@Autowired
 	private PmsPortalProductDao portalProductDao;
 	
 	
@@ -78,7 +78,7 @@ public class PmsPortalProductServiceImpl implements PmsPortalProductService {
 	public List<PmsProductCategoryNode> categoryTreeList() {
 		List<PmsProductCategory> categoryList = productCategoryMapper.selectByExample(new PmsProductCategoryExample());
 		List<PmsProductCategoryNode> categoryNodeList = categoryList.stream()
-				.filter(c -> c.getParentId().equals(0))
+				.filter(c -> c.getParentId().equals(0L))
 				.map(c -> convert(c, categoryList)).collect(Collectors.toList());
 		return categoryNodeList;
 	}

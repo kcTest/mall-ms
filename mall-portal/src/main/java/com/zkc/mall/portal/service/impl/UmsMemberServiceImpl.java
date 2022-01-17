@@ -22,7 +22,7 @@ import com.zkc.mall.portal.service.UmsMemberCacheService;
 import com.zkc.mall.portal.service.UmsMemberService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
@@ -32,15 +32,15 @@ import java.util.Map;
 @Service
 public class UmsMemberServiceImpl implements UmsMemberService {
 	
-	@Resource
+	@Autowired
 	private HttpServletRequest request;
-	@Resource
+	@Autowired
 	private UmsMemberCacheService memberCacheService;
-	@Resource
+	@Autowired
 	private UmsMemberMapper memberMapper;
-	@Resource
+	@Autowired
 	private UmsMemberLevelMapper memberLevelMapper;
-	@Resource
+	@Autowired
 	private AuthService authService;
 	
 	@Override

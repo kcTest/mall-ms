@@ -3,25 +3,23 @@ package com.zkc.mall.admin.controller;
 import com.zkc.mall.admin.service.OmsCompanyAddressService;
 import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.mbg.model.OmsCompanyAddress;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
 
-@Api("收货地址管理")
+@Tag(name = "OmsCompanyAddressController", description = "收货地址管理")
+@CrossOrigin
 @RestController
 @RequestMapping("/companyAddress")
 public class OmsCompanyAddressController {
 	
-	@Resource
+	@Autowired
 	private OmsCompanyAddressService orderService;
 	
-	@ApiOperation("获取所有收货地址")
+	@Operation(summary ="获取所有收货地址")
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<List<OmsCompanyAddress>> list() {

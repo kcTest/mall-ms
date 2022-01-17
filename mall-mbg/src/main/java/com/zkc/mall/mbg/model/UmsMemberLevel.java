@@ -1,7 +1,7 @@
 package com.zkc.mall.mbg.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * ums_member_level
  * @author 
  */
-@ApiModel(value="com.zkc.mall.mbg.model.UmsMemberLevel会员等级表")
+@Schema(description="com.zkc.mall.mbg.model.UmsMemberLevel会员等级表")
 public class UmsMemberLevel implements Serializable {
     private Long id;
 
@@ -20,55 +20,55 @@ public class UmsMemberLevel implements Serializable {
     /**
      * 是否为默认等级：0->不是；1->是
      */
-    @ApiModelProperty(value="是否为默认等级：0->不是；1->是")
+   @Schema(description="是否为默认等级：0->不是；1->是")
     private Integer defaultStatus;
 
     /**
      * 免运费标准
      */
-    @ApiModelProperty(value="免运费标准")
+   @Schema(description="免运费标准")
     private BigDecimal freeFreightPoint;
 
     /**
      * 每次评价获取的成长值
      */
-    @ApiModelProperty(value="每次评价获取的成长值")
+   @Schema(description="每次评价获取的成长值")
     private Integer commentGrowthPoint;
 
     /**
      * 是否有免邮特权
      */
-    @ApiModelProperty(value="是否有免邮特权")
+   @Schema(description="是否有免邮特权")
     private Integer priviledgeFreeFreight;
 
     /**
      * 是否有签到特权
      */
-    @ApiModelProperty(value="是否有签到特权")
+   @Schema(description="是否有签到特权")
     private Integer priviledgeSignIn;
 
     /**
      * 是否有评论获奖励特权
      */
-    @ApiModelProperty(value="是否有评论获奖励特权")
+   @Schema(description="是否有评论获奖励特权")
     private Integer priviledgeComment;
 
     /**
      * 是否有专享活动特权
      */
-    @ApiModelProperty(value="是否有专享活动特权")
+   @Schema(description="是否有专享活动特权")
     private Integer priviledgePromotion;
 
     /**
      * 是否有会员价格特权
      */
-    @ApiModelProperty(value="是否有会员价格特权")
+   @Schema(description="是否有会员价格特权")
     private Integer priviledgeMemberPrice;
 
     /**
      * 是否有生日特权
      */
-    @ApiModelProperty(value="是否有生日特权")
+   @Schema(description="是否有生日特权")
     private Integer priviledgeBirthday;
 
     private String note;

@@ -9,7 +9,7 @@ import com.zkc.mall.mbg.model.UmsMenuExample;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Service
 public class UmsMenuServiceImpl implements UmsMenuService {
 	
-	@Resource
+	@Autowired
 	private UmsMenuMapper menuMapper;
 	
 	@Override
@@ -57,7 +57,7 @@ public class UmsMenuServiceImpl implements UmsMenuService {
 	public List<UmsMenuNode> treeList() {
 		List<UmsMenu> umsMenuList = menuMapper.selectByExample(new UmsMenuExample());
 		return umsMenuList.stream()
-				.filter(i -> i.getParentId().equals(0))
+				.filter(i -> i.getParentId().equals(0L))
 				.map(i -> convertMenuNode(i, umsMenuList)).collect(Collectors.toList());
 	}
 	
