@@ -26,6 +26,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -59,7 +60,12 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 		params.put(AuthConstant.AUTH_GRANT_TYPE, AuthConstant.AUTH_GRANT_TYPE_DEFAULT);
 		params.put(AuthConstant.AUTH_USERNAME, username);
 		params.put(AuthConstant.AUTH_PASSWORD, password);
-		CommonResult restResult = authService.getAccessToken(params);
+		CommonResult restResult = CommonResult.failed("登录异常");
+		try {
+			restResult = authService.getAccessToken(params);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if (restResult.getCode() == ResultCode.SUCCESS.getCode() && restResult.getData() != null) {
 			insertLoginLog(username);
 		}

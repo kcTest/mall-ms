@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 @Tag(name = "MemberProductCollectionController", description = "会员收藏管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/member/productCollection")
 public class MemberProductCollectionController {

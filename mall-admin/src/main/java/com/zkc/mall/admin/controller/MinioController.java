@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Tag(name = "MinioController", description = "minio对象存储管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/minio")
 public class MinioController {
@@ -34,7 +34,7 @@ public class MinioController {
 	@Value("${minio.bucketName}")
 	private String BUCKET_NAME;
 	
-	@Operation(summary ="文件上传")
+	@Operation(summary = "文件上传")
 	@PostMapping("/upload")
 	@ResponseBody
 	public CommonResult<?> upload(@RequestParam("file") MultipartFile file) {
@@ -59,29 +59,28 @@ public class MinioController {
 						.config(JSONUtil.toJsonStr(bucketPolicyConfigDto))
 						.build();
 				client.setBucketPolicy(policyArgs);
-				
-				//存储对象名称
-				String filename = file.getOriginalFilename();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-				String objectName = sdf.format(new Date()) + "/" + filename;
-				
-				//上传
-				PutObjectArgs putObjectArgs = PutObjectArgs.builder()
-						.bucket(BUCKET_NAME)
-						.object(objectName)
-						.contentType(file.getContentType())
-						.stream(file.getInputStream(), file.getSize(), ObjectWriteArgs.MIN_MULTIPART_SIZE)
-						.build();
-				
-				client.putObject(putObjectArgs);
-				LOGGER.info("上传文件成功!");
-				
-				MinioUploadDto uploadDto = new MinioUploadDto();
-				uploadDto.setName(filename);
-				uploadDto.setUrl(ENDPOINT + "/" + BUCKET_NAME + "/" + objectName);
-				
-				return CommonResult.success(uploadDto);
 			}
+			//存储对象名称
+			String filename = file.getOriginalFilename();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+			String objectName = sdf.format(new Date()) + "/" + filename;
+			
+			//上传
+			PutObjectArgs putObjectArgs = PutObjectArgs.builder()
+					.bucket(BUCKET_NAME)
+					.object(objectName)
+					.contentType(file.getContentType())
+					.stream(file.getInputStream(), file.getSize(), ObjectWriteArgs.MIN_MULTIPART_SIZE)
+					.build();
+			
+			client.putObject(putObjectArgs);
+			LOGGER.info("上传文件成功!");
+			
+			MinioUploadDto uploadDto = new MinioUploadDto();
+			uploadDto.setName(filename);
+			uploadDto.setUrl(ENDPOINT + "/" + BUCKET_NAME + "/" + objectName);
+			
+			return CommonResult.success(uploadDto);
 		} catch (Exception e) {
 			e.printStackTrace();
 			LOGGER.error("上传文件发生错误:{}!", e.getMessage());
@@ -104,7 +103,7 @@ public class MinioController {
 	}
 	
 	
-	@Operation(summary ="文件删除")
+	@Operation(summary = "文件删除")
 	@PostMapping("/delete")
 	@ResponseBody
 	public CommonResult<?> delete(@RequestParam("objectName") String objectName) {

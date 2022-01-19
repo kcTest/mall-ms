@@ -11,7 +11,7 @@ import java.util.Map;
 public interface UmsResourceService {
 	
 	
-	Map<String, List<String>> initResourceRoleMap();
+	Map<String, List<String>> initResourceRolesMap();
 	
 	int create(UmsResource umsResource);
 	

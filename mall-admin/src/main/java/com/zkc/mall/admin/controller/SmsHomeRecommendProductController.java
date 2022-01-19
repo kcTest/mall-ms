@@ -13,7 +13,7 @@ import java.util.List;
 
 @Tag(name = "SmsHomeRecommendProductController", description = "首页人气推荐管理")
 @RequestMapping(value = "/home/recommendProduct")
-@CrossOrigin
+
 @RestController
 public class SmsHomeRecommendProductController {
 	

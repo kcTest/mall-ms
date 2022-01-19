@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Tag(name = "SmsFlashPromotionSessionController", description = "限时购（秒杀）活动场次（时间段）管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/brand")
 public class PortalBrandController {

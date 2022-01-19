@@ -17,7 +17,7 @@ import java.security.Principal;
 import java.util.Map;
 
 @Tag(name = "AuthController", description = "认证中心登录认证")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/oauth")
 public class AuthController {
@@ -41,7 +41,7 @@ public class AuthController {
 		Oauth2TokenDto oauth2TokenDto = Oauth2TokenDto.builder()
 				.token(oAuth2AccessToken.getValue())
 				.refreshToken(oAuth2AccessToken.getRefreshToken().getValue())
-				.tokenHead(AuthConstant.JWT_TOKEN_HEADER)
+				.tokenHead(AuthConstant.JWT_TOKEN_PREFIX)
 				.expiresIn(oAuth2AccessToken.getExpiresIn()).build();
 		
 		return CommonResult.success(oauth2TokenDto);

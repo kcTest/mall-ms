@@ -5,9 +5,9 @@
         insert into pms_product_vertify_record(product_id, create_time, vertify_man, status, detail)
         VALUES
         <foreach collection="list" item="=item" index="index" separator=",">
-            (#{item.product_id,jdbcType=BIGINT},
-            #{item.create_time,jdbcType=TIMESTAMP},
-            #{item.vertify_man,jdbcType=VARCHAR},
+            (#{item.productId,jdbcType=BIGINT},
+            #{item.createTime,jdbcType=TIMESTAMP},
+            #{item.vertifyMan,jdbcType=VARCHAR},
             #{item.status,jdbcType=INTEGER},
             #{item.detail,jdbcType=VARCHAR})
         </foreach>

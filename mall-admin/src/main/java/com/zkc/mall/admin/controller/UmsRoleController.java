@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 @Tag(name = "UmsRoleController", description = "用户后台角色管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/role")
 public class UmsRoleController {

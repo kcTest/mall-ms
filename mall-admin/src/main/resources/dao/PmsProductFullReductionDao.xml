@@ -5,9 +5,9 @@
         insert into pms_product_full_reduction(product_id, full_price, reduce_price)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
-            (#{item.product_id,jdbcType=BIGINT},
-            #{item.full_price,jdbcType=DECIMAL},
-            #{item.reduce_price,jdbcType=DECIMAL})
+            (#{item.productId,jdbcType=BIGINT},
+            #{item.fullPrice,jdbcType=DECIMAL},
+            #{item.reducePrice,jdbcType=DECIMAL})
         </foreach>
     </insert>
 </mapper>

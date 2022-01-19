@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Tag(name = "SmsFlashPromotionController", description = "限时购（秒杀）活动管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/flash")
 public class SmsFlashPromotionController {
@@ -40,7 +40,7 @@ public class SmsFlashPromotionController {
 	@Operation(summary = "删除活动信息")
 	@PostMapping("/delete/{id}")
 	@ResponseBody
-	public CommonResult<?> delete(@RequestParam("id") Long id) {
+	public CommonResult<?> delete(@PathVariable Long id) {
 		int count = smsFlashPromotionService.delete(id);
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
@@ -62,14 +62,14 @@ public class SmsFlashPromotionController {
 		return CommonResult.success(smsFlashPromotion);
 	}
 	
-	@Operation(summary = "分页查询活动")
+	@Operation(summary = "根据活动名称分页查询")
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<CommonPage<SmsFlashPromotion>> list(
-			@RequestParam(value = "title", required = false) String title,
+			@RequestParam(value = "keyword", required = false) String keyword,
 			@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
 			@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-		List<SmsFlashPromotion> smsFlashPromotionList = smsFlashPromotionService.list(title, pageSize, pageNum);
+		List<SmsFlashPromotion> smsFlashPromotionList = smsFlashPromotionService.list(keyword, pageSize, pageNum);
 		return CommonResult.success(CommonPage.restPage(smsFlashPromotionList));
 	}
 }

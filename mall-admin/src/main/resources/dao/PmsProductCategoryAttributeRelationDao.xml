@@ -5,8 +5,8 @@
         insert into pms_product_category_attribute_relation(product_category_id, product_attribute_id)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
-            (#{item.product_category_id,jdbcType=BIGINT},
-            #{item.product_attribute_id,jdbcType=BIGINT})
+            (#{item.productCategoryId,jdbcType=BIGINT},
+            #{item.productAttributeId,jdbcType=BIGINT})
         </foreach>
     </insert>
 </mapper>

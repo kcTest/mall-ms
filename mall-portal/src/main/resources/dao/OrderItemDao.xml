@@ -10,12 +10,12 @@
         real_amount, gift_integration, gift_growth, product_attr)
         values
         <foreach collection="list" item="item" separator="," index="index">
-            (#{item.order_id},#{item.order_sn},#{item.product_id},#{item.product_pic},#{item.product_name},
-            #{item.product_brand},#{item.product_sn},#{item.product_price},#{item.product_quantity},
-            #{item.product_sku_id},#{item.product_sku_code},#{item.product_category_id},
-            #{item.promotion_name},#{item.promotion_amount},#{item.coupon_amount},
-            #{item.integration_amount},#{item.real_amount},#{item. gift_integration},
-            #{item.gift_growth},#{item. product_attr)})
+            (#{item.orderId},#{item.order_sn},#{item.product_id},#{item.product_pic},#{item.product_name},
+            #{item.productBrand},#{item.product_sn},#{item.product_price},#{item.product_quantity},
+            #{item.productSkuId},#{item.product_sku_code},#{item.product_category_id},
+            #{item.promotionName},#{item.promotion_amount},#{item.coupon_amount},
+            #{item.integrationAmount},#{item.real_amount},#{item. gift_integration},
+            #{item.giftGrowth},#{item. product_attr)})
         </foreach>
     </insert>
 </mapper>

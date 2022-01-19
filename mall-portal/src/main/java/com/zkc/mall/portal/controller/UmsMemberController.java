@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 @Tag(name = "UmsMemberController", description = "会员登录注册管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/sso")
 public class UmsMemberController {
@@ -19,7 +19,7 @@ public class UmsMemberController {
 	private UmsMemberService memberService;
 	
 	@Operation(summary ="会员注册")
-	@PostMapping("/registry")
+	@PostMapping("/register")
 	@ResponseBody
 	public CommonResult<?> add(@RequestParam("username") String username,
 							   @RequestParam("password") String password,
@@ -67,8 +67,8 @@ public class UmsMemberController {
 	@Operation(summary ="根据用户名获取通用用户信息")
 	@GetMapping("/loadByUsername")
 	@ResponseBody
-	public UserDto loadByUsername(@RequestParam("username") String username) {
-		return memberService.loadByUsername(username);
+	public UserDto loadUserByUsername(@RequestParam("username") String username) {
+		return memberService.loadUserByUsername(username);
 	}
 	
 }

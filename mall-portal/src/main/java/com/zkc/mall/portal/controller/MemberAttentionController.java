@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 @Tag(name = "MemberAttentionController", description = "会员关注品牌管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/member/attention")
 public class MemberAttentionController {

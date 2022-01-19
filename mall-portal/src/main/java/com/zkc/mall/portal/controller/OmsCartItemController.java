@@ -11,9 +11,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
+
 @Tag(name = "OmsCartItemController", description = "购物车管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/cart")
 public class OmsCartItemController {
@@ -23,7 +25,7 @@ public class OmsCartItemController {
 	@Autowired
 	private UmsMemberService memberService;
 	
-	@Operation(summary ="添加商品到购物车")
+	@Operation(summary = "添加商品到购物车")
 	@PostMapping("/add")
 	@ResponseBody
 	public CommonResult<?> add(@RequestBody OmsCartItem cartItem) {
@@ -31,7 +33,7 @@ public class OmsCartItemController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="查询某个会员的购物车列表")
+	@Operation(summary = "查询某个会员的购物车列表")
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<List<OmsCartItem>> list() {
@@ -39,7 +41,7 @@ public class OmsCartItemController {
 		return CommonResult.success(cartItemList);
 	}
 	
-	@Operation(summary ="查询某个会员的购物车列表 包括促销信息")
+	@Operation(summary = "查询某个会员的购物车列表 包括促销信息")
 	@GetMapping("/list/promotion")
 	@ResponseBody
 	public CommonResult<List<CartPromotionItem>> listPromotion(@RequestParam List<Long> cartIdList) {
@@ -48,7 +50,7 @@ public class OmsCartItemController {
 	}
 	
 	
-	@Operation(summary ="修改购物车中某个商品数量")
+	@Operation(summary = "修改购物车中某个商品数量")
 	@PostMapping("/update/quantity")
 	@ResponseBody
 	public CommonResult<?> updateQuantity(@RequestParam("id") Long id, @RequestParam("quantity") Integer quantity) {
@@ -56,7 +58,7 @@ public class OmsCartItemController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="获取购物车中某个商品的规格，用于重选规格")
+	@Operation(summary = "获取购物车中某个商品的规格，用于重选规格")
 	@GetMapping("/getProduct/{productId}")
 	@ResponseBody
 	public CommonResult<CartProduct> getCartProduct(@PathVariable("productId") Long productId) {
@@ -64,7 +66,7 @@ public class OmsCartItemController {
 		return CommonResult.success(cartProduct);
 	}
 	
-	@Operation(summary ="修改购物车中某个商品的规格")
+	@Operation(summary = "修改购物车中某个商品的规格")
 	@PostMapping("/update/attr")
 	@ResponseBody
 	public CommonResult<?> updateAttr(@RequestBody OmsCartItem cartItem) {
@@ -72,7 +74,7 @@ public class OmsCartItemController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="删除购物车中某个商品")
+	@Operation(summary = "删除购物车中某个商品")
 	@PostMapping("/delete")
 	@ResponseBody
 	public CommonResult<?> delete(@RequestParam("ids") List<Long> ids) {
@@ -80,7 +82,7 @@ public class OmsCartItemController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="清空购物车")
+	@Operation(summary = "清空购物车")
 	@PostMapping("/clear")
 	@ResponseBody
 	public CommonResult<?> clear() {

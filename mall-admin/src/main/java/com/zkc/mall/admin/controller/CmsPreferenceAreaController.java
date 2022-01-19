@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Tag(name = "CmsPreferenceAreaController", description = "商品优选管理")
-@CrossOrigin
+
 @RestController
-@RequestMapping("/preferenceArea")
+@RequestMapping("/prefrenceArea")
 public class CmsPreferenceAreaController {
 	
 	@Autowired

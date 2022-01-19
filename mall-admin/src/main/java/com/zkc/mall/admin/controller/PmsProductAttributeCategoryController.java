@@ -10,10 +10,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
 @Tag(name = "PmsProductAttributeCategoryController", description = "商品属性分类管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping(value = "/productAttribute/category")
 public class PmsProductAttributeCategoryController {
@@ -21,7 +22,7 @@ public class PmsProductAttributeCategoryController {
 	@Autowired
 	private PmsProductAttributeCategoryService attributeCategoryService;
 	
-	@Operation(summary ="添加商品属性分类信息")
+	@Operation(summary = "添加商品属性分类信息")
 	@PostMapping("/create")
 	@ResponseBody
 	public CommonResult<?> create(@RequestParam String name) {
@@ -30,7 +31,7 @@ public class PmsProductAttributeCategoryController {
 	}
 	
 	
-	@Operation(summary ="修改商品属性分类")
+	@Operation(summary = "修改商品属性分类")
 	@PostMapping("/update/{id}")
 	@ResponseBody
 	public CommonResult<?> update(@PathVariable Long id, @RequestParam String name) {
@@ -38,7 +39,7 @@ public class PmsProductAttributeCategoryController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="删除商品属性分类")
+	@Operation(summary = "删除商品属性分类")
 	@PostMapping("/delete/{id}")
 	@ResponseBody
 	public CommonResult<?> delete(@PathVariable Long id) {
@@ -46,7 +47,7 @@ public class PmsProductAttributeCategoryController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="查询单个商品属性分类")
+	@Operation(summary = "查询单个商品属性分类")
 	@GetMapping("/{id}")
 	@ResponseBody
 	public CommonResult<PmsProductAttributeCategory> getItem(@PathVariable Long id) {
@@ -54,8 +55,8 @@ public class PmsProductAttributeCategoryController {
 		return CommonResult.success(productAttribute);
 	}
 	
-	@Operation(summary ="根据分类查询属性或参数列表")
-	@GetMapping("/list/{cid}")
+	@Operation(summary = "分页获取所有商品属性分类")
+	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<CommonPage<PmsProductAttributeCategory>> getList(@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
 																		 @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
@@ -63,7 +64,7 @@ public class PmsProductAttributeCategoryController {
 		return CommonResult.success(CommonPage.restPage(productAttributeCategoryList));
 	}
 	
-	@Operation(summary ="查询所有商品属性分类及其下属性")
+	@Operation(summary = "查询所有商品属性分类及其下属性")
 	@GetMapping("/list/withAttr")
 	@ResponseBody
 	public CommonResult<List<PmsProductAttributeCategoryItem>> getListWithAttr() {

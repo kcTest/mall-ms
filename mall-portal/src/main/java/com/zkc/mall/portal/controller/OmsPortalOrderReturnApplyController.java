@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 @Tag(name = "OmsPortalOrderReturnApplyController", description = "退货申请管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/returnApply")
 public class OmsPortalOrderReturnApplyController {

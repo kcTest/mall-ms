@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Tag(name = "OmsCompanyAddressController", description = "收货地址管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/companyAddress")
 public class OmsCompanyAddressController {

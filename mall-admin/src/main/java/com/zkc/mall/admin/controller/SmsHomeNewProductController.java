@@ -14,7 +14,7 @@ import java.util.List;
 
 @Tag(name = "SmsHomeNewProductController", description = "首页新品推荐")
 @RequestMapping(value = "/home/newProduct")
-@CrossOrigin
+
 @RestController
 public class SmsHomeNewProductController {
 	

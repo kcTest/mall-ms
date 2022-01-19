@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 @Tag(name = "UmsAdminController", description = "后台用户管理")
 @RequestMapping(value = "/admin")
-@CrossOrigin
+
 @RestController
 public class UmsAdminController {
 	
@@ -159,7 +159,7 @@ public class UmsAdminController {
 	@Operation(summary ="根据用户名获取通用用户信息")
 	@GetMapping(value = "/loadByUsername")
 	@ResponseBody
-	public UserDto loadByUsername(@RequestParam String username) {
+	public UserDto loadUserUsername(@RequestParam String username) {
 		return adminService.loadUserByUsername(username);
 	}
 	

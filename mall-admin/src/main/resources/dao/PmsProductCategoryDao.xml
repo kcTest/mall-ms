@@ -9,10 +9,10 @@
         </collection>
     </resultMap>
     <select id="listWithChildren" resultMap="listWithChildren">
-        select ppc.id    id,
-               ppc.name  name,
-               ppc2.id   children_id,
-               ppc2.name children_name
+        select ppc.id,
+               ppc.name,
+               ppc2.id   child_id,
+               ppc2.name child_name
         from pms_product_category      ppc
         left join pms_product_category ppc2 on ppc2.parent_id = ppc.id
         where ppc.parent_id = 0

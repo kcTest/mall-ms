@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 @Tag(name = "UmsMenuController", description = "后台菜单管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/menu")
 public class UmsMenuController {

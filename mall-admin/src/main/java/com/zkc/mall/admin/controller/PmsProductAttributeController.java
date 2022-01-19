@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Tag(name = "PmsProductAttributeController", description = "商品属性管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping(value = "/productAttribute")
 public class PmsProductAttributeController {

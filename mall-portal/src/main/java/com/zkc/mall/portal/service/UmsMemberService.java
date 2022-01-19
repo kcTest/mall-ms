@@ -19,7 +19,7 @@ public interface UmsMemberService {
 	@Transactional
 	void updatePassword(String telephone, String password, String authCode);
 	
-	UserDto loadByUsername(String username);
+	UserDto loadUserByUsername(String username);
 	
 	void updateIntegration(Long id, int integration);
 	

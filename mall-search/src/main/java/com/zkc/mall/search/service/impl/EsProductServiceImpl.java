@@ -273,29 +273,31 @@ public class EsProductServiceImpl implements EsProductService {
 		//设置属性
 		List<EsProductRelatedInfo.ProductAttr> attrList = new ArrayList<>();
 		
-		Aggregation productAttrs = aggregationMap.get("allAttrValues");
-		List<? extends Terms.Bucket> attrIdBuckets = ((ParsedStringTerms) ((ParsedFilter) ((ParsedNested) productAttrs)
-				.getAggregations().get("productAttrs"))
-				.getAggregations().get("attrIds")).getBuckets();
-		for (Terms.Bucket attrIdBucket : attrIdBuckets) {
-			
-			EsProductRelatedInfo.ProductAttr productAttr = new EsProductRelatedInfo.ProductAttr();
-			
-			productAttr.setAttrId((Long) attrIdBucket.getKey());
-			
-			List<String> attrValueList = new ArrayList<>();
-			List<? extends Terms.Bucket> attrValues = ((ParsedStringTerms) attrIdBucket.getAggregations().get("attrValues")).getBuckets();
-			List<? extends Terms.Bucket> attrNames = ((ParsedStringTerms) attrIdBucket.getAggregations().get("attrNames")).getBuckets();
-			for (Terms.Bucket attrValue : attrValues) {
-				attrValueList.add(attrValue.getKeyAsString());
+		ParsedNested productAttrs = (ParsedNested) aggregationMap.get("allAttrValues");
+		if (productAttrs.getDocCount() > 0) {
+			List<? extends Terms.Bucket> attrIdBuckets = ((ParsedStringTerms) ((ParsedFilter) (productAttrs)
+					.getAggregations().get("productAttrs"))
+					.getAggregations().get("attrIds")).getBuckets();
+			for (Terms.Bucket attrIdBucket : attrIdBuckets) {
+				
+				EsProductRelatedInfo.ProductAttr productAttr = new EsProductRelatedInfo.ProductAttr();
+				
+				productAttr.setAttrId((Long) attrIdBucket.getKey());
+				
+				List<String> attrValueList = new ArrayList<>();
+				List<? extends Terms.Bucket> attrValues = ((ParsedStringTerms) attrIdBucket.getAggregations().get("attrValues")).getBuckets();
+				List<? extends Terms.Bucket> attrNames = ((ParsedStringTerms) attrIdBucket.getAggregations().get("attrNames")).getBuckets();
+				for (Terms.Bucket attrValue : attrValues) {
+					attrValueList.add(attrValue.getKeyAsString());
+				}
+				productAttr.setAttrValues(attrValueList);
+				
+				if (CollUtil.isNotEmpty(attrNames)) {
+					productAttr.setAttrName(attrNames.get(0).getKeyAsString());
+				}
+				
+				attrList.add(productAttr);
 			}
-			productAttr.setAttrValues(attrValueList);
-			
-			if (CollUtil.isNotEmpty(attrNames)) {
-				productAttr.setAttrName(attrNames.get(0).getKeyAsString());
-			}
-			
-			attrList.add(productAttr);
 		}
 		
 		esProductRelatedInfo.setProductAttrs(attrList);

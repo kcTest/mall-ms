@@ -26,10 +26,10 @@
             #{item.skuCode,jdbcType=VARCHAR},
             #{item.price,jdbcType=DECIMAL},
             #{item.stock,jdbcType=BIGINT},
-            #{item.low_stock,jdbcType=BIGINT},
+            #{item.lowStock,jdbcType=BIGINT},
             #{item.pic,jdbcType=VARCHAR},
             #{item.sale,jdbcType=INTEGER},
-            #{item.sp_data,jdbcType=VARCHAR})
+            #{item.spData,jdbcType=VARCHAR})
         </foreach>
     </update>
 </mapper>

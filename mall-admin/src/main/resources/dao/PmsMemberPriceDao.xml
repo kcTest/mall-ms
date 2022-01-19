@@ -6,10 +6,10 @@
         insert into pms_member_price(product_id, member_level_id, member_price, member_level_name)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
-            (#{item.product_id,jdbcType=BIGINT},
-            #{item.member_level_id,jdbcType=BIGINT},
-            #{item.member_price,jdbcType=DECIMAL},
-            #{item.member_level_name,jdbcType=VARCHAR})
+            (#{item.productId,jdbcType=BIGINT},
+            #{item.memberLevelId,jdbcType=BIGINT},
+            #{item.memberPrice,jdbcType=DECIMAL},
+            #{item.memberLevelName,jdbcType=VARCHAR})
         </foreach>
     </insert>
 </mapper>

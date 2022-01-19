@@ -7,13 +7,13 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
-public class ResourceRoleRuleHolder {
+public class ResourceRoleRulesHolder {
 	
 	@Autowired
 	private UmsResourceService resourceService;
 	
 	@PostConstruct
-	public void initResourceRoleMap() {
-		resourceService.initResourceRoleMap();
+	public void initResourceRolesMap() {
+		resourceService.initResourceRolesMap();
 	}
 }

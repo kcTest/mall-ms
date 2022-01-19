@@ -17,7 +17,7 @@
         join pms_product                pp on pp.id = shrp.product_id
         where shrp.recommend_status = 1
           and pp.publish_status = 1
-        order by shrp.sort desc limit #{offset}, {pageSize};
+        order by shrp.sort desc limit #{offset}, #{pageSize};
     </select>
 
     <select id="getNewProductList" resultType="com.zkc.mall.mbg.model.PmsProduct">

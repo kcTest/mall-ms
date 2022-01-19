@@ -72,11 +72,11 @@
                ooi.product_id       item_product_id,
                ooi.product_sn       item_product_sn,
                ooi.product_pic      item_product_pic,
-               ooi.product_name     item_id,
-               ooi.product_brand    item_id,
-               ooi.product_price    item_id,
-               ooi.product_quantity item_id,
-               ooi.product_attr     item_id,
+               ooi.product_name     item_product_name,
+               ooi.product_brand    item_product_brand,
+               ooi.product_price    item_product_price,
+               ooi.product_quantity item_product_quantity,
+               ooi.product_attr     item_product_attr,
                oooh.id              history_id,
                oooh.operate_man     history_operate_man,
                oooh.create_time     history_create_time,
@@ -85,7 +85,7 @@
         from oms_order                      oo
         left join oms_order_item            ooi on ooi.order_id = oo.id
         left join oms_order_operate_history oooh on oooh.order_id = oo.id
-        where id = #{id}
+        where oo.id = #{id}
         order by ooi.id asc, oooh.create_time desc
     </select>
 </mapper>

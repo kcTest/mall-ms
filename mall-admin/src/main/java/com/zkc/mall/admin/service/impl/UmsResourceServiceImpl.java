@@ -34,7 +34,7 @@ public class UmsResourceServiceImpl implements UmsResourceService {
 	private RedisService redisService;
 	
 	@Override
-	public Map<String, List<String>> initResourceRoleMap() {
+	public Map<String, List<String>> initResourceRolesMap() {
 		
 		List<UmsRole> roles = roleMapper.selectByExample(new UmsRoleExample());
 		Map<String, List<String>> resourceRoleMap = new TreeMap<>();
@@ -56,7 +56,7 @@ public class UmsResourceServiceImpl implements UmsResourceService {
 		
 		umsResource.setCreateTime(new Date());
 		int count = resourceMapper.insert(umsResource);
-//		initResourceRoleMap();
+		initResourceRolesMap();
 		return count;
 	}
 	
@@ -64,7 +64,7 @@ public class UmsResourceServiceImpl implements UmsResourceService {
 	public int update(Long id, UmsResource umsResource) {
 		umsResource.setId(id);
 		int count = resourceMapper.updateByPrimaryKeySelective(umsResource);
-		initResourceRoleMap();
+		initResourceRolesMap();
 		return count;
 	}
 	
@@ -76,7 +76,7 @@ public class UmsResourceServiceImpl implements UmsResourceService {
 	@Override
 	public int delete(Long id) {
 		int count = resourceMapper.deleteByPrimaryKey(id);
-		initResourceRoleMap();
+		initResourceRolesMap();
 		return count;
 	}
 	

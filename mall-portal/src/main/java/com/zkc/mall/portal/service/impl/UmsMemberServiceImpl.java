@@ -23,6 +23,7 @@ import com.zkc.mall.portal.service.UmsMemberService;
 import org.springframework.stereotype.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
@@ -77,6 +78,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 		}
 		
 		UmsMember member = new UmsMember();
+		member.setUsername(username);
 		member.setCreateTime(new Date());
 		member.setPhone(telephone);
 		member.setPassword(BCrypt.hashpw(password));
@@ -137,7 +139,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 	}
 	
 	@Override
-	public UserDto loadByUsername(String username) {
+	public UserDto loadUserByUsername(String username) {
 		UmsMember member = getByUsername(username);
 		if (member != null) {
 			UserDto userDto = new UserDto();

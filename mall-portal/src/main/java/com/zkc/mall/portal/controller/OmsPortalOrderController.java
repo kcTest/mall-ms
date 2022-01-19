@@ -15,10 +15,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 import java.util.Map;
+
 @Tag(name = "OmsPortalOrderController", description = "订单管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/order")
 public class OmsPortalOrderController {
@@ -83,7 +85,7 @@ public class OmsPortalOrderController {
 	@Operation(summary = "根据ID获取订单详情")
 	@PostMapping("/detail/{orderId}")
 	@ResponseBody
-	public CommonResult<OmsOrderDetail> detail(@RequestParam("orderId") Long orderId) {
+	public CommonResult<OmsOrderDetail> detail(@PathVariable("orderId") Long orderId) {
 		OmsOrderDetail orderDetail = orderService.detail(orderId);
 		return CommonResult.success(orderDetail);
 	}

@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Tag(name = "CmsSubjectController", description = "商品专题管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/subject")
 public class CmsSubjectController {

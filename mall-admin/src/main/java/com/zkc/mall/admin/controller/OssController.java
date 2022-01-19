@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.http.HttpServletRequest;
 
 @Tag(name = "OssController", description = "Oss管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/aliyun/oss")
 public class OssController {

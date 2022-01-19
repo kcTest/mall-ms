@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
-@FeignClient(value = "mall-admin")
+@FeignClient(value = "mall-auth")
 public interface AuthService {
 	
 	@PostMapping(value = "/oauth/token")

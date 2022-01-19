@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 @Tag(name = "UmsMemberLevelController", description = "会员等级管理")
 @RequestMapping("/memberLevel")
-@CrossOrigin
+
 @RestController
 public class UmsMemberLevelController {
 	

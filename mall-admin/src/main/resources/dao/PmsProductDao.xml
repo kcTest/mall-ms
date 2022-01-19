@@ -29,7 +29,7 @@
 
     <select id="getUpdateInfo" resultMap="updateInfoMap">
         select pp.*,
-               ppc.parent_id             catePatentId,
+               ppc.parent_id             cateParentid,
                ppl.id                    ladder_id,
                ppl.product_id            ladder_product_id,
                ppl.discount              ladder_discount,
@@ -71,12 +71,12 @@
             resultMap="com.zkc.mall.mbg.mapper.CmsSubjectProductRelationMapper.BaseResultMap">
         select *
         from cms_subject_product_relation
-        where product_id = #{product_id}
+        where product_id = #{productId}
     </select>
     <select id="selectPrefrenceAreaProductRelationByProductId"
             resultMap="com.zkc.mall.mbg.mapper.CmsPrefrenceAreaProductRelationMapper.BaseResultMap">
         select *
         from cms_prefrence_area_product_relation
-        where product_id = #{product_id}
+        where product_id = #{productId}
     </select>
 </mapper>

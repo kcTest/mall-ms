@@ -5,8 +5,8 @@
         insert into pms_product_attribute_value(product_id, product_attribute_id, value)
         values
         <foreach collection="list" index="index" item="item" separator=",">
-            (#{item.product_id,jdbcType=BIGINT},
-            #{item.product_attribute_id,jdbcType=BIGINT},
+            (#{item.productId,jdbcType=BIGINT},
+            #{item.productAttributeId,jdbcType=BIGINT},
             #{item.value,jdbcType=VARCHAR})
         </foreach>
     </insert>

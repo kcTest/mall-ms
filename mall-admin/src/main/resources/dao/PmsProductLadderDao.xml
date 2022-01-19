@@ -5,7 +5,7 @@
         insert into pms_product_ladder(product_id, count, discount, price)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
-            (#{item.product_id,jdbcType=BIGINT},
+            (#{item.productId,jdbcType=BIGINT},
             #{item.count,jdbcType=INTEGER},
             #{item.discount,jdbcType=DECIMAL},
             #{item.price,jdbcType=DECIMAL})

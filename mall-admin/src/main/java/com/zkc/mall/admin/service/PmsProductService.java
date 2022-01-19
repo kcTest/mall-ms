@@ -13,7 +13,7 @@ public interface PmsProductService {
 	@Transactional
 	int create(PmsProductParam productParam);
 	
-	PmsProductResult getUpdateInfo(Long pid);
+	PmsProductResult getUpdateInfo(Long id);
 	
 	@Transactional
 	int update(Long id, PmsProductParam productParam);

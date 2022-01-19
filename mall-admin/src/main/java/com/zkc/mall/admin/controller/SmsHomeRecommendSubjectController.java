@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 @Tag(name = "SmsHomeRecommendSubjectController", description = "首页专题推荐管理")
 @RequestMapping(value = "/home/recommendSubject")
-@CrossOrigin
+
 @RestController
 public class SmsHomeRecommendSubjectController {
 	

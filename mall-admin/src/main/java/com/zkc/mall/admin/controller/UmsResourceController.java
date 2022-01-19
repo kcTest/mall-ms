@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.Map;
 @Tag(name = "UmsResourceController", description = "后台资源管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/resource")
 public class UmsResourceController {
@@ -75,10 +75,10 @@ public class UmsResourceController {
 	}
 	
 	@Operation(summary ="初始化角色资源关联数据")
-	@GetMapping("/initResourceRoleMap")
+	@GetMapping("/initResourceRolesMap")
 	@ResponseBody
-	public CommonResult<?> initResourceRoleMap() {
-		Map<String, List<String>> resourceRoleMap = resourceService.initResourceRoleMap();
-		return CommonResult.success(resourceRoleMap);
+	public CommonResult<?> initResourceRolesMap() {
+		Map<String, List<String>> resourceRolesMap = resourceService.initResourceRolesMap();
+		return CommonResult.success(resourceRolesMap);
 	}
 }

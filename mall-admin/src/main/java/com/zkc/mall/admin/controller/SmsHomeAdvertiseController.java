@@ -13,7 +13,7 @@ import java.util.List;
 
 @Tag(name = "SmsHomeAdvertiseController", description = "首页轮播广告管理")
 @RequestMapping(value = "/home/advertise")
-@CrossOrigin
+
 @RestController
 public class SmsHomeAdvertiseController {
 	

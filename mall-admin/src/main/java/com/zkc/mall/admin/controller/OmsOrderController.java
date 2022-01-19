@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Tag(name = "OmsOrderController", description = "订单管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/order")
 public class OmsOrderController {
@@ -26,7 +26,7 @@ public class OmsOrderController {
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<CommonPage<OmsOrder>> list(
-			@RequestParam OmsOrderQueryParam orderQueryParam,
+			OmsOrderQueryParam orderQueryParam,
 			@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
 			@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
 		List<OmsOrder> orderList = orderService.list(orderQueryParam, pageSize, pageNum);

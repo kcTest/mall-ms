@@ -53,11 +53,10 @@ aliyun:
   oss:
     endpoint: xxx
     accesskeyId: xxx
-    accessSecret: xxx
+    accessKeySecret: xxx
     bucketName: xxx
     policy:
       expire: xxx
-
     maxSize: xxx
     callback: xxx
     dir:

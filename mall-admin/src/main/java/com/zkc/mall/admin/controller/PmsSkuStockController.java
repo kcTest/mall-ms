@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Tag(name = "PmsSkuStockController", description = "sku商品库存管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping(value = "/sku")
 public class PmsSkuStockController {
@@ -22,8 +22,8 @@ public class PmsSkuStockController {
 	@Operation(summary ="根据商品编号和货号查询sku库存")
 	@GetMapping("/{pid}")
 	@ResponseBody
-	public CommonResult<List<PmsSkuStock>> getList(@PathVariable Long pid, @RequestParam(value = "skuCode", required = false) String skuCode) {
-		List<PmsSkuStock> skuStockList = skuStockService.getList(pid, skuCode);
+	public CommonResult<List<PmsSkuStock>> getList(@PathVariable Long pid, @RequestParam(value = "keyword", required = false) String keyword) {
+		List<PmsSkuStock> skuStockList = skuStockService.getList(pid, keyword);
 		return CommonResult.success(skuStockList);
 	}
 	

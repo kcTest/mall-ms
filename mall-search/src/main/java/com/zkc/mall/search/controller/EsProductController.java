@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @Tag(name = "EsProductController", description = "搜索商品管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/esProduct")
 public class EsProductController {

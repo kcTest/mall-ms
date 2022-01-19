@@ -67,7 +67,7 @@ public class OssServiceImpl implements OssService {
 		callback.setCallbackUrl(ALIYUN_OSS_CALLBACK);
 		callback.setCallbackBody("filename=${object}&size=${size}&mimeType=${mimeType}&height=" +
 				"${imageInfo.height}&width=${imageInfo.width}");
-		callback.setCallbackBodyType("application/x-www.form-urlencoded");
+		callback.setCallbackBodyType("application/x-www-form-urlencoded");
 		
 		try {
 			PolicyConditions pcs = new PolicyConditions();
@@ -76,7 +76,7 @@ public class OssServiceImpl implements OssService {
 			String postPolicy = ossClient.generatePostPolicy(expireDate, pcs);
 			byte[] policyBytes = postPolicy.getBytes(StandardCharsets.UTF_8);
 			String policy = BinaryUtil.toBase64String(policyBytes);
-			String signature = ossClient.calculatePostSignature(policy);
+			String signature = ossClient.calculatePostSignature(postPolicy);
 			String callbackData = BinaryUtil.toBase64String(JSONUtil.parse(callback).toString().getBytes(StandardCharsets.UTF_8));
 			
 			result.setAccessKeyId(ossClient.getCredentialsProvider().getCredentials().getAccessKeyId());

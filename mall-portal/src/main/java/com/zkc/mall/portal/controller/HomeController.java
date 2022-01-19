@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @Tag(name = "HomeController", description = "首页内容管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/order")
 public class HomeController {

@@ -91,8 +91,8 @@ public class PmsProductServiceImpl implements PmsProductService {
 	}
 	
 	@Override
-	public PmsProductResult getUpdateInfo(Long pid) {
-		return productDao.getUpdateInfo(pid);
+	public PmsProductResult getUpdateInfo(Long id) {
+		return productDao.getUpdateInfo(id);
 	}
 	
 	@Override

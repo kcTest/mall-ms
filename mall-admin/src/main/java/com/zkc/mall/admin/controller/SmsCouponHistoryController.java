@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Tag(name = "SmsCouponHistoryController", description = "优惠券领取记录管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/couponHistory")
 public class SmsCouponHistoryController {

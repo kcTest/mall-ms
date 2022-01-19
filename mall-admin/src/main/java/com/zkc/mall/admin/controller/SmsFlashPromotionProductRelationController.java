@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Tag(name = "SmsFlashPromotionProductRelationController", description = "限时购（秒杀）活动与场次（时间段）关系管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/flashProductRelation")
 public class SmsFlashPromotionProductRelationController {
@@ -41,7 +41,7 @@ public class SmsFlashPromotionProductRelationController {
 	@Operation(summary = "删除关联")
 	@PostMapping("/delete/{id}")
 	@ResponseBody
-	public CommonResult<?> delete(@RequestParam("id") Long id) {
+	public CommonResult<?> delete(@PathVariable Long id) {
 		int count = relationService.delete(id);
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}

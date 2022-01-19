@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @Tag(name = "MemberReadHistoryController", description = "会员商品浏览记录管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/member/readHistory")
 public class MemberReadHistoryController {

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Tag(name = "OmsOrderSettingController", description = "订单设置管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/orderSetting")
 public class OmsOrderSettingController {

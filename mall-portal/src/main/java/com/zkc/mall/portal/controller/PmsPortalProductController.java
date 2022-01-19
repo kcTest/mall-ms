@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Tag(name = "PmsPortalProductController", description = "前台商品管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/product")
 public class PmsPortalProductController {

@@ -35,7 +35,7 @@
         <hutool.version>5.7.13</hutool.version>
         <nimbus-jose-jwt.version>9.15.2</nimbus-jose-jwt.version>
         <pagehelper-starter.version>1.4.1</pagehelper-starter.version>
-        <pagehelper.version>5.2.0</pagehelper.version>
+        <pagehelper.version>5.3.0</pagehelper.version>
         <druid.version>1.2.8</druid.version>
         <aliyun-oss.version>3.13.2</aliyun-oss.version>
         <minio.version>8.3.4</minio.version>
@@ -43,6 +43,7 @@
         <logstash-logback.version>7.0.1</logstash-logback.version>
         <mysql-connector.version>8.0.26</mysql-connector.version>
         <springdoc.version>1.6.4</springdoc.version>
+        <okhttp.version>4.9.3</okhttp.version>
     </properties>
 
     <dependencies>
@@ -158,6 +159,16 @@
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-ui</artifactId>
                 <version>${springdoc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

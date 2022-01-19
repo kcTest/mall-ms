@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Tag(name = "OmsOrderReturnReasonController", description = "退货原因管理")
-@CrossOrigin
+
 @RestController
 @RequestMapping("/returnReason")
 public class OmsOrderReturnReasonController {
