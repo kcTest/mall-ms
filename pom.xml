@@ -44,6 +44,13 @@
         <mysql-connector.version>8.0.26</mysql-connector.version>
         <springdoc.version>1.6.4</springdoc.version>
         <okhttp.version>4.9.3</okhttp.version>
+        <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
+        <!--      maven配置文件setting.xml 的 servers定义授权信息-->
+        <docker.registry>centos002:5000</docker.registry>
+        <docker.registry.image.dir>mall</docker.registry.image.dir>
+        <skipTests>true</skipTests>
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
@@ -173,4 +180,38 @@
         </dependencies>
     </dependencyManagement>
 
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>${dockerfile-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>default</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>build</goal>
+                                <goal>push</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <contextDirectory>${project.basedir}</contextDirectory>
+                        <repository>${docker.registry}/${docker.registry.image.dir}/${project.artifactId}</repository>
+                        <tag>${project.version}</tag>
+                        <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+                        <buildArgs>
+                            <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                        </buildArgs>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
