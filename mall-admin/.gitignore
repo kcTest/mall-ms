@@ -23,6 +23,3 @@
 /dist/
 /nbdist/
 /.nb-gradle/
-
-/src/main/resources/bootstrap-dev.yml
-/src/main/resources/bootstrap-prod.yml
