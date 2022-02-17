@@ -107,7 +107,7 @@ public class PmsProductController {
 	@GetMapping("/update/deleteStatus")
 	@ResponseBody
 	public CommonResult<?> updateDeleteStatus(@RequestParam("ids") List<Long> ids,
-											  @RequestParam("newStatus") Integer deleteStatus) {
+											  @RequestParam("deleteStatus") Integer deleteStatus) {
 		int count = productService.updateDeleteStatus(ids, deleteStatus);
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
