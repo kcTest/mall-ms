@@ -67,7 +67,7 @@ public class PmsProductController {
 	}
 	
 	@Operation(summary = "批量修改审核状态")
-	@GetMapping("/update/verifyStatus")
+	@PostMapping("/update/verifyStatus")
 	@ResponseBody
 	public CommonResult<?> updateVerifyStatus(@RequestParam("ids") List<Long> ids,
 											  @RequestParam("verifyStatus") Integer verifyStatus,
@@ -77,7 +77,7 @@ public class PmsProductController {
 	}
 	
 	@Operation(summary = "批量修改上下架状态")
-	@GetMapping("/update/publishStatus")
+	@PostMapping("/update/publishStatus")
 	@ResponseBody
 	public CommonResult<?> updatePublishStatus(@RequestParam("ids") List<Long> ids,
 											   @RequestParam("publishStatus") Integer publishStatus) {
@@ -86,7 +86,7 @@ public class PmsProductController {
 	}
 	
 	@Operation(summary = "批量推荐商品")
-	@GetMapping("/update/recommendStatus")
+	@PostMapping("/update/recommendStatus")
 	@ResponseBody
 	public CommonResult<?> updateRecommendStatus(@RequestParam("ids") List<Long> ids,
 												 @RequestParam("recommendStatus") Integer recommendStatus) {
@@ -95,7 +95,7 @@ public class PmsProductController {
 	}
 	
 	@Operation(summary = "批量设为新品")
-	@GetMapping("/update/newStatus")
+	@PostMapping("/update/newStatus")
 	@ResponseBody
 	public CommonResult<?> updateNewStatus(@RequestParam("ids") List<Long> ids,
 										   @RequestParam("newStatus") Integer newStatus) {
@@ -104,7 +104,7 @@ public class PmsProductController {
 	}
 	
 	@Operation(summary = "批量修改删除状态")
-	@GetMapping("/update/deleteStatus")
+	@PostMapping("/update/deleteStatus")
 	@ResponseBody
 	public CommonResult<?> updateDeleteStatus(@RequestParam("ids") List<Long> ids,
 											  @RequestParam("deleteStatus") Integer deleteStatus) {
