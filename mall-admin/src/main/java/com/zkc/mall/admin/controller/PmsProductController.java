@@ -61,8 +61,8 @@ public class PmsProductController {
 	@Operation(summary = "根据商品名称或货号模糊查询")
 	@GetMapping("/simpleList")
 	@ResponseBody
-	public CommonResult<List<PmsProduct>> getList(@RequestParam("keyword") String keyword) {
-		List<PmsProduct> productList = productService.getList(keyword);
+	public CommonResult<List<PmsProduct>> getList(String keyword) {
+		List<PmsProduct> productList = productService.list(keyword);
 		return CommonResult.success(productList);
 	}
 	

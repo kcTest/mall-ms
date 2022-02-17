@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -144,7 +145,7 @@ public class PmsProductServiceImpl implements PmsProductService {
 		
 		PmsProductExample example = new PmsProductExample();
 		PmsProductExample.Criteria criteria = example.createCriteria();
-		criteria.andDeleteStatusNotEqualTo(0);
+		criteria.andDeleteStatusEqualTo(0);
 		
 		if (productQueryParam.getPublishStatus() != null) {
 			criteria.andPublishStatusEqualTo(productQueryParam.getPublishStatus());
@@ -171,10 +172,10 @@ public class PmsProductServiceImpl implements PmsProductService {
 	public List<PmsProduct> getList(String keyword) {
 		PmsProductExample example = new PmsProductExample();
 		PmsProductExample.Criteria criteria = example.createCriteria();
-		criteria.andDeleteStatusNotEqualTo(0);
+		criteria.andDeleteStatusEqualTo(0);
 		if (StrUtil.isNotEmpty(keyword)) {
 			criteria.andNameLike("%" + keyword + "%");
-			example.or().andDeleteStatusNotEqualTo(0).andProductSnLike("%" + keyword + "%");
+			example.or().andDeleteStatusEqualTo(0).andProductSnLike("%" + keyword + "%");
 		}
 		
 		return productMapper.selectByExample(example);
@@ -238,6 +239,18 @@ public class PmsProductServiceImpl implements PmsProductService {
 		PmsProductExample example = new PmsProductExample();
 		example.createCriteria().andIdIn(ids);
 		return productMapper.updateByExampleSelective(product, example);
+	}
+	
+	@Override
+	public List<PmsProduct> list(String keyword) {
+		PmsProductExample example = new PmsProductExample();
+		PmsProductExample.Criteria criteria = example.createCriteria();
+		criteria.andDeleteStatusEqualTo(0);
+		if (StrUtil.isNotEmpty(keyword)) {
+			criteria.andNameLike("%" + keyword + "%");
+			example.or().andDeleteStatusEqualTo(0).andProductSnLike("%" + keyword + "%");
+		}
+		return productMapper.selectByExample(example);
 	}
 	
 	private void handleUpdateSkuStockList(Long id, PmsProductParam productParam) {
