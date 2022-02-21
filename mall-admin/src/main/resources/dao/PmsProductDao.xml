@@ -22,8 +22,8 @@
         </collection>
         <collection property="subjectProductRelationList" column="{productId=id}"
                     select="selectSubjectProductRelationByProductId"/>
-        <collection property="prefrenceAreaProductRelationList" column="{productId=id}"
-                    select="selectPrefrenceAreaProductRelationByProductId"/>
+        <collection property="preferenceAreaProductRelationList" column="{productId=id}"
+                    select="selectPreferenceAreaProductRelationByProductId"/>
     </resultMap>
 
 
@@ -73,10 +73,10 @@
         from cms_subject_product_relation
         where product_id = #{productId}
     </select>
-    <select id="selectPrefrenceAreaProductRelationByProductId"
-            resultMap="com.zkc.mall.mbg.mapper.CmsPrefrenceAreaProductRelationMapper.BaseResultMap">
+    <select id="selectPreferenceAreaProductRelationByProductId"
+            resultMap="com.zkc.mall.mbg.mapper.CmsPreferenceAreaProductRelationMapper.BaseResultMap">
         select *
-        from cms_prefrence_area_product_relation
+        from cms_preference_area_product_relation
         where product_id = #{productId}
     </select>
 </mapper>

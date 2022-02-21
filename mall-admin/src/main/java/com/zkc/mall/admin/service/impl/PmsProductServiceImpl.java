@@ -58,9 +58,9 @@ public class PmsProductServiceImpl implements PmsProductService {
 	@Autowired
 	private CmsSubjectProductRelationMapper subjectProductRelationMapper;
 	@Autowired
-	private CmsPrefrenceAreaProductRelationDao prefrenceAreaProductRelationDao;
+	private CmsPreferenceAreaProductRelationDao preferenceAreaProductRelationDao;
 	@Autowired
-	private CmsPrefrenceAreaProductRelationMapper prefrenceAreaProductRelationMapper;
+	private CmsPreferenceAreaProductRelationMapper preferenceAreaProductRelationMapper;
 	@Autowired
 	private PmsProductDao productDao;
 	
@@ -86,7 +86,7 @@ public class PmsProductServiceImpl implements PmsProductService {
 		//专题和商品的关系
 		insertRelationList(subjectProductRelationDao, productParam.getSubjectProductRelationList(), productId);
 		//优选专区和商品的关系
-		insertRelationList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), productId);
+		insertRelationList(preferenceAreaProductRelationDao, productParam.getPreferenceAreaProductRelationList(), productId);
 		
 		return count;
 	}
@@ -131,10 +131,10 @@ public class PmsProductServiceImpl implements PmsProductService {
 		subjectProductRelationMapper.deleteByExample(productRelationExample);
 		insertRelationList(subjectProductRelationDao, productParam.getSubjectProductRelationList(), productId);
 		//优选专区和商品的关系
-		CmsPrefrenceAreaProductRelationExample prefrenceAreaProductRelationExample = new CmsPrefrenceAreaProductRelationExample();
-		prefrenceAreaProductRelationExample.createCriteria().andProductIdEqualTo(productId);
-		prefrenceAreaProductRelationMapper.deleteByExample(prefrenceAreaProductRelationExample);
-		insertRelationList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), productId);
+		CmsPreferenceAreaProductRelationExample preferenceAreaProductRelationExample = new CmsPreferenceAreaProductRelationExample();
+		preferenceAreaProductRelationExample.createCriteria().andProductIdEqualTo(productId);
+		preferenceAreaProductRelationMapper.deleteByExample(preferenceAreaProductRelationExample);
+		insertRelationList(preferenceAreaProductRelationDao, productParam.getPreferenceAreaProductRelationList(), productId);
 		
 		return count;
 	}

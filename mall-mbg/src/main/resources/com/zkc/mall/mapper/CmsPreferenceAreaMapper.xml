@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zkc.mall.mbg.mapper.CmsPrefrenceAreaMapper">
-  <resultMap id="BaseResultMap" type="com.zkc.mall.mbg.model.CmsPrefrenceArea">
+<mapper namespace="com.zkc.mall.mbg.mapper.CmsPreferenceAreaMapper">
+  <resultMap id="BaseResultMap" type="com.zkc.mall.mbg.model.CmsPreferenceArea">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="sub_title" jdbcType="VARCHAR" property="subTitle" />
     <result column="sort" jdbcType="INTEGER" property="sort" />
     <result column="show_status" jdbcType="INTEGER" property="showStatus" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.zkc.mall.mbg.model.CmsPrefrenceArea">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.zkc.mall.mbg.model.CmsPreferenceArea">
     <result column="pic" jdbcType="VARBINARY" property="pic" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -75,7 +75,7 @@
   <sql id="Blob_Column_List">
     pic
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.zkc.mall.mbg.model.CmsPrefrenceAreaExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="com.zkc.mall.mbg.model.CmsPreferenceAreaExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -83,7 +83,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from cms_prefrence_area
+    from cms_preference_area
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -99,13 +99,13 @@
       </if>
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.zkc.mall.mbg.model.CmsPrefrenceAreaExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.zkc.mall.mbg.model.CmsPreferenceAreaExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from cms_prefrence_area
+    from cms_preference_area
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -126,27 +126,27 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from cms_prefrence_area
+    from cms_preference_area
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from cms_prefrence_area
+    delete from cms_preference_area
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.zkc.mall.mbg.model.CmsPrefrenceAreaExample">
-    delete from cms_prefrence_area
+  <delete id="deleteByExample" parameterType="com.zkc.mall.mbg.model.CmsPreferenceAreaExample">
+    delete from cms_preference_area
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zkc.mall.mbg.model.CmsPrefrenceArea" useGeneratedKeys="true">
-    insert into cms_prefrence_area (`name`, sub_title, sort, 
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zkc.mall.mbg.model.CmsPreferenceArea" useGeneratedKeys="true">
+    insert into cms_preference_area (`name`, sub_title, sort, 
       show_status, pic)
     values (#{name,jdbcType=VARCHAR}, #{subTitle,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
       #{showStatus,jdbcType=INTEGER}, #{pic,jdbcType=VARBINARY})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zkc.mall.mbg.model.CmsPrefrenceArea" useGeneratedKeys="true">
-    insert into cms_prefrence_area
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zkc.mall.mbg.model.CmsPreferenceArea" useGeneratedKeys="true">
+    insert into cms_preference_area
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
         `name`,
@@ -182,14 +182,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.zkc.mall.mbg.model.CmsPrefrenceAreaExample" resultType="java.lang.Long">
-    select count(*) from cms_prefrence_area
+  <select id="countByExample" parameterType="com.zkc.mall.mbg.model.CmsPreferenceAreaExample" resultType="java.lang.Long">
+    select count(*) from cms_preference_area
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update cms_prefrence_area
+    update cms_preference_area
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
@@ -215,7 +215,7 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
-    update cms_prefrence_area
+    update cms_preference_area
     set id = #{record.id,jdbcType=BIGINT},
       `name` = #{record.name,jdbcType=VARCHAR},
       sub_title = #{record.subTitle,jdbcType=VARCHAR},
@@ -227,7 +227,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update cms_prefrence_area
+    update cms_preference_area
     set id = #{record.id,jdbcType=BIGINT},
       `name` = #{record.name,jdbcType=VARCHAR},
       sub_title = #{record.subTitle,jdbcType=VARCHAR},
@@ -237,8 +237,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zkc.mall.mbg.model.CmsPrefrenceArea">
-    update cms_prefrence_area
+  <update id="updateByPrimaryKeySelective" parameterType="com.zkc.mall.mbg.model.CmsPreferenceArea">
+    update cms_preference_area
     <set>
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},
@@ -258,8 +258,8 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zkc.mall.mbg.model.CmsPrefrenceArea">
-    update cms_prefrence_area
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zkc.mall.mbg.model.CmsPreferenceArea">
+    update cms_preference_area
     set `name` = #{name,jdbcType=VARCHAR},
       sub_title = #{subTitle,jdbcType=VARCHAR},
       sort = #{sort,jdbcType=INTEGER},
@@ -267,8 +267,8 @@
       pic = #{pic,jdbcType=VARBINARY}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zkc.mall.mbg.model.CmsPrefrenceArea">
-    update cms_prefrence_area
+  <update id="updateByPrimaryKey" parameterType="com.zkc.mall.mbg.model.CmsPreferenceArea">
+    update cms_preference_area
     set `name` = #{name,jdbcType=VARCHAR},
       sub_title = #{subTitle,jdbcType=VARCHAR},
       sort = #{sort,jdbcType=INTEGER},

@@ -3,7 +3,7 @@ package com.zkc.mall.mbg.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CmsPrefrenceAreaExample {
+public class CmsPreferenceAreaExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -14,7 +14,7 @@ public class CmsPrefrenceAreaExample {
 
     private Long offset;
 
-    public CmsPrefrenceAreaExample() {
+    public CmsPreferenceAreaExample() {
         oredCriteria = new ArrayList<>();
     }
 

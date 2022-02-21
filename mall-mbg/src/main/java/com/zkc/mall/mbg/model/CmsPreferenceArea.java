@@ -5,12 +5,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 
 /**
- * cms_prefrence_area
+ * cms_preference_area
  *
  * @author
  */
-@Schema(description = "com.zkc.mall.mbg.model.CmsPrefrenceArea优选专区")
-public class CmsPrefrenceArea implements Serializable {
+@Schema(description = "com.zkc.mall.mbg.model.CmsPreferenceArea优选专区")
+public class CmsPreferenceArea implements Serializable {
 	private Long id;
 	
 	private String name;

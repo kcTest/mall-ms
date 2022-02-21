@@ -24,5 +24,5 @@ public class PmsProductParam extends PmsProduct {
 	@Schema(description ="专题和商品的关系")
 	private List<CmsSubjectProductRelation> subjectProductRelationList;
 	@Schema(description ="优选专区和商品的关系")
-	private List<CmsPrefrenceAreaProductRelation> prefrenceAreaProductRelationList;
+	private List<CmsPreferenceAreaProductRelation> preferenceAreaProductRelationList;
 }

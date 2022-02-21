@@ -19,7 +19,7 @@ public class PmsSkuStockController {
 	@Autowired
 	private PmsSkuStockService skuStockService;
 	
-	@Operation(summary ="根据商品编号和货号查询sku库存")
+	@Operation(summary = "根据商品编号和货号查询sku库存")
 	@GetMapping("/{pid}")
 	@ResponseBody
 	public CommonResult<List<PmsSkuStock>> getList(@PathVariable Long pid, @RequestParam(value = "keyword", required = false) String keyword) {

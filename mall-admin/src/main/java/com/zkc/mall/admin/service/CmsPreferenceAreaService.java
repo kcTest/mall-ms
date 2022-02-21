@@ -1,11 +1,11 @@
 package com.zkc.mall.admin.service;
 
-import com.zkc.mall.mbg.model.CmsPrefrenceArea;
+import com.zkc.mall.mbg.model.CmsPreferenceArea;
 
 import java.util.List;
 
 public interface CmsPreferenceAreaService {
 	
-	List<CmsPrefrenceArea> listAll();
+	List<CmsPreferenceArea> listAll();
 	
 }

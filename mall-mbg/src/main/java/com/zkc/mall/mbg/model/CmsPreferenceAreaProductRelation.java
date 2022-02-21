@@ -5,15 +5,15 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 
 /**
- * cms_prefrence_area_product_relation
+ * cms_preference_area_product_relation
  *
  * @author
  */
-@Schema(description = "com.zkc.mall.mbg.model.CmsPrefrenceAreaProductRelation优选专区和产品关系表")
-public class CmsPrefrenceAreaProductRelation implements Serializable {
+@Schema(description = "com.zkc.mall.mbg.model.CmsPreferenceAreaProductRelation优选专区和产品关系表")
+public class CmsPreferenceAreaProductRelation implements Serializable {
 	private Long id;
 	
-	private Long prefrenceAreaId;
+	private Long preferenceAreaId;
 	
 	private Long productId;
 	
@@ -27,12 +27,12 @@ public class CmsPrefrenceAreaProductRelation implements Serializable {
 		this.id = id;
 	}
 	
-	public Long getPrefrenceAreaId() {
-		return prefrenceAreaId;
+	public Long getPreferenceAreaId() {
+		return preferenceAreaId;
 	}
 	
-	public void setPrefrenceAreaId(Long prefrenceAreaId) {
-		this.prefrenceAreaId = prefrenceAreaId;
+	public void setPreferenceAreaId(Long preferenceAreaId) {
+		this.preferenceAreaId = preferenceAreaId;
 	}
 	
 	public Long getProductId() {
