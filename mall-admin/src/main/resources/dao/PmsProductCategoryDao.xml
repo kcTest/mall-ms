@@ -4,7 +4,7 @@
 
     <resultMap id="listWithChildren" type="com.zkc.mall.admin.dto.PmsProductCategoryWithChildrenItem"
                extends="com.zkc.mall.mbg.mapper.PmsProductCategoryMapper.BaseResultMap">
-        <collection property="children" columnPrefix="children_"
+        <collection property="children" columnPrefix="child_"
                     resultMap="com.zkc.mall.mbg.mapper.PmsProductCategoryMapper.BaseResultMap">
         </collection>
     </resultMap>
