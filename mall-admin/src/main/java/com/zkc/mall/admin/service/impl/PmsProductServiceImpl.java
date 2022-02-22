@@ -217,7 +217,7 @@ public class PmsProductServiceImpl implements PmsProductService {
 	@Override
 	public int updateRecommendStatus(List<Long> ids, Integer recommendStatus) {
 		PmsProduct product = new PmsProduct();
-		product.setRecommandStatus(recommendStatus);
+		product.setRecommendStatus(recommendStatus);
 		PmsProductExample example = new PmsProductExample();
 		example.createCriteria().andIdIn(ids);
 		return productMapper.updateByExampleSelective(product, example);

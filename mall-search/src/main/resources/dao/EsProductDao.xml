@@ -15,7 +15,7 @@
         pp.price price,
         pp.sale sale,
         pp.new_status newStatus,
-        pp.recommand_status recommandStatus,
+        pp.recommend_status recommendStatus,
         pp.stock stock,
         pp.promotion_type promotionType,
         pp.keywords keywords,
