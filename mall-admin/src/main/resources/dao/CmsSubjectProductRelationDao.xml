@@ -6,7 +6,7 @@
         values
         <foreach collection="list" item="item" index="index" separator=",">
             (#{item.subjectId, jdbcType=BIGINT},
-            #{item.productId, jdbcType=BIGINT},
+            #{item.productId, jdbcType=BIGINT})
         </foreach>
     </insert>
 </mapper>

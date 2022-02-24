@@ -1,5 +1,6 @@
 package com.zkc.mall.admin.service.impl;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.zkc.mall.admin.dao.*;
@@ -272,24 +273,24 @@ public class PmsProductServiceImpl implements PmsProductService {
 		//对比当前记录 提取需要更新的记录
 		List<PmsSkuStock> updateStockList = currStockList.stream().filter(i -> i.getId() != null).collect(Collectors.toList());
 		//对比原始记录 原始记录如果在当前记录里找不到需要删除
-		List<PmsSkuStock> updateIds = updateStockList.stream().filter(i -> i.getId() == null).collect(Collectors.toList());
+		List<Long> updateIds = updateStockList.stream().map(i -> i.getId()).collect(Collectors.toList());
 		List<PmsSkuStock> deleteStockList = oriSkuStockList.stream().filter(i -> !updateIds.contains(i.getId())).collect(Collectors.toList());
 		handleSkuStockCode(insertStockList, id);
 		handleSkuStockCode(updateStockList, id);
 		
 		//新增
-		if (!CollectionUtils.isEmpty(insertStockList)) {
+		if (CollUtil.isNotEmpty(insertStockList)) {
 			insertRelationList(skuStockDao, insertStockList, id);
 		}
 		//删除
-		if (!CollectionUtils.isEmpty(deleteStockList)) {
-			List<Long> skuStockList = deleteStockList.stream().map(i -> i.getId()).collect(Collectors.toList());
+		if (CollUtil.isNotEmpty(deleteStockList)) {
+			List<Long> skuIds = deleteStockList.stream().map(i -> i.getId()).collect(Collectors.toList());
 			PmsSkuStockExample stockExample = new PmsSkuStockExample();
-			stockExample.createCriteria().andIdIn(skuStockList);
+			stockExample.createCriteria().andIdIn(skuIds);
 			skuStockMapper.deleteByExample(stockExample);
 		}
 		//修改
-		if (!CollectionUtils.isEmpty(updateStockList)) {
+		if (CollUtil.isNotEmpty(updateStockList)) {
 			for (PmsSkuStock skuStock : updateStockList) {
 				skuStockMapper.updateByPrimaryKeySelective(skuStock);
 			}
@@ -334,7 +335,7 @@ public class PmsProductServiceImpl implements PmsProductService {
 			Method insertList = dao.getClass().getMethod("insertList", List.class);
 			insertList.invoke(dao, dataList);
 		} catch (Exception e) {
-			Logger.warn("创建产品出错：{}", e.getMessage());
+			Logger.warn("创建产品出错：{}", e);
 			throw new RuntimeException(e.getMessage());
 		}
 	}

@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * pms_sku_stock
  * @author 
  */
-@Schema(description="com.zkc.mall.mbg.model.PmsSkuStocksku的库存")
+@Schema(description="com.zkc.mall.mbg.model.PmsSkuStock sku的库存")
 public class PmsSkuStock implements Serializable {
     private Long id;
 

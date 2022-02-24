@@ -14,6 +14,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
 @Service
@@ -69,14 +70,15 @@ public class PmsProductAttributeServiceImpl implements PmsProductAttributeServic
 	@Override
 	public int delete(List<Long> ids) {
 		
-		PmsProductAttributeExample example = new PmsProductAttributeExample();
-		example.createCriteria().andIdIn(ids);
-		int count = productAttributeMapper.deleteByExample(example);
-		
 		//更新分类的属性或参数数量
 		PmsProductAttribute productAttribute = productAttributeMapper.selectByPrimaryKey(ids.get(0));
 		Long categoryId = productAttribute.getProductAttributeCategoryId();
 		Integer type = productAttribute.getType();
+		
+		PmsProductAttributeExample example = new PmsProductAttributeExample();
+		example.createCriteria().andIdIn(ids);
+		int count = productAttributeMapper.deleteByExample(example);
+		
 		PmsProductAttributeCategory category = productAttributeCategoryMapper.selectByPrimaryKey(categoryId);
 		if (type == 0) {
 			category.setAttributeCount(category.getAttributeCount() - count > 0 ? category.getAttributeCount() - count : 0);
@@ -84,6 +86,7 @@ public class PmsProductAttributeServiceImpl implements PmsProductAttributeServic
 			category.setParamCount(category.getParamCount() - count > 0 ? category.getParamCount() - count : 0);
 		}
 		productAttributeCategoryMapper.updateByPrimaryKeySelective(category);
+		
 		
 		return count;
 	}

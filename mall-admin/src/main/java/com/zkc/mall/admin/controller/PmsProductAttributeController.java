@@ -7,11 +7,16 @@ import com.zkc.mall.common.api.CommonPage;
 import com.zkc.mall.common.api.CommonResult;
 import com.zkc.mall.mbg.model.PmsProductAttribute;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Tag(name = "PmsProductAttributeController", description = "商品属性管理")
@@ -23,7 +28,11 @@ public class PmsProductAttributeController {
 	@Autowired
 	private PmsProductAttributeService productAttributeService;
 	
-	@Operation(summary ="根据分类查询属性或参数列表")
+	@Operation(summary = "根据分类查询属性或参数列表")
+	@Parameters({
+			@Parameter(name = "type", description = "0表示属性，1表示参数", required = true, in = ParameterIn.QUERY,
+					content = @Content(schema = @Schema(type = "integer"))),
+	})
 	@GetMapping("/list/{cid}")
 	@ResponseBody
 	public CommonResult<CommonPage<PmsProductAttribute>> getList(@PathVariable Long cid,
@@ -34,7 +43,7 @@ public class PmsProductAttributeController {
 		return CommonResult.success(CommonPage.restPage(productAttributeList));
 	}
 	
-	@Operation(summary ="添加商品属性信息")
+	@Operation(summary = "添加商品属性信息")
 	@PostMapping("/create")
 	@ResponseBody
 	public CommonResult<?> create(@Validated @RequestBody PmsProductAttributeParam productAttributeParam) {
@@ -42,7 +51,7 @@ public class PmsProductAttributeController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="修改商品属性信息")
+	@Operation(summary = "修改商品属性信息")
 	@PostMapping("/update/{id}")
 	@ResponseBody
 	public CommonResult<?> update(@PathVariable Long id, @Validated @RequestBody PmsProductAttributeParam productAttributeParam) {
@@ -50,7 +59,7 @@ public class PmsProductAttributeController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="查询单个商品属性")
+	@Operation(summary = "查询单个商品属性")
 	@GetMapping("/{id}")
 	@ResponseBody
 	public CommonResult<PmsProductAttribute> getItem(@PathVariable Long id) {
@@ -59,7 +68,7 @@ public class PmsProductAttributeController {
 	}
 	
 	
-	@Operation(summary ="批量删除商品属性")
+	@Operation(summary = "批量删除商品属性")
 	@PostMapping("/delete")
 	@ResponseBody
 	public CommonResult<?> delete(@RequestParam("ids") List<Long> ids) {
@@ -67,7 +76,7 @@ public class PmsProductAttributeController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="根据商品分类ID 查询 商品属性及商品属性分类")
+	@Operation(summary = "根据商品分类ID 查询 商品属性及商品属性分类")
 	@GetMapping("/attrInfo/{productCategoryId}")
 	@ResponseBody
 	public CommonResult<List<ProductAttrInfo>> getAttrInfo(@PathVariable Long productCategoryId) {

@@ -40,7 +40,7 @@ public class PmsProductAttributeCategoryController {
 	}
 	
 	@Operation(summary = "删除商品属性分类")
-	@PostMapping("/delete/{id}")
+	@GetMapping("/delete/{id}")
 	@ResponseBody
 	public CommonResult<?> delete(@PathVariable Long id) {
 		int count = attributeCategoryService.delete(id);
