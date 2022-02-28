@@ -16,5 +16,5 @@ public interface SmsHomeBrandService {
 	
 	int updateRecommendStatus(List<Long> ids, Integer recommendStatus);
 	
-	List<SmsHomeBrand> list(String subjectName, Integer recommendStatus, Integer pageSize, Integer pageNum);
+	List<SmsHomeBrand> list(String brandName, Integer recommendStatus, Integer pageSize, Integer pageNum);
 }

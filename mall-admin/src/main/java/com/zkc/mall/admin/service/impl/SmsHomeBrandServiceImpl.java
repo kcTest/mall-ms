@@ -50,16 +50,16 @@ public class SmsHomeBrandServiceImpl implements SmsHomeBrandService {
 		
 		SmsHomeBrandExample smsHomeBrandExample = new SmsHomeBrandExample();
 		smsHomeBrandExample.createCriteria().andIdIn(ids);
-		return homeBrandMapper.updateByExample(homeBrand, smsHomeBrandExample);
+		return homeBrandMapper.updateByExampleSelective(homeBrand, smsHomeBrandExample);
 	}
 	
 	@Override
-	public List<SmsHomeBrand> list(String ProductName, Integer recommendStatus, Integer pageSize, Integer pageNum) {
+	public List<SmsHomeBrand> list(String brandName, Integer recommendStatus, Integer pageSize, Integer pageNum) {
 		PageHelper.startPage(pageNum, pageSize);
 		SmsHomeBrandExample example = new SmsHomeBrandExample();
 		SmsHomeBrandExample.Criteria criteria = example.createCriteria();
-		if (!StrUtil.isEmpty(ProductName)) {
-			criteria.andBrandNameLike("%" + ProductName + "%");
+		if (!StrUtil.isEmpty(brandName)) {
+			criteria.andBrandNameLike("%" + brandName + "%");
 		}
 		if (recommendStatus != null) {
 			criteria.andRecommendStatusEqualTo(recommendStatus);

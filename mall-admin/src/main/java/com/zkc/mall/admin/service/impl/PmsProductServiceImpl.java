@@ -143,7 +143,7 @@ public class PmsProductServiceImpl implements PmsProductService {
 	@Override
 	public List<PmsProduct> list(PmsProductQueryParam productQueryParam, Integer pageSize, Integer pageNum) {
 		PageHelper.startPage(pageNum, pageSize);
-		
+		Logger.info("pageNum{} pageSize{}", pageNum, pageSize);
 		PmsProductExample example = new PmsProductExample();
 		PmsProductExample.Criteria criteria = example.createCriteria();
 		criteria.andDeleteStatusEqualTo(0);
