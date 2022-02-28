@@ -46,7 +46,7 @@ public class SmsCouponController {
 	
 	
 	@Operation(summary ="获取单个优惠券详情")
-	@PostMapping("/{id}")
+	@GetMapping("/{id}")
 	@ResponseBody
 	public CommonResult<SmsCouponParam> getItem(@PathVariable Long id) {
 		SmsCouponParam couponParam = couponService.getItem(id);

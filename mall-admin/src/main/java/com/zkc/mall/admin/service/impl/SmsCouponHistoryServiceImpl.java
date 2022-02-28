@@ -8,6 +8,7 @@ import com.zkc.mall.mbg.model.*;
 import org.springframework.stereotype.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
 @Service
@@ -20,14 +21,15 @@ public class SmsCouponHistoryServiceImpl implements SmsCouponHistoryService {
 	public List<SmsCouponHistory> list(Long couponId, Integer useStatus, String orderSn, Integer pageSize, Integer pageNum) {
 		PageHelper.startPage(pageNum, pageSize);
 		SmsCouponHistoryExample example = new SmsCouponHistoryExample();
+		SmsCouponHistoryExample.Criteria criteria = example.createCriteria();
 		if (couponId != null) {
-			example.createCriteria().andCouponIdEqualTo(couponId);
+			criteria.andCouponIdEqualTo(couponId);
 		}
 		if (useStatus != null) {
-			example.createCriteria().andUseStatusEqualTo(useStatus);
+			criteria.andUseStatusEqualTo(useStatus);
 		}
 		if (StrUtil.isNotEmpty(orderSn)) {
-			example.createCriteria().andOrderSnLike("%" + orderSn + "%");
+			criteria.andOrderSnLike("%" + orderSn + "%");
 		}
 		
 		return couponHistoryMapper.selectByExample(example);

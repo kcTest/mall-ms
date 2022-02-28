@@ -18,7 +18,7 @@ public class PmsProduct implements Serializable {
 
     private Long productCategoryId;
 
-    private Long feightTemplateId;
+    private Long freightTemplateId;
 
     private Long productAttributeCategoryId;
 
@@ -242,12 +242,12 @@ public class PmsProduct implements Serializable {
         this.productCategoryId = productCategoryId;
     }
 
-    public Long getFeightTemplateId() {
-        return feightTemplateId;
+    public Long getFreightTemplateId() {
+        return freightTemplateId;
     }
 
-    public void setFeightTemplateId(Long feightTemplateId) {
-        this.feightTemplateId = feightTemplateId;
+    public void setFreightTemplateId(Long freightTemplateId) {
+        this.freightTemplateId = freightTemplateId;
     }
 
     public Long getProductAttributeCategoryId() {

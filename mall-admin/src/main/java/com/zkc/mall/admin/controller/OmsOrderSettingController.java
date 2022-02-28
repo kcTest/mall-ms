@@ -18,7 +18,7 @@ public class OmsOrderSettingController {
 	@Autowired
 	private OmsOrderSettingService orderSettingService;
 	
-	@Operation(summary ="获取订单设置")
+	@Operation(summary = "获取订单设置")
 	@GetMapping("/{id}")
 	@ResponseBody
 	public CommonResult<OmsOrderSetting> getItem(@PathVariable Long id) {
@@ -26,8 +26,8 @@ public class OmsOrderSettingController {
 		return CommonResult.success(orderSetting);
 	}
 	
-	@Operation(summary ="修改订单设置")
-	@GetMapping("/update/{id}")
+	@Operation(summary = "修改订单设置")
+	@PostMapping("/update/{id}")
 	@ResponseBody
 	public CommonResult<?> update(@PathVariable Long id, @RequestBody OmsOrderSetting omsOrderSet) {
 		int count = orderSettingService.update(id, omsOrderSet);

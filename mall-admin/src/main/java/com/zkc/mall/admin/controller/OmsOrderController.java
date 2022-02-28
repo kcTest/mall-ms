@@ -50,7 +50,7 @@ public class OmsOrderController {
 	}
 	
 	@Operation(summary = "批量删除订单")
-	@PostMapping("/update/delete")
+	@PostMapping("/delete")
 	@ResponseBody
 	public CommonResult<?> delete(@RequestParam("ids") List<Long> ids) {
 		int count = orderService.delete(ids);

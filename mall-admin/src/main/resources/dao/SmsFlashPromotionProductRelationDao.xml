@@ -20,7 +20,7 @@
                pp.id         p_id,
                pp.name       p_name,
                pp.product_sn p_product_sn,
-               pp.price      pp_price,
+               pp.price      p_price,
                pp.stock      p_stock
         from sms_flash_promotion_product_relation sfppr
         left join pms_product                     pp on pp.id = sfppr.product_id

@@ -5,11 +5,11 @@
         insert into oms_order_operate_history (order_id, operate_man, create_time, order_status, note)
         values
         <foreach collection="list" index="index" item="item" separator=",">
-            (#{item.orderId}),
-            (#{item.operateMan}),
-            (#{item.createTime,jdbcType=TIMESTAMP}),
-            (#{item.orderStatus}),
-            (#{item.note})
+            (#{item.orderId},
+            #{item.operateMan},
+            #{item.createTime,jdbcType=TIMESTAMP},
+            #{item.orderStatus},
+            #{item.note})
         </foreach>
     </insert>
 </mapper>
