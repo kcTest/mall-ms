@@ -10,7 +10,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
+
 @Tag(name = "UmsMenuController", description = "后台菜单管理")
 
 @RestController
@@ -21,7 +23,7 @@ public class UmsMenuController {
 	private UmsMenuService menuService;
 	
 	
-	@Operation(summary ="添加后台管理菜单")
+	@Operation(summary = "添加后台管理菜单")
 	@PostMapping("/create")
 	@ResponseBody
 	public CommonResult<?> create(@RequestBody UmsMenu umsmenu) {
@@ -29,7 +31,7 @@ public class UmsMenuController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="修改后台菜单")
+	@Operation(summary = "修改后台菜单")
 	@PostMapping("/update/{id}")
 	@ResponseBody
 	public CommonResult<?> update(@PathVariable Long id, @RequestBody UmsMenu umsmenu) {
@@ -37,7 +39,7 @@ public class UmsMenuController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="根据ID获取菜单详情")
+	@Operation(summary = "根据ID获取菜单详情")
 	@GetMapping("/{id}")
 	@ResponseBody
 	public CommonResult<UmsMenu> getItem(@PathVariable Long id) {
@@ -45,15 +47,15 @@ public class UmsMenuController {
 		return CommonResult.success(umsMenu);
 	}
 	
-	@Operation(summary ="根据ID获取菜单详情")
-	@GetMapping("/delete/{id}")
+	@Operation(summary = "根据ID获取菜单详情")
+	@PostMapping("/delete/{id}")
 	@ResponseBody
 	public CommonResult<?> delete(@PathVariable Long id) {
 		int count = menuService.delete(id);
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="分页模糊查询后台资源")
+	@Operation(summary = "分页模糊查询后台菜单")
 	@GetMapping("/list/{parentId}")
 	@ResponseBody
 	public CommonResult<CommonPage<UmsMenu>> list(
@@ -64,7 +66,7 @@ public class UmsMenuController {
 		return CommonResult.success(CommonPage.restPage(resourceList));
 	}
 	
-	@Operation(summary ="树形结构返回所有菜单列表")
+	@Operation(summary = "树形结构返回所有菜单列表")
 	@GetMapping("/treeList")
 	@ResponseBody
 	public CommonResult<List<UmsMenuNode>> treeList() {
@@ -73,7 +75,7 @@ public class UmsMenuController {
 	}
 	
 	
-	@Operation(summary ="修改菜单显示状态")
+	@Operation(summary = "修改菜单显示状态")
 	@GetMapping("/updateHidden/{id}")
 	@ResponseBody
 	public CommonResult<?> updateHidden(@PathVariable Long id, @RequestParam("hidden") Integer hidden) {

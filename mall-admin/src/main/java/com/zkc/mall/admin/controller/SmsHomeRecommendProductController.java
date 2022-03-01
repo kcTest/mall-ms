@@ -47,7 +47,7 @@ public class SmsHomeRecommendProductController {
 	@Operation(summary ="批量修改人气推荐状态")
 	@PostMapping("/update/recommendStatus")
 	@ResponseBody
-	public CommonResult<?> updateRecommendStatus(@RequestParam("ids") List<Long> ids, @RequestParam("status") Integer recommendStatus) {
+	public CommonResult<?> updateRecommendStatus(@RequestParam("ids") List<Long> ids, @RequestParam Integer recommendStatus) {
 		int count = homeRecommendProductService.updateRecommendStatus(ids, recommendStatus);
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}

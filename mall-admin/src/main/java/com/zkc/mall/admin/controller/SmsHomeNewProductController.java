@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
 
@@ -21,7 +22,7 @@ public class SmsHomeNewProductController {
 	@Autowired
 	private SmsHomeNewProductService homeNewProductService;
 	
-	@Operation(summary ="添加首页新品推荐")
+	@Operation(summary = "添加首页新品推荐")
 	@PostMapping("/create")
 	@ResponseBody
 	public CommonResult<?> create(@RequestBody List<SmsHomeNewProduct> homeNewProductList) {
@@ -29,7 +30,7 @@ public class SmsHomeNewProductController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="修改新品推荐排序")
+	@Operation(summary = "修改新品推荐排序")
 	@PostMapping("/update/sort/{id}")
 	@ResponseBody
 	public CommonResult<?> updateSort(@PathVariable Long id, @RequestParam("sort") Integer sort) {
@@ -37,7 +38,7 @@ public class SmsHomeNewProductController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="批量删除新品推荐排序")
+	@Operation(summary = "批量删除新品推荐排序")
 	@PostMapping("/delete")
 	@ResponseBody
 	public CommonResult<?> delete(@RequestParam("ids") List<Long> ids) {
@@ -45,15 +46,15 @@ public class SmsHomeNewProductController {
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="批量修改新品推荐状态")
+	@Operation(summary = "批量修改新品推荐状态")
 	@PostMapping("/update/recommendStatus")
 	@ResponseBody
-	public CommonResult<?> updateRecommendStatus(@RequestParam("ids") List<Long> ids, @RequestParam("status") Integer recommendStatus) {
+	public CommonResult<?> updateRecommendStatus(@RequestParam("ids") List<Long> ids, @RequestParam Integer recommendStatus) {
 		int count = homeNewProductService.updateRecommendStatus(ids, recommendStatus);
 		return count > 0 ? CommonResult.success(count) : CommonResult.failed();
 	}
 	
-	@Operation(summary ="分页查询新品推荐")
+	@Operation(summary = "分页查询新品推荐")
 	@GetMapping("/list")
 	@ResponseBody
 	public CommonResult<CommonPage<SmsHomeNewProduct>> list(

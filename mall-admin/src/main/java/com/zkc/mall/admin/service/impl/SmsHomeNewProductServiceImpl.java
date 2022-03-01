@@ -9,6 +9,7 @@ import com.zkc.mall.mbg.model.SmsHomeNewProductExample;
 import org.springframework.stereotype.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
 @Service
@@ -50,7 +51,7 @@ public class SmsHomeNewProductServiceImpl implements SmsHomeNewProductService {
 		
 		SmsHomeNewProductExample smsHomeNewProductExample = new SmsHomeNewProductExample();
 		smsHomeNewProductExample.createCriteria().andIdIn(ids);
-		return homeNewProductMapper.updateByExample(homeNewProduct, smsHomeNewProductExample);
+		return homeNewProductMapper.updateByExampleSelective(homeNewProduct, smsHomeNewProductExample);
 	}
 	
 	@Override

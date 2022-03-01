@@ -50,7 +50,7 @@ public class SmsHomeRecommendSubjectServiceImpl implements SmsHomeRecommendSubje
 		
 		SmsHomeRecommendSubjectExample smsHomeRecommendSubjectExample = new SmsHomeRecommendSubjectExample();
 		smsHomeRecommendSubjectExample.createCriteria().andIdIn(ids);
-		return homeRecommendSubjectMapper.updateByExample(homeRecommendSubject, smsHomeRecommendSubjectExample);
+		return homeRecommendSubjectMapper.updateByExampleSelective(homeRecommendSubject, smsHomeRecommendSubjectExample);
 	}
 	
 	@Override

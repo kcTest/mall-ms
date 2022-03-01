@@ -30,9 +30,9 @@ public class CmsSubjectController {
 	}
 	
 	@Operation(summary = "根据专题名称分页获取专题")
-	@PostMapping("/list")
+	@GetMapping("/list")
 	@ResponseBody
-	public CommonResult<CommonPage<CmsSubject>> list(@RequestParam("keyword") String keyword,
+	public CommonResult<CommonPage<CmsSubject>> list(@RequestParam(value = "keyword", required = false) String keyword,
 													 @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
 													 @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
 		List<CmsSubject> subjectList = subjectService.list(keyword, pageSize, pageNum);
