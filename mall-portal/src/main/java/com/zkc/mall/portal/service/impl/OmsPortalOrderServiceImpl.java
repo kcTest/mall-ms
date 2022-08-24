@@ -430,7 +430,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
 		if (!currentMember.getId().equals(order.getMemberId())) {
 			Asserts.fail("不能删除他人订单");
 		}
-		if (order.getStatus() == 3 || order.getStatus() == 3) {
+		if (order.getStatus() == 3) { 
 			order.setDeleteStatus(1);
 			orderMapper.updateByPrimaryKeySelective(order);
 		} else {
